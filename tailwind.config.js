@@ -7,6 +7,7 @@ module.exports = {
         alium: "#1E90FF",
         hero: "#525252",
         herotext: "#383838",
+        trusted: "#333333",
         herobtn: "#009494",
       },
     },

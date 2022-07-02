@@ -1,7 +1,9 @@
 import { FC } from "react";
 import Navbar from "../../components/navbar";
-import Companies from "../../components/signup/Companies";
-import Hero from "../../components/signup/Hero";
+import Companies from "../../components/landing/Companies";
+import Explore from "../../components/landing/Explore";
+import Hero from "../../components/landing/Hero";
+import Register from "../../components/landing/Register";
 
 const Landing: FC = () => {
   return (
@@ -9,6 +11,8 @@ const Landing: FC = () => {
       <Navbar />
       <Hero />
       <Companies />
+      <Explore />
+      <Register />
     </div>
   );
 };
