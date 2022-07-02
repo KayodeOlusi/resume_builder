@@ -1,12 +1,11 @@
 import "./App.css";
+import Landing from "./pages/landing";
 
 function App() {
   return (
-    <div className="bg-slate-600">
-      <header>
-        <h2>Resume Builder</h2>
-      </header>
-    </div>
+    <main className="max-w-6xl mx-auto mt-14">
+      <Landing />
+    </main>
   );
 }
 
