@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import HeroFirst from "../../assets/herofirst.svg";
+import { images } from "../../constants";
 
 const Hero: FC = () => {
   return (
@@ -22,7 +22,7 @@ const Hero: FC = () => {
         </div>
       </div>
       <div className="hero__image">
-        <img src={HeroFirst} alt="" />
+        <img src={images.herofirst} alt="" />
       </div>
     </div>
   );

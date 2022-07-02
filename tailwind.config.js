@@ -9,6 +9,7 @@ module.exports = {
         herotext: "#383838",
         trusted: "#333333",
         herobtn: "#009494",
+        landingcard: "#FAFAFA",
       },
     },
   },

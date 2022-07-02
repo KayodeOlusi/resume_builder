@@ -8,4 +8,8 @@
   html {
     font-family: Montserrat, system-ui, sans-serif;
   }
+
+  .landing-card {
+    @apply w-[368px] h-[450px] bg-landingcard rounded-sm;
+  }
 }
