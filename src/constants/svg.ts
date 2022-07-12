@@ -1,3 +1,7 @@
+import tt from "../assets/svg/tt.svg";
+import fb from "../assets/svg/fb.svg";
+import ig from "../assets/svg/ig.svg";
+import menu from "../assets/svg/menu.svg";
 import facebook from "../assets/svg/facebook.svg";
 import google from "../assets/svg/google.svg";
 import microsoft from "../assets/svg/microsoft.svg";
@@ -11,25 +15,23 @@ import herotwo from "../assets/svg/herotwo.svg";
 import share from "../assets/svg/share.svg";
 import chart from "../assets/svg/chart.svg";
 import thumb from "../assets/svg/thumb.svg";
-import tt from "../assets/svg/tt.svg";
-import fb from "../assets/svg/fb.svg";
-import ig from "../assets/svg/ig.svg";
 
 export default {
-  facebook,
-  google,
-  microsoft,
-  paypal,
-  sony,
-  stripe,
-  register,
+  fb,
+  ig,
+  tt,
   star,
-  herofirst,
-  herotwo,
+  sony,
+  menu,
   share,
   chart,
   thumb,
-  tt,
-  fb,
-  ig,
+  stripe,
+  paypal,
+  google,
+  herotwo,
+  register,
+  herofirst,
+  facebook,
+  microsoft,
 };

@@ -16,4 +16,8 @@
   .footer-heading {
     @apply text-alium font-bold text-xl;
   }
+
+  .trusted {
+    @apply h-16 w-16 md:h-20 md:w-20;
+  }
 }

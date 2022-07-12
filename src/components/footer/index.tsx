@@ -1,4 +1,3 @@
-import React from "react";
 import { svgs } from "../../constants";
 
 const Footer = () => {
@@ -43,8 +42,8 @@ const Footer = () => {
         </div>
         <div className="socials">
           <h5 className="footer-heading">Socials</h5>
-          {socials.map((social) => (
-            <img src={social} alt="social" className="mt-9" />
+          {socials.map((social, index) => (
+            <img key={index} src={social} alt="social" className="mt-9" />
           ))}
         </div>
       </div>
