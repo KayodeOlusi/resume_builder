@@ -6,6 +6,7 @@ import Explore from "../../components/landing/Explore";
 import Hero from "../../components/landing/Hero";
 import Register from "../../components/landing/Register";
 import Offers from "../../components/landing/Offers";
+import Testimonials from "../../components/landing/Testimonials";
 
 const Landing: FC = () => {
   return (
@@ -16,6 +17,7 @@ const Landing: FC = () => {
       <Explore />
       <Register />
       <Offers />
+      <Testimonials />
     </div>
   );
 };

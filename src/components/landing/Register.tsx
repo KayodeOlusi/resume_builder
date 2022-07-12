@@ -1,17 +1,17 @@
 import { FC } from "react";
-import { images } from "../../constants";
+import { svgs } from "../../constants";
 
 const Register: FC = () => {
   return (
     <div className="mt-36 flex items-center justify-between">
       <div className="hero__image">
-        <img src={images.register} alt="" />
+        <img src={svgs.register} alt="register" />
       </div>
-      <div className="hero__text w-[575px]">
+      <div className="hero__text w-[35.938rem]">
         <h1 className="text-4xl leading-10 text-herotext font-semibold">
           You have the skills, we know it, let your resume prove it.
         </h1>
-        <div className="w-[527px] mt-4">
+        <div className="w-[32.938rem] mt-4">
           <h4 className="font-semibold text-base text-hero">
             Many times all you need is the right resume for the application
             process, and the job is yours. With Alium, with out thousands of

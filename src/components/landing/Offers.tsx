@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { images } from "../../constants";
+import { svgs } from "../../constants";
 
 const Offers: FC = () => {
   return (
     <div className="mt-36">
       <div className="mb-9">
-        <h1 className="text-center text-herotext text-[25px] font-semibold">
+        <h1 className="text-center text-herotext text-[1.56rem] font-semibold">
           What We Offer You
         </h1>
       </div>
@@ -14,7 +14,7 @@ const Offers: FC = () => {
         <div className="landing-card flex justify-center items-center">
           <div>
             <div className="flex items-center justify-center pb-9">
-              <img src={images.share} alt="sharable" />
+              <img src={svgs.share} alt="sharable" />
             </div>
             <div className="text-center w-72">
               <h3 className="text-herotext font-semibold text-xl">
@@ -30,14 +30,14 @@ const Offers: FC = () => {
         <div className="landing-card flex justify-center items-center">
           <div>
             <div className="flex items-center justify-center pb-9">
-              <img src={images.chart} alt="track" />
+              <img src={svgs.chart} alt="track" />
             </div>
             <div className="text-center w-72">
               <h3 className="text-herotext font-semibold text-xl">
                 Track Results
               </h3>
               <p className="pt-4 text-base text-hero">
-                Our system automtically checks application success to improve
+                Our system automatically checks application success to improve
                 future applications.
               </p>
             </div>
@@ -46,7 +46,7 @@ const Offers: FC = () => {
         <div className="landing-card flex justify-center items-center">
           <div>
             <div className="flex items-center justify-center pb-9">
-              <img src={images.thumb} alt="feedback" />
+              <img src={svgs.thumb} alt="feedback" />
             </div>
             <div className="text-center w-72">
               <h3 className="font-semibold text-herotext text-xl">

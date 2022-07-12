@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { images } from "../../constants";
+import { svgs } from "../../constants";
 
 const Hero: FC = () => {
   return (
@@ -9,7 +9,7 @@ const Hero: FC = () => {
           With Alium, standing <span className="text-alium">out</span> <br />{" "}
           becomes a habit.
         </h1>
-        <div className=" w-[460px] mt-4 md:text-left">
+        <div className=" w-[28.75rem] mt-4 md:text-left">
           <h4 className="font-semibold text-2xl text-hero">
             Build professional and eye catching resumes in just few minutes with
             our industry standard templates.
@@ -22,7 +22,7 @@ const Hero: FC = () => {
         </div>
       </div>
       <div className="hero__image">
-        <img src={images.herofirst} alt="" />
+        <img src={svgs.herofirst} alt="" />
       </div>
     </div>
   );

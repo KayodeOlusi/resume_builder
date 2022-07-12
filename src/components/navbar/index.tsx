@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { images } from "../../constants";
+import { svgs } from "../../constants";
 
 const Navbar: FC = () => {
   const nav_links = ["Templates", "Resume Builder", "Blog", "Contact"];
@@ -7,7 +7,7 @@ const Navbar: FC = () => {
   return (
     <nav className="flex items-center justify-between">
       <div className="flex items-center justify-between space-x-4">
-        <img src={images.star} alt="star" className="w-8 h-8" />
+        <img src={svgs.star} alt="star" className="w-8 h-8" />
         <h3 className="text-alium font-bold text-2xl">Alium</h3>
       </div>
       <div className="flex space-x-10">
