@@ -12,4 +12,8 @@
   .landing-card {
     @apply w-[368px] h-[450px] bg-landingcard rounded-sm;
   }
+
+  .footer-heading {
+    @apply text-alium font-bold text-xl;
+  }
 }

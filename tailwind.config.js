@@ -10,6 +10,7 @@ module.exports = {
         trusted: "#333333",
         herobtn: "#009494",
         landingcard: "#FAFAFA",
+        links: "#585858",
       },
     },
   },
