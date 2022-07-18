@@ -3,7 +3,10 @@ import { svgs } from "../../constants";
 
 const Hero: FC = () => {
   return (
-    <div className="flex flex-col-reverse mt-4 items-center md:flex-row md:justify-between md:mt-36">
+    <div
+      data-testid="hero"
+      className="flex flex-col-reverse mt-4 items-center md:flex-row md:justify-between md:mt-36"
+    >
       <div className="hero__text">
         <h1 className="text-xl text-center leading-6 text-herotext font-semibold md:text-4xl md:text-left md:leading-10">
           With Alium, standing <span className="text-alium">out</span> <br />{" "}
