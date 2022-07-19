@@ -3,7 +3,7 @@ import { image } from "../../constants";
 
 const Testimonials: FC = () => {
   return (
-    <div className="mt-36 ">
+    <div data-testid="testimonials" className="mt-36">
       <div className="testimonials__text mb-9">
         <h1 className="text-center text-herotext text-[1.56rem] font-semibold">
           Testimonials

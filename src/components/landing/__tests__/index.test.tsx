@@ -22,5 +22,33 @@ describe("Landing Page Component Tests", () => {
     expect(offersElement).toBeInTheDocument();
   });
 
+  // Test the Explore Component
+  it("should render the Explore component", () => {
+    render(<Explore />);
+    const exploreElement = screen.getByTestId("explore");
+    expect(exploreElement).toBeInTheDocument();
+  });
+
+  // Test the Register Component
+  it("should render the Register component", () => {
+    render(<Register />);
+    const registerElement = screen.getByTestId("register");
+    expect(registerElement).toBeInTheDocument();
+  });
+
+  // Test the Companies Component
+  it("should render the Companies component", () => {
+    render(<Companies />);
+    const companiesElement = screen.getByTestId("companies");
+    expect(companiesElement).toBeInTheDocument();
+  });
+
+  // Test the Testimonials Component
+  it("should render the Testimonials component", () => {
+    render(<Testimonials />);
+    const testimonialsElement = screen.getByTestId("testimonials");
+    expect(testimonialsElement).toBeInTheDocument();
+  });
+
   afterAll(cleanup);
 });

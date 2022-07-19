@@ -3,7 +3,10 @@ import { svgs } from "../../constants";
 
 const Explore: FC = () => {
   return (
-    <div className="mt-4 flex flex-col-reverse items-center md:flex-row md:mt-36 md:justify-between">
+    <div
+      data-testid="explore"
+      className="mt-4 flex flex-col-reverse items-center md:flex-row md:mt-36 md:justify-between"
+    >
       <div className="hero__text px-4 md:w-[35.938rem] md:px-0">
         <h1 className="text-xl text-center leading-6 text-herotext font-semibold md:text-4xl md:text-left md:leading-10">
           <span className="text-alium">Alium</span> gives you the perfect resume

@@ -3,7 +3,10 @@ import { svgs } from "../../constants";
 
 const Register: FC = () => {
   return (
-    <div className="mt-36 flex items-center justify-between">
+    <div
+      data-testid="register"
+      className="mt-36 flex items-center justify-between"
+    >
       <div className="hero__image">
         <img src={svgs.register} alt="register" />
       </div>
