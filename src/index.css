@@ -10,7 +10,7 @@
   }
 
   .landing-card {
-    @apply w-[368px] h-[450px] bg-landingcard rounded-sm;
+    @apply bg-landingcard rounded-sm w-[18.125rem] h-[24.813rem] md:w-[368px] md:h-[450px];
   }
 
   .footer-heading {
@@ -19,5 +19,9 @@
 
   .trusted {
     @apply h-16 w-16 md:h-20 md:w-20;
+  }
+
+  .f-links {
+    @apply mb-12 md:mb-0;
   }
 }

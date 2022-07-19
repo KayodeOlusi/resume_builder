@@ -4,7 +4,7 @@ import { svgs } from "../../constants";
 const Offers: FC = () => {
   return (
     <div data-testid="offers" className="mt-36">
-      <div>
+      <div className="mb-9">
         <h1 className="text-center text-herotext text-[1.56rem] font-semibold">
           What We Offer You
         </h1>
