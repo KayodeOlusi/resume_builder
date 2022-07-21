@@ -1,4 +1,5 @@
 import Button from "../../components/auth/Button";
+import SignUpForm from "../../components/auth/SignUpForm";
 import { svgs } from "../../constants";
 
 const SignUp = () => {
@@ -11,8 +12,25 @@ const SignUp = () => {
         Already have an account? <span className="text-alium">Sign In</span>
       </p>
 
-      <Button svg={svgs.google_icon} title="Sign Up With Google" />
-      <Button svg={svgs.linkedin} title="Sign Up With Linkedin" blue_bg />
+      <div className="flex">
+        <div className="flex-1 mr-5">
+          <Button svg={svgs.google_icon} title="Sign Up With Google" />
+          <Button svg={svgs.linkedin} title="Sign Up With Linkedin" blue_bg />
+          <p className="text-center font-semibold">O R</p>
+          <SignUpForm />
+          <p className="font-semibold text-sm text-links">
+            By signing up you agree to Alium’s terms and conditions. You can
+            read them here{" "}
+            <span className="text-alium">
+              Privacy Policy | Terms and Conditions
+            </span>{" "}
+            but we both know you won’t.
+          </p>
+        </div>
+        <div className="hidden lg:block">
+          <img src={svgs.login} alt="login" />
+        </div>
+      </div>
     </div>
   );
 };

@@ -18,6 +18,7 @@ import thumb from "../assets/svg/thumb.svg";
 import google_icon from "../assets/svg/google1.svg";
 import linkedin from "../assets/svg/linkedin.svg";
 import login from "../assets/svg/login.svg";
+import cloud from "../assets/svg/cloud.svg";
 
 export default {
   fb,
@@ -26,6 +27,7 @@ export default {
   star,
   sony,
   menu,
+  cloud,
   share,
   chart,
   thumb,
