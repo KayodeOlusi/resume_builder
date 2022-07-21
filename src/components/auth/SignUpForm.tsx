@@ -29,17 +29,22 @@ const SignUpForm: FC = () => {
   const onSubmitForm: FormEventHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (formData.name && formData.email && formData.password) {
-      console.log(formData);
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+      });
     } else {
       toast.error("Please fill all the fields");
     }
   };
 
   return (
-    <form onSubmit={onSubmitForm}>
+    <form onSubmit={onSubmitForm} data-testid="form_id">
       <input
         type="text"
         name="name"
+        value={formData.name}
         onChange={handleChange}
         placeholder="Enter Your Fullname"
         className="bg-landingcard w-full mt-4 mb-4 py-3 px-9 text-sm md:text-base"
@@ -47,6 +52,7 @@ const SignUpForm: FC = () => {
       <input
         type="email"
         name="email"
+        value={formData.email}
         onChange={handleChange}
         placeholder="Enter Your Email"
         className="bg-landingcard w-full mt-4 mb-4 py-3 px-9 text-sm md:text-base"
@@ -54,6 +60,7 @@ const SignUpForm: FC = () => {
       <input
         name="password"
         type="password"
+        value={formData.password}
         onChange={handleChange}
         placeholder="Enter Your Password"
         className="bg-landingcard w-full mt-4 mb-4 py-3 px-9 text-sm md:text-base"
