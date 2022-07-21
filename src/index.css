@@ -10,11 +10,11 @@
   }
 
   .landing-card {
-    @apply bg-landingcard rounded-sm w-[18.125rem] h-[24.813rem] md:w-[368px] md:h-[450px];
+    @apply bg-landingcard rounded-sm w-[18.125rem] h-[24.813rem] md:w-[15rem] md:h-[22rem] lg:w-[23rem] lg:h-[28.125rem];
   }
 
   .footer-heading {
-    @apply text-alium font-bold text-xl;
+    @apply text-alium font-bold text-base md:text-xl;
   }
 
   .trusted {

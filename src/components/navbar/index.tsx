@@ -10,14 +10,14 @@ const Navbar: FC = () => {
         <img src={svgs.star} alt="star" className="w-5 h-5 md:w-8 md:h-8" />
         <h3 className="text-alium font-bold text-base md:text-2xl">Alium</h3>
       </div>
-      <div className="hidden space-x-10 md:flex">
+      <div className="hidden lg:flex lg:space-x-10">
         {nav_links.map((link, index) => (
           <p key={link} className="font-semibold">
             {link}
           </p>
         ))}
       </div>
-      <div className="hidden space-x-10 items-center md:flex">
+      <div className="hidden items-center lg:flex lg:space-x-10">
         <div className="border-2 border-alium p-2 rounded-sm">
           <h3 className="font-semibold">Sign In</h3>
         </div>
@@ -25,7 +25,7 @@ const Navbar: FC = () => {
           <h3 className="font-semibold">Sign Up</h3>
         </div>
       </div>
-      <div className="block md:hidden">
+      <div className="block lg:hidden">
         <img src={svgs.menu} alt="menu" className="w-5 h-5" />
       </div>
     </nav>

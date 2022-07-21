@@ -24,12 +24,12 @@ const FooterChild: FC<IProps> = ({ Icon, title, links }) => {
       {viewPortWidth < 768
         ? showLinks &&
           links.map((link) => (
-            <p key={link} className="text-base mt-9 text-links">
+            <p key={link} className="text-sm mt-9 text-links">
               {link}
             </p>
           ))
         : links.map((link) => (
-            <p key={link} className="text-base mt-9 text-links">
+            <p key={link} className="text-sm mt-9 text-links">
               {link}
             </p>
           ))}

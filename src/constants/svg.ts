@@ -15,6 +15,9 @@ import herotwo from "../assets/svg/herotwo.svg";
 import share from "../assets/svg/share.svg";
 import chart from "../assets/svg/chart.svg";
 import thumb from "../assets/svg/thumb.svg";
+import google_icon from "../assets/svg/google1.svg";
+import linkedin from "../assets/svg/linkedin.svg";
+import login from "../assets/svg/login.svg";
 
 export default {
   fb,
@@ -26,6 +29,7 @@ export default {
   share,
   chart,
   thumb,
+  login,
   stripe,
   paypal,
   google,
@@ -33,5 +37,7 @@ export default {
   register,
   herofirst,
   facebook,
+  linkedin,
   microsoft,
+  google_icon,
 };

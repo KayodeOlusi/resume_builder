@@ -1,6 +1,5 @@
 import { FC } from "react";
 // Components
-import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Hero from "../../components/landing/Hero";
 import Offers from "../../components/landing/Offers";
@@ -12,7 +11,6 @@ import Testimonials from "../../components/landing/Testimonials";
 const Landing: FC = () => {
   return (
     <div>
-      <Navbar />
       <Hero />
       <Companies />
       <Explore />

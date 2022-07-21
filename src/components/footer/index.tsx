@@ -16,8 +16,8 @@ const Footer = () => {
 
       <div className="flex flex-col md:justify-between p-9 md:flex-row">
         <div className="brand flex space-x-2 mb-16 md:mb-0">
-          <img src={svgs.star} className="h-[2rem] w-[2rem]" alt="star" />
-          <h5 className="text-alium font-bold text-2xl">Alium</h5>
+          <img src={svgs.star} className="h-[1.4rem] w-[1.4rem]" alt="star" />
+          <h5 className="text-alium font-bold text-xl">Alium</h5>
         </div>
         <FooterChild
           Icon={ChevronRightIcon}
