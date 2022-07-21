@@ -13,7 +13,7 @@ const Button: FC<IProps> = ({ svg, title, blue_bg }) => {
       } flex justify-center items-center space-x-4 py-3 px-9 font-semibold rounded-sm w-full`}
     >
       {svg ? <img src={svg} alt="c" /> : null}
-      <p>{title}</p>
+      <p className="text-xs md:text-base">{title}</p>
     </button>
   );
 };
