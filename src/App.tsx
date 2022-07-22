@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 // Components
@@ -5,6 +6,8 @@ import Navbar from "./components/navbar";
 import Landing from "./pages/landing";
 import SignUp from "./pages/auth/signup";
 import SignIn from "./pages/auth/signin";
+import Steps from "./pages/steps";
+import PageLayout from "./layout/PageLayout";
 
 function App() {
   return (
@@ -14,9 +17,13 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+
+        <Route path="/page" element={<PageLayout />}>
+          <Route index element={<Steps />} />
+        </Route>
       </Routes>
     </main>
   );
 }
 
-export default App;
+export default App as FC;

@@ -19,7 +19,7 @@ const Hero: FC = () => {
           </h4>
         </div>
         <div className="mt-14 text-center md:mt-4 md:text-left">
-          <button className="bg-herobtn rounded-sm text-white px-6 py-4 mb-6 text-xs md:mb-0 md:px-5 md:px-4 xl:px-10 xl:py-6">
+          <button className="bg-herobtn rounded-sm text-white px-6 py-4 mb-6 text-xs md:mb-0 md:px-5 xl:px-10 xl:py-6">
             Build My Resume
           </button>
         </div>
