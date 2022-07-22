@@ -3,7 +3,8 @@ import "./App.css";
 // Components
 import Navbar from "./components/navbar";
 import Landing from "./pages/landing";
-import SignUp from "./pages/auth";
+import SignUp from "./pages/auth/signup";
+import SignIn from "./pages/auth/signin";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
       </Routes>
     </main>
   );

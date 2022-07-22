@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 import Button from "./Button";
 
 interface IFormData {
-  name: string;
   email: string;
   password: string;
 }
@@ -15,9 +14,8 @@ interface IEvent {
   };
 }
 
-const SignUpForm: FC = () => {
+const SignInForm: FC = () => {
   const [formData, setFormData] = useState<IFormData>({
-    name: "",
     email: "",
     password: "",
   });
@@ -28,9 +26,8 @@ const SignUpForm: FC = () => {
 
   const onSubmitForm: FormEventHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.password) {
+    if (formData.email && formData.password) {
       setFormData({
-        name: "",
         email: "",
         password: "",
       });
@@ -41,16 +38,6 @@ const SignUpForm: FC = () => {
 
   return (
     <form onSubmit={onSubmitForm} data-testid="form_id">
-      <input
-        type="text"
-        name="name"
-        minLength={8}
-        autoComplete="on"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Enter Your Fullname"
-        className="bg-landingcard w-full mt-4 mb-4 py-3 px-9 text-sm md:text-base"
-      />
       <input
         type="email"
         name="email"
@@ -70,9 +57,9 @@ const SignUpForm: FC = () => {
         placeholder="Enter Your Password"
         className="bg-landingcard w-full mt-4 mb-4 py-3 px-9 text-sm md:text-base"
       />
-      <Button title="Sign Up" blue_bg />
+      <Button title="Sign In" blue_bg />
     </form>
   );
 };
 
-export default SignUpForm;
+export default SignInForm;
