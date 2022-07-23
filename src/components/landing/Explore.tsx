@@ -1,7 +1,10 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { svgs } from "../../constants";
 
 const Explore: FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div
       data-testid="explore"
@@ -21,7 +24,10 @@ const Explore: FC = () => {
           </h4>
         </div>
         <div className="mt-4 text-center md:mt-12 lg:text-left">
-          <button className="bg-herobtn mb-5 rounded-sm text-white px-6 py-4 text-xs md:mb-0 md:px-10 md:py-6">
+          <button
+            className="bg-herobtn mb-5 rounded-sm text-white px-6 py-4 text-xs md:mb-0 md:px-10 md:py-6"
+            onClick={() => navigate("/page/templates")}
+          >
             Explore Templates
           </button>
         </div>

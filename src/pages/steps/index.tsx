@@ -1,7 +1,10 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import Visuals from "../../components/steps/Visuals";
 
 const Steps: FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="mt-20 px-8 lg:px-0">
       <h1 className="text-center text-alium font-semibold text-2xl lg:text-4xl">
@@ -15,6 +18,7 @@ const Steps: FC = () => {
         <button
           className="bg-herobtn rounded-sm text-white px-6 py-4 mb-6 text-xs
          md:mb-0 md:px-5 xl:px-10 xl:py-6"
+          onClick={() => navigate("/page/templates")}
         >
           Build My Resume
         </button>

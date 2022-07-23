@@ -1,7 +1,10 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { svgs } from "../../constants";
 
 const Register: FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div
       data-testid="register"
@@ -28,7 +31,10 @@ const Register: FC = () => {
           </h4>
         </div>
         <div className="mt-4 text-center md:mt-12 lg:text-left">
-          <button className="bg-herobtn rounded-sm text-white px-6 py-4 text-xs mb-4 md:mb-0 md:px-10 md:py-6">
+          <button
+            className="bg-herobtn rounded-sm text-white px-6 py-4 text-xs mb-4 md:mb-0 md:px-10 md:py-6"
+            onClick={() => navigate("/signup")}
+          >
             Register Now
           </button>
         </div>

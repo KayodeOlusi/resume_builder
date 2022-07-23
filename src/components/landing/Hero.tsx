@@ -1,7 +1,10 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { svgs } from "../../constants";
 
 const Hero: FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div
       data-testid="hero"
@@ -28,7 +31,8 @@ const Hero: FC = () => {
         <div className="mt-14 text-center md:mt-4 md:text-left">
           <button
             className="bg-herobtn rounded-sm text-white px-6 py-4 mb-6 text-xs
-           md:mb-0 md:px-5 xl:px-10 xl:py-6"
+            md:mb-0 md:px-5 xl:px-10 xl:py-6"
+            onClick={() => navigate("/page")}
           >
             Build My Resume
           </button>
