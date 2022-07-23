@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom";
 import { cleanup, render, screen } from "@testing-library/react";
 
 import Hero from "../Hero";
@@ -7,10 +8,28 @@ import Register from "../Register";
 import Companies from "../Companies";
 import Testimonials from "../Testimonials";
 
+const MockRegister = () => (
+  <BrowserRouter>
+    <Register />
+  </BrowserRouter>
+);
+
+const MockExplore = () => (
+  <BrowserRouter>
+    <Explore />
+  </BrowserRouter>
+);
+
+const MockHero = () => (
+  <BrowserRouter>
+    <Hero />
+  </BrowserRouter>
+);
+
 describe("Landing Page Component Tests", () => {
   // Test the Hero component
   it("should render the Hero component", () => {
-    render(<Hero />);
+    render(<MockHero />);
     const heroElement = screen.getByTestId("hero");
     expect(heroElement).toBeInTheDocument();
   });
@@ -24,14 +43,14 @@ describe("Landing Page Component Tests", () => {
 
   // Test the Explore Component
   it("should render the Explore component", () => {
-    render(<Explore />);
+    render(<MockExplore />);
     const exploreElement = screen.getByTestId("explore");
     expect(exploreElement).toBeInTheDocument();
   });
 
   // Test the Register Component
   it("should render the Register component", () => {
-    render(<Register />);
+    render(<MockRegister />);
     const registerElement = screen.getByTestId("register");
     expect(registerElement).toBeInTheDocument();
   });
