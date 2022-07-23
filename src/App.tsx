@@ -8,6 +8,7 @@ import SignUp from "./pages/auth/signup";
 import SignIn from "./pages/auth/signin";
 import Steps from "./pages/steps";
 import PageLayout from "./layout/PageLayout";
+import Templates from "./components/steps/templates/Templates";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
         <Route path="/page" element={<PageLayout />}>
           <Route index element={<Steps />} />
+          <Route path="templates" element={<Templates />} />
         </Route>
       </Routes>
     </main>
