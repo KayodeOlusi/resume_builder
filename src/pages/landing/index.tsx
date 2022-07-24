@@ -3,9 +3,9 @@ import { FC } from "react";
 import Footer from "../../components/footer";
 import Hero from "../../components/landing/Hero";
 import Offers from "../../components/landing/Offers";
-import Companies from "../../components/landing/Companies";
 import Explore from "../../components/landing/Explore";
 import Register from "../../components/landing/Register";
+import Companies from "../../components/landing/Companies";
 import Testimonials from "../../components/landing/Testimonials";
 
 const Landing: FC = () => {

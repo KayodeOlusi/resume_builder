@@ -1,5 +1,4 @@
-import { FC, FormEventHandler, MouseEvent, useState } from "react";
-import toast from "react-hot-toast";
+import { FC, useState } from "react";
 import Button from "./Button";
 
 interface IFormData {
@@ -26,21 +25,8 @@ const SignUpForm: FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const onSubmitForm: FormEventHandler = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (formData.name && formData.email && formData.password) {
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-      });
-    } else {
-      toast.error("Please fill all the fields");
-    }
-  };
-
   return (
-    <form onSubmit={onSubmitForm} data-testid="form_id">
+    <form data-testid="form_id">
       <input
         type="text"
         name="name"
@@ -70,7 +56,7 @@ const SignUpForm: FC = () => {
         placeholder="Enter Your Password"
         className="bg-landingcard w-full mt-4 mb-4 py-3 px-9 text-sm md:text-base"
       />
-      <Button title="Sign Up" blue_bg />
+      <Button title="Sign Up" blue_bg formData={formData} />
     </form>
   );
 };

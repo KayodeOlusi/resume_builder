@@ -15,7 +15,6 @@ const SignIn = () => {
       <div className="flex">
         <div className="flex-1 mr-0 lg:mr-5">
           <Button svg={svgs.google_icon} title="Sign In With Google" />
-          <Button svg={svgs.linkedin} title="Sign In With Linkedin" blue_bg />
           <p className="text-center font-semibold">O R</p>
           <SignInForm />
           <p className="font-semibold text-xs text-links md:text-sm lg:text-base mb-4">

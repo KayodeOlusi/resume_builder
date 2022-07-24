@@ -14,8 +14,12 @@ const SignUp = () => {
 
       <div className="flex">
         <div className="flex-1 mr-0 lg:mr-5">
-          <Button svg={svgs.google_icon} title="Sign Up With Google" />
-          <Button svg={svgs.linkedin} title="Sign Up With Linkedin" blue_bg />
+          <Button
+            svg={svgs.google_icon}
+            title="Sign Up With Google"
+            sign_up
+            google
+          />
           <p className="text-center font-semibold">O R</p>
           <SignUpForm />
           <p className="font-semibold text-xs text-links md:text-sm lg:text-base mb-4">
