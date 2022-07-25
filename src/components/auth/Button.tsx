@@ -101,10 +101,10 @@ const Button: FC<IProps> = ({
 
             toast.success("Sign In to your account", {
               id: notification,
-              duration: 4000,
+              duration: 6000,
             });
 
-            navigate(from, { replace: true });
+            navigate("/signin");
             break;
           } else {
             toast.error("Please fill all the fields");
