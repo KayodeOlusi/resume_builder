@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { svgs } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 const Hero: FC = () => {
   const navigate = useNavigate();

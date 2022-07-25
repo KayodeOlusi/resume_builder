@@ -64,7 +64,7 @@ const Button: FC<IProps> = ({
           });
           navigate(from, { replace: true });
         })
-        .catch((error) => {
+        .catch(() => {
           toast.error("Error Signing In");
         });
     }
@@ -93,7 +93,7 @@ const Button: FC<IProps> = ({
                   );
                 });
               })
-              .catch((error) => {
+              .catch(() => {
                 toast.error("Error creating user", {
                   id: notification,
                 });
@@ -133,7 +133,7 @@ const Button: FC<IProps> = ({
 
                 navigate(from, { replace: true });
               })
-              .catch((error) => {
+              .catch(() => {
                 toast.error("Error logging in", {
                   id: notification2,
                 });
