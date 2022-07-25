@@ -3,6 +3,7 @@ import { ChevronRightIcon } from "@heroicons/react/solid";
 
 // Components
 import FooterChild from "./footer_child/FooterChild";
+import withMotionWrap from "../../wrapper/MotionWrap";
 
 const Footer = () => {
   const socials = [svgs.fb, svgs.ig, svgs.tt];
@@ -53,4 +54,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default withMotionWrap(Footer);

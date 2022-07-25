@@ -1,18 +1,39 @@
 import { FC } from "react";
+import HeroSvg from "../svgs/HeroSvg";
 import { motion } from "framer-motion";
-import { svgs } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import withMotionWrap from "../../wrapper/MotionWrap";
 
 const Hero: FC = () => {
   const navigate = useNavigate();
 
+  const text_variants = {
+    hidden: {
+      opacity: 0,
+      x: -30,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.5,
+        duration: 1,
+      },
+    },
+  };
+
   return (
-    <div
+    <motion.div
       data-testid="hero"
-      className="flex flex-col-reverse mt-4 items-center space-y-24
+      className="flex flex-col-reverse mt-4 items-center overflow-y-hidden space-y-24
        md:space-y-0 md:flex-row md:justify-between md:mt-36"
     >
-      <div className="hero__text">
+      <motion.div
+        className="hero__text"
+        variants={text_variants}
+        initial="hidden"
+        animate="visible"
+      >
         <h1
           className="text-xl text-center leading-6 text-herotext font-semibold
          md:text-3xl md:text-left md:leading-10 xl:text-4xl"
@@ -38,16 +59,12 @@ const Hero: FC = () => {
             Build My Resume
           </button>
         </div>
-      </div>
+      </motion.div>
       <div className="hero__image">
-        <img
-          src={svgs.herofirst}
-          alt=""
-          className="w-64 h-64 md:w-full md:h-full"
-        />
+        <HeroSvg />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-export default Hero;
+export default withMotionWrap(Hero);

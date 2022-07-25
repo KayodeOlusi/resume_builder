@@ -1,6 +1,18 @@
 import { motion } from "framer-motion";
 
 const LogoSvg = () => {
+  const svg_variant = {
+    hidden: {
+      rotate: -100,
+    },
+    visible: {
+      rotate: 0,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
   const variant = {
     hidden: {
       opacity: 0,
@@ -22,6 +34,7 @@ const LogoSvg = () => {
       height="30"
       viewBox="0 0 32 30"
       fill="none"
+      variants={svg_variant}
       xmlns="http://www.w3.org/2000/svg"
       className="w-5 h-5 md:w-8 md:h-8"
     >

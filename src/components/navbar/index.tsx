@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { svgs } from "../../constants";
 import LogoSvg from "../svgs/LogoSvg";
 import { motion } from "framer-motion";
@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Navbar: FC = () => {
   const navigate = useNavigate();
+  const [blur, setBlur] = useState(false);
   const nav_links = ["Templates", "Resume Builder", "Blog", "Contact"];
 
   const variants = {
@@ -17,9 +18,27 @@ const Navbar: FC = () => {
     },
   };
 
+  const blurListener = (): void => {
+    if (window.scrollY > 50) {
+      setBlur(true);
+    } else {
+      setBlur(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", blurListener);
+
+    return () => {
+      window.removeEventListener("scroll", blurListener);
+    };
+  }, []);
+
   return (
     <motion.nav
-      className="flex items-center justify-between px-7 md:px-0"
+      className={`flex items-center justify-between px-7 ${
+        blur && "shadow-sm"
+      } z-50 md:px-0`}
       variants={variants}
       initial="hidden"
       animate="visible"
@@ -27,7 +46,6 @@ const Navbar: FC = () => {
     >
       <Link to="/">
         <div className="flex items-center justify-between space-x-2 md:space-x-4">
-          {/* <img src={svgs.star} alt="star" className="w-5 h-5 md:w-8 md:h-8" /> */}
           <LogoSvg />
           <h3 className="text-alium font-bold text-base md:text-2xl">Alium</h3>
         </div>

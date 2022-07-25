@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { svgs } from "../../constants";
+import withMotionWrap from "../../wrapper/MotionWrap";
 
 const Companies: FC = () => {
   return (
@@ -17,4 +18,4 @@ const Companies: FC = () => {
   );
 };
 
-export default Companies;
+export default withMotionWrap(Companies);

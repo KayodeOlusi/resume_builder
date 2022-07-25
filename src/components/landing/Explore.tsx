@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { svgs } from "../../constants";
+import withMotionWrap from "../../wrapper/MotionWrap";
 
 const Explore: FC = () => {
   const navigate = useNavigate();
@@ -43,4 +44,4 @@ const Explore: FC = () => {
   );
 };
 
-export default Explore;
+export default withMotionWrap(Explore);

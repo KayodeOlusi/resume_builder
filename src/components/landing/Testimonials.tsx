@@ -2,6 +2,7 @@ import { FC } from "react";
 import { image } from "../../constants";
 import Carousel from "react-elastic-carousel";
 import useViewport from "../../hooks/useViewport";
+import withMotionWrap from "../../wrapper/MotionWrap";
 
 const Testimonials: FC = () => {
   const viewPortWidth: number = useViewport();

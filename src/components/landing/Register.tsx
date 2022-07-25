@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { svgs } from "../../constants";
+import withMotionWrap from "../../wrapper/MotionWrap";
 
 const Register: FC = () => {
   const navigate = useNavigate();
@@ -43,4 +44,4 @@ const Register: FC = () => {
   );
 };
 
-export default Register;
+export default withMotionWrap(Register);
