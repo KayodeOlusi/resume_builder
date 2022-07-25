@@ -56,7 +56,7 @@ const SignUpForm: FC = () => {
         placeholder="Enter Your Password"
         className="bg-landingcard w-full mt-4 mb-4 py-3 px-9 text-sm md:text-base"
       />
-      <Button title="Sign Up" blue_bg formData={formData} />
+      <Button title="Sign Up" blue_bg formData={formData} sign_up />
     </form>
   );
 };

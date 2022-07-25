@@ -1,7 +1,9 @@
+import "./App.css";
+import { auth } from "./firebase";
+import Spinner from "react-spinkit";
 import { FC, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import Spinner from "react-spinkit";
-import "./App.css";
+import RequireAuth from "./components/auth/RequireAuth";
 // Components
 const Steps = lazy(() => import("./pages/steps"));
 const Landing = lazy(() => import("./pages/landing"));
@@ -27,9 +29,11 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
 
-          <Route path="/page" element={<PageLayout />}>
-            <Route index element={<Steps />} />
-            <Route path="templates" element={<Templates />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/page" element={<PageLayout />}>
+              <Route index element={<Steps />} />
+              <Route path="templates" element={<Templates />} />
+            </Route>
           </Route>
         </Routes>
       </Suspense>

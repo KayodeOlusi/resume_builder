@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC, MouseEvent } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { auth, provider } from "../../firebase";
 import {
   signInWithPopup,
@@ -26,21 +26,48 @@ interface IProps {
   formData?: IFormData;
 }
 
+interface ILocationState {
+  from: {
+    pathname: string;
+  };
+}
+
 const Button: FC<IProps> = ({
   svg,
   title,
   blue_bg,
+  sign_in,
   sign_up,
   formData,
   google,
 }) => {
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const from = location.state
+    ? (location.state as ILocationState)?.from?.pathname
+    : "/page";
 
   // sign in or up to the website based on the button clicked
-  const userAuth = (option: string) => {
+  const userAuth = (
+    option?: string,
+    e?: MouseEvent<HTMLButtonElement>,
+    google?: boolean
+  ) => {
+    e?.preventDefault();
     // if user clicks google, sign in with google
-    google && signInWithPopup(auth, provider);
+    if (google) {
+      signInWithPopup(auth, provider)
+        .then(() => {
+          toast.success("Sign In Successful", {
+            duration: 4000,
+          });
+          navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          toast.error("Error Signing In");
+        });
+    }
 
     if (formData) {
       const { name, email, password } = formData;
@@ -50,8 +77,8 @@ const Button: FC<IProps> = ({
           if (name && email && password) {
             const notification = toast.loading("Creating user...");
 
-            createUserWithEmailAndPassword(auth, email, password).then(
-              (user_details) => {
+            createUserWithEmailAndPassword(auth, email, password)
+              .then((user_details) => {
                 const user_created = user_details?.user;
 
                 updateProfile(user_created, {
@@ -65,13 +92,19 @@ const Button: FC<IProps> = ({
                     })
                   );
                 });
-              }
-            );
+              })
+              .catch((error) => {
+                toast.error("Error creating user", {
+                  id: notification,
+                });
+              });
 
-            toast.success("Sign Up Successful", {
+            toast.success("Sign In to your account", {
               id: notification,
+              duration: 4000,
             });
 
+            navigate(from, { replace: true });
             break;
           } else {
             toast.error("Please fill all the fields");
@@ -82,24 +115,29 @@ const Button: FC<IProps> = ({
           if (email && password) {
             const notification2 = toast.loading("Logging in...");
 
-            signInWithEmailAndPassword(auth, email, password).then(
-              (user_details) => {
+            signInWithEmailAndPassword(auth, email, password)
+              .then((user_details) => {
                 const user_received = user_details?.user;
 
                 dispatch(
                   login({
-                    name: name!,
+                    name: user_received?.displayName!,
                     email: email,
                     id: user_received?.uid,
                   })
                 );
-              }
-            );
 
-            toast.success("Sign In Successful", {
-              id: notification2,
-            });
+                toast.success("Sign In Successful", {
+                  id: notification2,
+                });
 
+                navigate(from, { replace: true });
+              })
+              .catch((error) => {
+                toast.error("Error logging in", {
+                  id: notification2,
+                });
+              });
             break;
           } else {
             toast.error("Please fill all the fields");
@@ -110,13 +148,15 @@ const Button: FC<IProps> = ({
           break;
       }
     }
-
-    navigate("/page");
   };
 
   return (
     <button
-      onClick={() => (sign_up ? userAuth("sign up") : userAuth("sign in"))}
+      onClick={(e) => {
+        if (sign_up) userAuth("sign_up", e);
+        if (sign_in) userAuth("sign_in", e);
+        if (google) userAuth("", e, google);
+      }}
       className={`${
         blue_bg ? "bg-alium mt-4 mb-4 text-white" : "bg-landingcard mt-4 mb-4"
       } flex justify-center items-center space-x-4 py-3 px-9 font-semibold rounded-sm w-full`}
