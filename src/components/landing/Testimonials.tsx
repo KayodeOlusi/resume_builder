@@ -71,4 +71,4 @@ const Testimonials: FC = () => {
   );
 };
 
-export default Testimonials;
+export default withMotionWrap(Testimonials);

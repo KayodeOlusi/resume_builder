@@ -54,4 +54,4 @@ const Footer = () => {
   );
 };
 
-export default withMotionWrap(Footer);
+export default Footer;
