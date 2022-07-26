@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { svgs } from "../../../constants";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +7,7 @@ import Button from "../../../components/auth/Button";
 import SignUpForm from "../../../components/auth/SignUpForm";
 import LoginSvg from "../../../components/svgs/LoginSvg";
 
-const SignUp = () => {
+const SignUp: FC = () => {
   const navigate = useNavigate();
 
   const text_variants = {

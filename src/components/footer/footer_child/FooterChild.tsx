@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { motion } from "framer-motion";
 import useViewport from "../../../hooks/useViewport";
 
 interface IProps {
@@ -10,6 +11,20 @@ interface IProps {
 const FooterChild: FC<IProps> = ({ Icon, title, links }) => {
   const viewPortWidth: number = useViewport();
   const [showLinks, setShowLinks] = useState<boolean>(false);
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      x: -20,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
 
   return (
     <div className="f-links">
@@ -24,9 +39,15 @@ const FooterChild: FC<IProps> = ({ Icon, title, links }) => {
       {viewPortWidth < 768
         ? showLinks &&
           links.map((link) => (
-            <p key={link} className="text-sm mt-9 text-links">
+            <motion.p
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              key={link}
+              className="text-sm mt-9 text-links"
+            >
               {link}
-            </p>
+            </motion.p>
           ))
         : links.map((link) => (
             <p key={link} className="text-sm mt-9 text-links">

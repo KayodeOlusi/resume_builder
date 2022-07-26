@@ -62,6 +62,7 @@ const Button: FC<IProps> = ({
           toast.success("Sign In Successful", {
             duration: 4000,
           });
+          localStorage.setItem("user_alium", "true");
           navigate(from, { replace: true });
         })
         .catch(() => {
@@ -91,6 +92,7 @@ const Button: FC<IProps> = ({
                       id: user_created?.uid,
                     })
                   );
+                  localStorage.setItem("user_alium", JSON.stringify(true));
                 });
               })
               .catch(() => {
@@ -126,7 +128,7 @@ const Button: FC<IProps> = ({
                     id: user_received?.uid,
                   })
                 );
-
+                localStorage.setItem("user_alium", JSON.stringify(true));
                 toast.success("Sign In Successful", {
                   id: notification2,
                 });

@@ -35,6 +35,7 @@ const LoginSvg = () => (
     viewBox="0 0 727 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="md:w-64 md:h-64 lg:w-[31rem] lg:h-[31rem] xl:w-full xl:h-full"
   >
     <motion.path
       variants={path_variants}
