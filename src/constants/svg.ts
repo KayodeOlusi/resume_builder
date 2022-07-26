@@ -17,16 +17,12 @@ import thumb from "../assets/svg/thumb.svg";
 import google_icon from "../assets/svg/google1.svg";
 import linkedin from "../assets/svg/linkedin.svg";
 import cloud from "../assets/svg/cloud.svg";
-import edit from "../assets/svg/edit.svg";
-import download from "../assets/svg/download.svg";
-import template from "../assets/svg/template.svg";
 
 export default {
   fb,
   ig,
   tt,
   star,
-  edit,
   sony,
   menu,
   cloud,
@@ -37,8 +33,6 @@ export default {
   paypal,
   google,
   herotwo,
-  template,
-  download,
   register,
   facebook,
   linkedin,
