@@ -4,6 +4,7 @@ import { FC, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./components/auth/RequireAuth";
 // Components
+import ScrollToTop from "./hooks/ScrollToTop";
 const Steps = lazy(() => import("./pages/steps"));
 const Landing = lazy(() => import("./pages/landing"));
 const Navbar = lazy(() => import("./components/navbar"));
@@ -14,7 +15,7 @@ const Templates = lazy(() => import("./components/steps/templates/Templates"));
 
 function App() {
   return (
-    <main className="mx-auto mt-4 relative md:mt-14 md:px-5 lg:max-w-6xl xl:px-0">
+    <main className="mx-auto mt-8 relative md:mt-14 md:px-5 lg:max-w-6xl xl:px-0">
       <Suspense
         fallback={
           <div className="flex items-center justify-center w-full h-[100vh]">
@@ -22,6 +23,7 @@ function App() {
           </div>
         }
       >
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
