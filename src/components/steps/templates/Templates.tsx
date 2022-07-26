@@ -1,14 +1,50 @@
+import { motion } from "framer-motion";
 import ImageTemplates from "./ImageTemplates";
 
 const Templates = () => {
+  const header_variants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  const para_variants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        delay: 1,
+      },
+    },
+  };
+
   return (
     <div className="mt-20 px-8 lg:px-0">
-      <h1 className="text-center text-alium font-semibold text-2xl lg:text-4xl">
+      <motion.h1
+        initial="hidden"
+        animate="visible"
+        variants={header_variants}
+        className="text-center text-alium font-semibold text-2xl lg:text-4xl"
+      >
         Choose your resume templates
-      </h1>
-      <p className="text-center text-herotext font-semibold text-base mt-5">
+      </motion.h1>
+      <motion.p
+        initial="hidden"
+        animate="visible"
+        variants={para_variants}
+        className="text-center text-herotext font-semibold text-base mt-5"
+      >
         You can always change the template at any time to suit your needs.
-      </p>
+      </motion.p>
       <ImageTemplates />
     </div>
   );

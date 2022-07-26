@@ -33,6 +33,7 @@ const ImageTemplates = () => {
             <img
               src={item.image}
               alt={item.name}
+              loading="lazy"
               className="w-96 h-96 object-contain"
             />
             <p className="text-herotext font-semibold mt-4 text-sm md:text-base lg:mt-4">
@@ -47,6 +48,7 @@ const ImageTemplates = () => {
             <img
               src={item.image}
               alt={item.name}
+              loading="lazy"
               className="w-96 h-96 object-contain"
             />
             <p className="text-herotext font-semibold text-sm mt-4 md:text-base">
