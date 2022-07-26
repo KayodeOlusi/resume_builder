@@ -26,15 +26,37 @@ const slice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    signUp: (state, action: PayloadAction<IPayload>) => {
-      state.user.name = action.payload.name;
-      state.user.email = action.payload.email;
-      state.user.id = action.payload.id;
+    signUp: {
+      reducer: (state, action: PayloadAction<IPayload>) => {
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.id = action.payload.id;
+      },
+      prepare: (id: string | number, name: string, email: string) => {
+        return {
+          payload: {
+            id,
+            name,
+            email,
+          },
+        };
+      },
     },
-    login: (state, action: PayloadAction<IPayload>) => {
-      state.user.name = action.payload.name;
-      state.user.email = action.payload.email;
-      state.user.id = action.payload.id;
+    login: {
+      reducer: (state, action: PayloadAction<IPayload>) => {
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.id = action.payload.id;
+      },
+      prepare: (id: string | number, name: string, email: string) => {
+        return {
+          payload: {
+            id,
+            name,
+            email,
+          },
+        };
+      },
     },
   },
 });

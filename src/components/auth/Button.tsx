@@ -58,7 +58,10 @@ const Button: FC<IProps> = ({
     // if user clicks google, sign in with google
     if (google) {
       signInWithPopup(auth, provider)
-        .then(() => {
+        .then((result) => {
+          const { displayName, email, uid } = result.user;
+          dispatch(login(uid, displayName!, email!));
+
           toast.success("Sign In Successful", {
             duration: 4000,
           });
@@ -85,13 +88,7 @@ const Button: FC<IProps> = ({
                 updateProfile(user_created, {
                   displayName: name,
                 }).then(() => {
-                  dispatch(
-                    signUp({
-                      name: name,
-                      email: email,
-                      id: user_created?.uid,
-                    })
-                  );
+                  dispatch(signUp(user_created?.uid, name, email));
                   localStorage.setItem("user_alium", JSON.stringify(true));
                 });
               })
@@ -122,11 +119,7 @@ const Button: FC<IProps> = ({
                 const user_received = user_details?.user;
 
                 dispatch(
-                  login({
-                    name: user_received?.displayName!,
-                    email: email,
-                    id: user_received?.uid,
-                  })
+                  login(user_received?.uid, user_received?.displayName!, email)
                 );
                 localStorage.setItem("user_alium", JSON.stringify(true));
                 toast.success("Sign In Successful", {
