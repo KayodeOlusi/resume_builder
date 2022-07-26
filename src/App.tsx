@@ -12,6 +12,7 @@ const SignUp = lazy(() => import("./pages/auth/signup"));
 const SignIn = lazy(() => import("./pages/auth/signin"));
 const PageLayout = lazy(() => import("./layout/PageLayout"));
 const Templates = lazy(() => import("./components/steps/templates/Templates"));
+const Stepper = lazy(() => import("./pages/stepper"));
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/page" element={<PageLayout />}>
               <Route index element={<Steps />} />
               <Route path="templates" element={<Templates />} />
+              <Route path={`templates/stepper:id`} element={<Stepper />} />
             </Route>
           </Route>
         </Routes>

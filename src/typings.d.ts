@@ -1,0 +1,3 @@
+interface IResumeName {
+  name: string;
+}

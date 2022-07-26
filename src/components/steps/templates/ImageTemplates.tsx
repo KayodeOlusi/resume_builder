@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../app/hooks";
 import { image } from "../../../constants";
+import { setResumeName } from "../../../features/slice/resume";
 
 interface ITemplate {
   name: string;
@@ -6,6 +9,8 @@ interface ITemplate {
 }
 
 const ImageTemplates = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const templates: ITemplate[] = [
     {
       name: "Gemheart",
@@ -25,6 +30,12 @@ const ImageTemplates = () => {
     },
   ];
 
+  const updateResumeName = (name: string): void => {
+    dispatch(setResumeName(name));
+
+    navigate(`stepper:${name.toLocaleLowerCase()}`);
+  };
+
   return (
     <div className="mt-12 text-center">
       <div className="flex flex-col space-y-12 items-center md:flex-row md:justify-around md:space-y-0">
@@ -34,7 +45,8 @@ const ImageTemplates = () => {
               src={item.image}
               alt={item.name}
               loading="lazy"
-              className="w-96 h-96 object-contain"
+              onClick={() => updateResumeName(item.name)}
+              className="w-96 h-96 object-contain transition ease-out duration-200 hover:scale-110"
             />
             <p className="text-herotext font-semibold mt-4 text-sm md:text-base lg:mt-4">
               {item.name}
@@ -49,7 +61,8 @@ const ImageTemplates = () => {
               src={item.image}
               alt={item.name}
               loading="lazy"
-              className="w-96 h-96 object-contain"
+              onClick={() => updateResumeName(item.name)}
+              className="w-96 h-96 object-contain transition ease-out duration-200 hover:scale-110"
             />
             <p className="text-herotext font-semibold text-sm mt-4 md:text-base">
               {item.name}
