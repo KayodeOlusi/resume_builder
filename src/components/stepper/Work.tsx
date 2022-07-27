@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+import { svgs } from "../../constants";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 interface IProps {
@@ -38,6 +40,28 @@ const Work = ({ formData, setFormData }: IProps) => {
         ...prevState.work.slice(0, index),
         { ...prevState.work[index], [name]: checked },
         ...prevState.work.slice(index + 1),
+      ],
+    }));
+  };
+
+  // add new work to form data work array
+  const addNewWork = () => {
+    // @ts-ignore
+    setFormData((prevState) => ({
+      ...prevState,
+      work: [
+        ...prevState.work,
+        {
+          companyName: "",
+          jobTitle: "",
+          city: "",
+          state: "",
+          startDate: "",
+          endDate: "",
+          present: false,
+          description: "",
+          id: uuidv4(),
+        },
       ],
     }));
   };
@@ -191,7 +215,15 @@ const Work = ({ formData, setFormData }: IProps) => {
           );
         })}
       </div>
-      <div></div>
+      <div
+        className="flex items-center px-5 space-x-2 mt-4 md:px-0"
+        onClick={addNewWork}
+      >
+        <img src={svgs.add} alt="" className="w-4 h-4" />
+        <p className="text-herobtn text-sm font-semibold">
+          Add another work place
+        </p>
+      </div>
     </div>
   );
 };

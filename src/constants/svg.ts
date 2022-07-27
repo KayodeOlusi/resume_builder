@@ -1,6 +1,7 @@
 import tt from "../assets/svg/tt.svg";
 import fb from "../assets/svg/fb.svg";
 import ig from "../assets/svg/ig.svg";
+import add from "../assets/svg/add.svg";
 import menu from "../assets/svg/menu.svg";
 import facebook from "../assets/svg/facebook.svg";
 import google from "../assets/svg/google.svg";
@@ -22,6 +23,7 @@ export default {
   fb,
   ig,
   tt,
+  add,
   star,
   sony,
   menu,
