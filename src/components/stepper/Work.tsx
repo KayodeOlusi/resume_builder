@@ -91,6 +91,8 @@ const Work = ({ formData, setFormData }: IProps) => {
 
           return (
             <div key={id} className="mt-12 px-5 md:px-0 md:mt-8">
+              <hr className="mb-4" />
+
               <form>
                 <div className="flex flex-col space-y-8 md:items-center md:space-y-0 md:justify-between md:flex-row">
                   <div>
@@ -116,7 +118,7 @@ const Work = ({ formData, setFormData }: IProps) => {
                       type="text"
                       id="jobTitle"
                       name="jobTitle"
-                      placeholder="Enter the title of your job"
+                      placeholder="Enter the title of the job"
                       onChange={(e) => handleChange(e, index)}
                       value={jobTitle}
                       className=" bg-landingcard py-3 px-8 rounded-md font-semibold text-sm
@@ -166,7 +168,7 @@ const Work = ({ formData, setFormData }: IProps) => {
                       id="startDate"
                       name="startDate"
                       onChange={(e) => handleChange(e, index)}
-                      placeholder="Start date"
+                      placeholder="Month and year"
                       value={startDate}
                       className=" bg-landingcard py-3 px-8 rounded-md font-semibold 
                         text-sm text-herotext w-full md:w-[22rem] xl:w-[34rem]"
@@ -180,7 +182,7 @@ const Work = ({ formData, setFormData }: IProps) => {
                       type="text"
                       id="endDate"
                       name="endDate"
-                      placeholder="End date"
+                      placeholder="Month and year"
                       onChange={(e) => handleChange(e, index)}
                       value={endDate}
                       className=" bg-landingcard py-3 px-8 rounded-md font-semibold text-sm

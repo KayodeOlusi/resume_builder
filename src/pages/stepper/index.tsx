@@ -149,7 +149,6 @@ const Stepper = () => {
               stepperSections[stepperState - 1].checked = true;
               setStepperState((prev) => prev + 1);
               window.scrollTo(0, 0);
-              console.log(formData);
             }
           }}
           className="px-12 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4 rounded-md lg:px-36"
