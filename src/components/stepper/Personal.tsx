@@ -12,6 +12,7 @@ const Personal = ({ formData, setFormData }: IProps) => {
     File | string | ArrayBuffer | null
   >(null);
 
+  // Select an Image as Profile Image
   const selectFile = (e: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
 
@@ -22,6 +23,20 @@ const Personal = ({ formData, setFormData }: IProps) => {
     reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
       readerEvent.target && setSelectedImage(readerEvent.target.result);
     };
+  };
+
+  // change value of input fields
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      personal: {
+        ...prevState.personal,
+        [name]: value,
+      },
+    }));
   };
 
   return (
@@ -57,7 +72,106 @@ const Personal = ({ formData, setFormData }: IProps) => {
 
       <div className="form mt-8">
         <form>
-          <div className="flex flex-col items-center md:flex-row"></div>
+          <div className="flex flex-col items-center justify-between md:flex-row md:space-x-8">
+            <div className="block">
+              <p className="text-sm font-semibold text-herotext mb-3">
+                First Name
+              </p>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                onChange={handleChange}
+                placeholder="Enter your first name"
+                value={formData.personal.firstName}
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+              />
+            </div>
+            <div className="block">
+              <p className="text-sm font-semibold text-herotext mb-3">
+                Last Name
+              </p>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                placeholder="Enter your last name"
+                onChange={handleChange}
+                value={formData.personal.lastName}
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-between mt-10 md:flex-row md:space-x-8">
+            <div className="block">
+              <p className="text-sm font-semibold text-herotext mb-3">
+                Job Title
+              </p>
+              <input
+                type="text"
+                name="jobTitle"
+                onChange={handleChange}
+                placeholder="Enter your job title"
+                value={formData.personal.jobTitle}
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+              />
+            </div>
+            <div className="block">
+              <p className="text-sm font-semibold text-herotext mb-3">
+                Phone Number
+              </p>
+              <input
+                type="number"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="Enter your phone number"
+                onChange={handleChange}
+                value={formData.personal.phoneNumber}
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-between mt-10 md:flex-row md:space-x-8">
+            <div className="block">
+              <p className="text-sm font-semibold text-herotext mb-3">
+                Address
+              </p>
+              <input
+                type="text"
+                name="address"
+                onChange={handleChange}
+                placeholder="Enter your address"
+                value={formData.personal.address}
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+              />
+            </div>
+            <div className="block">
+              <p className="text-sm font-semibold text-herotext mb-3">
+                Email Address
+              </p>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                onChange={handleChange}
+                value={formData.personal.email}
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+              />
+            </div>
+          </div>
+          <div className="mt-10">
+            <p className="text-sm font-semibold text-herotext mb-3">
+              Professional Summary
+            </p>
+            <textarea
+              name="professionalSummary"
+              onChange={handleChange}
+              placeholder="Enter your professional summary"
+              value={formData.personal.professionalSummary}
+              className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-full xl:h-52"
+            />
+          </div>
         </form>
       </div>
     </div>
