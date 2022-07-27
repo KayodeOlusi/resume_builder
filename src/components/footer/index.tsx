@@ -12,7 +12,7 @@ const Footer = () => {
   const company = ["About Us", "Services", "The Team", "Reservations"];
 
   return (
-    <div className="mt-36">
+    <div className="mt-16">
       <hr />
 
       <div className="flex flex-col md:justify-between p-9 md:flex-row">

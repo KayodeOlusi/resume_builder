@@ -11,6 +11,7 @@ interface IFormDetails {
     address: string;
     email: string;
     professionalSummary: string;
+    profilePicture: File | string | ArrayBuffer | null;
   };
   work: [
     {
@@ -43,4 +44,14 @@ interface IFormDetails {
     }
   ];
   hobbies: string;
+}
+
+interface IPersonalPayload {
+  firstName: string;
+  lastName: string;
+  jobTitle: string;
+  phoneNumber: string;
+  address: string;
+  email: string;
+  professionalSummary: string;
 }

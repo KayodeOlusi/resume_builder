@@ -54,6 +54,7 @@ const Stepper = () => {
       address: "",
       email: "",
       professionalSummary: "",
+      profilePicture: null,
     },
     work: [
       {
@@ -137,6 +138,27 @@ const Stepper = () => {
         Information you use here will be used to contact you, by the employer.
       </h6>
       {SectionDisplay()}
+      <div className="flex items-center space-x-8 mt-10 md:justify-between">
+        <button
+          disabled={stepperState === 1}
+          onClick={() => {
+            setStepperState(stepperState - 1);
+          }}
+          className="border-2 border-hero font-semibold text-sm px-44 py-4 rounded-md"
+        >
+          Back
+        </button>
+        <button
+          onClick={() =>
+            stepperState < stepperSections.length
+              ? setStepperState(stepperState + 1)
+              : null
+          }
+          className="px-36 text-white font-semibold text-sm bg-herobtn py-4 rounded-md"
+        >
+          Save and Next
+        </button>
+      </div>
     </div>
   );
 };

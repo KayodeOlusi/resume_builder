@@ -1,5 +1,5 @@
-import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import { svgs } from "../../constants";
+import { useRef, Dispatch, ChangeEvent, SetStateAction } from "react";
 
 interface IProps {
   formData: IFormDetails;
@@ -8,9 +8,6 @@ interface IProps {
 
 const Personal = ({ formData, setFormData }: IProps) => {
   const fileRef = useRef<HTMLInputElement>(null);
-  const [selectedImage, setSelectedImage] = useState<
-    File | string | ArrayBuffer | null
-  >(null);
 
   // Select an Image as Profile Image
   const selectFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +18,14 @@ const Personal = ({ formData, setFormData }: IProps) => {
     }
 
     reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
-      readerEvent.target && setSelectedImage(readerEvent.target.result);
+      readerEvent.target &&
+        setFormData({
+          ...formData,
+          personal: {
+            ...formData.personal,
+            profilePicture: readerEvent.target.result,
+          },
+        });
     };
   };
 
@@ -43,9 +47,10 @@ const Personal = ({ formData, setFormData }: IProps) => {
     <div className="personal-info mt-10">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-8">
-          {selectedImage ? (
+          {/**Logic for selecting an image as profile picture */}
+          {formData.personal.profilePicture ? (
             <img
-              src={selectedImage as string}
+              src={formData.personal.profilePicture as string}
               alt=""
               className="cursor-pointer w-40 h-40 rounded-full object-cover"
             />
@@ -64,7 +69,12 @@ const Personal = ({ formData, setFormData }: IProps) => {
         </div>
         <p
           className="text-red-600 font-semibold cursor-pointer border-b-2 border-red-600"
-          onClick={() => setSelectedImage(null)}
+          onClick={() =>
+            setFormData({
+              ...formData,
+              personal: { ...formData.personal, profilePicture: null },
+            })
+          }
         >
           Delete Profile Picture
         </p>
@@ -84,7 +94,8 @@ const Personal = ({ formData, setFormData }: IProps) => {
                 onChange={handleChange}
                 placeholder="Enter your first name"
                 value={formData.personal.firstName}
-                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+                className=" bg-landingcard rounded-md font-semibold 
+                text-sm text-herotext py-3 px-9 w-full xl:w-[34rem]"
               />
             </div>
             <div className="block">
@@ -98,7 +109,8 @@ const Personal = ({ formData, setFormData }: IProps) => {
                 placeholder="Enter your last name"
                 onChange={handleChange}
                 value={formData.personal.lastName}
-                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+                className=" bg-landingcard rounded-md font-semibold text-sm
+                 text-herotext py-3 px-9 w-full xl:w-[34rem]"
               />
             </div>
           </div>
@@ -113,7 +125,7 @@ const Personal = ({ formData, setFormData }: IProps) => {
                 onChange={handleChange}
                 placeholder="Enter your job title"
                 value={formData.personal.jobTitle}
-                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[34rem]"
               />
             </div>
             <div className="block">
@@ -127,7 +139,7 @@ const Personal = ({ formData, setFormData }: IProps) => {
                 placeholder="Enter your phone number"
                 onChange={handleChange}
                 value={formData.personal.phoneNumber}
-                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[34rem]"
               />
             </div>
           </div>
@@ -142,7 +154,7 @@ const Personal = ({ formData, setFormData }: IProps) => {
                 onChange={handleChange}
                 placeholder="Enter your address"
                 value={formData.personal.address}
-                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[34rem]"
               />
             </div>
             <div className="block">
@@ -156,7 +168,7 @@ const Personal = ({ formData, setFormData }: IProps) => {
                 placeholder="Enter your email address"
                 onChange={handleChange}
                 value={formData.personal.email}
-                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[36rem]"
+                className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full xl:w-[34rem]"
               />
             </div>
           </div>
