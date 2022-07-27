@@ -66,6 +66,7 @@ const Stepper = () => {
         endDate: "",
         present: false,
         description: "",
+        id: uuidv4(),
       },
     ],
     education: [
@@ -107,12 +108,12 @@ const Stepper = () => {
   };
 
   return (
-    <div className="mt-4 md:mt-12">
+    <div className="mt-8 md:mt-12">
       <div className="checkbox flex items-center justify-between px-5">
         {viewPort < 768 ? (
           <Checkbox
-            checked={stepperSections[stepperState].checked}
             title={stepperSections[stepperState].title}
+            checked={stepperSections[stepperState].checked}
             stepperNumber={stepperSections[stepperState].stepperNumber}
           />
         ) : (
@@ -131,30 +132,27 @@ const Stepper = () => {
           })
         )}
       </div>
-      <h1 className=" text-alium font-semibold text-xl lg:text-2xl mt-8">
-        This is your Resume Heading
-      </h1>
-      <h6 className="text-hero font-semibold text-base mt-3">
-        Information you use here will be used to contact you, by the employer.
-      </h6>
       {SectionDisplay()}
-      <div className="flex items-center space-x-8 mt-10 md:justify-between">
+      <div className="flex flex-col space-y-6 items-center mt-10 justify-between md:space-y-0 md:flex-row  lg:space-y-0">
         <button
           disabled={stepperState === 1}
           onClick={() => {
             setStepperState(stepperState - 1);
           }}
-          className="border-2 border-hero font-semibold text-sm px-44 py-4 rounded-md"
+          className="border-2 border-hero font-semibold text-sm px-20 py-4 rounded-md lg:px-44"
         >
           Back
         </button>
         <button
-          onClick={() =>
-            stepperState < stepperSections.length
-              ? setStepperState(stepperState + 1)
-              : null
-          }
-          className="px-36 text-white font-semibold text-sm bg-herobtn py-4 rounded-md"
+          onClick={() => {
+            if (stepperState < stepperSections.length) {
+              stepperSections[stepperState - 1].checked = true;
+              setStepperState((prev) => prev + 1);
+              window.scrollTo(0, 0);
+              console.log(formData);
+            }
+          }}
+          className="px-12 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4 rounded-md lg:px-36"
         >
           Save and Next
         </button>

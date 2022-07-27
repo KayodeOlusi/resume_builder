@@ -23,6 +23,7 @@ interface IFormDetails {
       endDate: string;
       present: boolean;
       description: string;
+      id: string | number;
     }
   ];
   education: [

@@ -22,6 +22,7 @@ const initialState: IFormDetails = {
       endDate: "",
       present: false,
       description: "",
+      id: "",
     },
   ],
   education: [

@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-
 interface IProps {
   title: string;
   checked: boolean;
@@ -8,13 +6,12 @@ interface IProps {
 
 const Checkbox = ({ title, checked, stepperNumber }: IProps) => {
   return (
-    <Fragment>
+    <div>
       <input
         type="checkbox"
         defaultChecked={checked}
         name={title}
         id={String(stepperNumber)}
-        disabled
       />
       <label
         className="font-semibold text-hero text-xs ml-1 md:text-sm"
@@ -22,7 +19,7 @@ const Checkbox = ({ title, checked, stepperNumber }: IProps) => {
       >
         {title}
       </label>
-    </Fragment>
+    </div>
   );
 };
 
