@@ -1,6 +1,11 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
-const Work = () => {
+interface IProps {
+  formData: IFormDetails;
+  setFormData: Dispatch<SetStateAction<IFormDetails>>;
+}
+
+const Work = ({ formData, setFormData }: IProps) => {
   return <div>Work</div>;
 };
 

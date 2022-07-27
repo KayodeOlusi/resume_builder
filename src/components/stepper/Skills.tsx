@@ -1,6 +1,11 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
-const Skills = () => {
+interface IProps {
+  formData: IFormDetails;
+  setFormData: Dispatch<SetStateAction<IFormDetails>>;
+}
+
+const Skills = ({ formData, setFormData }: IProps) => {
   return <div>Skills</div>;
 };
 

@@ -1,6 +1,11 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
-const Hobbies = () => {
+interface IProps {
+  formData: IFormDetails;
+  setFormData: Dispatch<SetStateAction<IFormDetails>>;
+}
+
+const Hobbies = ({ formData, setFormData }: IProps) => {
   return <div>Hobbies</div>;
 };
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Checkbox from "../../components/stepper/Checkbox";
 import Education from "../../components/stepper/Education";
 import Hobbies from "../../components/stepper/Hobbies";
@@ -44,18 +45,61 @@ const Stepper = () => {
     },
   ];
 
+  const [formData, setFormData] = useState<IFormDetails>({
+    personal: {
+      firstName: "",
+      lastName: "",
+      jobTitle: "",
+      phoneNumber: "",
+      address: "",
+      email: "",
+      professionalSummary: "",
+    },
+    work: [
+      {
+        companyName: "",
+        jobTitle: "",
+        city: "",
+        state: "",
+        startDate: "",
+        endDate: "",
+        present: false,
+        description: "",
+      },
+    ],
+    education: [
+      {
+        schoolName: "",
+        degreeObtained: "",
+        city: "",
+        state: "",
+        startDate: "",
+        endDate: "",
+        present: false,
+      },
+    ],
+    skills: [
+      {
+        skillName: "",
+        proficiency: "",
+        id: uuidv4(),
+      },
+    ],
+    hobbies: "",
+  });
+
   const SectionDisplay = () => {
     switch (stepperState) {
       case 1:
-        return <Personal />;
+        return <Personal formData={formData} setFormData={setFormData} />;
       case 2:
-        return <Work />;
+        return <Work formData={formData} setFormData={setFormData} />;
       case 3:
-        return <Education />;
+        return <Education formData={formData} setFormData={setFormData} />;
       case 4:
-        return <Skills />;
+        return <Skills formData={formData} setFormData={setFormData} />;
       case 5:
-        return <Hobbies />;
+        return <Hobbies formData={formData} setFormData={setFormData} />;
       default:
         return null;
     }
