@@ -136,7 +136,7 @@ const Work = ({ formData, setFormData }: IProps) => {
                       id="city"
                       name="city"
                       onChange={(e) => handleChange(e, index)}
-                      placeholder="Enter your previous company name"
+                      placeholder="Enter city"
                       value={city}
                       className=" bg-landingcard py-3 px-8 rounded-md font-semibold 
                         text-sm text-herotext w-full md:w-[22rem] xl:w-[34rem]"
@@ -150,7 +150,7 @@ const Work = ({ formData, setFormData }: IProps) => {
                       type="text"
                       id="state"
                       name="state"
-                      placeholder="Enter the title of your job"
+                      placeholder="Enter state"
                       onChange={(e) => handleChange(e, index)}
                       value={state}
                       className=" bg-landingcard py-3 px-8 rounded-md font-semibold text-sm

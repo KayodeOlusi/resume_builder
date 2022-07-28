@@ -77,6 +77,7 @@ const Stepper = () => {
         state: "",
         startDate: "",
         endDate: "",
+        id: uuidv4(),
         present: false,
       },
     ],
@@ -112,9 +113,9 @@ const Stepper = () => {
       <div className="checkbox flex items-center justify-between px-5">
         {viewPort < 768 ? (
           <Checkbox
-            title={stepperSections[stepperState].title}
-            checked={stepperSections[stepperState].checked}
-            stepperNumber={stepperSections[stepperState].stepperNumber}
+            title={stepperSections[stepperState - 1].title}
+            checked={stepperSections[stepperState - 1].checked}
+            stepperNumber={stepperSections[stepperState - 1].stepperNumber}
           />
         ) : (
           stepperSections.map((step) => {
@@ -138,6 +139,7 @@ const Stepper = () => {
           disabled={stepperState === 1}
           onClick={() => {
             setStepperState(stepperState - 1);
+            window.scrollTo(0, 0);
           }}
           className="border-2 border-hero font-semibold text-sm px-20 py-4 rounded-md lg:px-44"
         >

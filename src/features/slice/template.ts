@@ -33,6 +33,7 @@ const initialState: IFormDetails = {
       state: "",
       startDate: "",
       endDate: "",
+      id: "",
       present: false,
     },
   ],

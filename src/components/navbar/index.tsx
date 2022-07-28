@@ -80,7 +80,7 @@ const Navbar: FC = () => {
               />
             ) : (
               <div
-                className="h-8 w-8 rounded-full bg-slate-600 font-medium text-white
+                className="h-10 w-10 rounded-full bg-slate-600 font-medium text-white
                 flex items-center justify-center"
               >
                 {user.displayName ? user.displayName[0] : ""}

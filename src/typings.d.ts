@@ -34,6 +34,7 @@ interface IFormDetails {
       state: string;
       startDate: string;
       endDate: string;
+      id: string | number;
       present: boolean;
     }
   ];
