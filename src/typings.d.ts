@@ -45,6 +45,7 @@ interface IFormDetails {
       skillName: string;
       proficiency: string;
       id: string | number;
+      icon: JSX.Element | string | null;
     }
   ];
   hobbies: string;

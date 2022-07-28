@@ -89,6 +89,7 @@ const Stepper = () => {
         skillName: "",
         proficiency: "",
         id: uuidv4(),
+        icon: <TrashIcon className="w-6 h-6 text-red-600" />,
       },
     ],
     hobbies: "",

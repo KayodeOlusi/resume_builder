@@ -44,6 +44,7 @@ const initialState: IFormDetails = {
       skillName: "",
       proficiency: "",
       id: "",
+      icon: null || "",
     },
   ],
   hobbies: "",
