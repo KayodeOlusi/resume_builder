@@ -1,7 +1,7 @@
 interface IResumeName {
   name: string;
 }
-
+// Form Types
 interface IFormDetails {
   personal: {
     firstName: string;
@@ -24,7 +24,6 @@ interface IFormDetails {
       present: boolean;
       description: string;
       id: string | number;
-      icon: JSX.Element | string | null;
     }
   ];
   education: [
@@ -37,7 +36,6 @@ interface IFormDetails {
       endDate: string;
       id: string | number;
       present: boolean;
-      icon: JSX.Element | string | null;
     }
   ];
   skills: [
@@ -45,18 +43,34 @@ interface IFormDetails {
       skillName: string;
       proficiency: string;
       id: string | number;
-      icon: JSX.Element | string | null;
     }
   ];
   hobbies: [
     {
       hobby: string;
       id: string | number;
-      icon: JSX.Element | string | null;
     }
   ];
 }
 
+interface IReduxState {
+  personal: {
+    firstName: string;
+    lastName: string;
+    jobTitle: string;
+    phoneNumber: string;
+    address: string;
+    email: string;
+    professionalSummary: string;
+    profilePicture: File | string | ArrayBuffer | null;
+  };
+  work: IWorkPayload[];
+  education: IEducationPayload[];
+  skills: ISkillPayload[];
+  hobbies: IHobbyPayload[];
+}
+
+// Payload types for the reducer
 interface IPersonalPayload {
   firstName: string;
   lastName: string;
@@ -65,4 +79,39 @@ interface IPersonalPayload {
   address: string;
   email: string;
   professionalSummary: string;
+  profilePicture: File | string | ArrayBuffer | null;
+}
+
+interface IWorkPayload {
+  companyName: string;
+  jobTitle: string;
+  city: string;
+  state: string;
+  startDate: string;
+  endDate: string;
+  present: boolean;
+  description: string;
+  id: string | number;
+}
+
+interface IEducationPayload {
+  schoolName: string;
+  degreeObtained: string;
+  city: string;
+  state: string;
+  startDate: string;
+  endDate: string;
+  id: string | number;
+  present: boolean;
+}
+
+interface ISkillPayload {
+  skillName: string;
+  proficiency: string;
+  id: string | number;
+}
+
+interface IHobbyPayload {
+  hobby: string;
+  id: string | number;
 }

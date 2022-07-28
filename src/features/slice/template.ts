@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
-const initialState: IFormDetails = {
+const initialState: IReduxState = {
   personal: {
     firstName: "",
     lastName: "",
@@ -9,51 +9,13 @@ const initialState: IFormDetails = {
     phoneNumber: "",
     address: "",
     email: "",
-    professionalSummary: "",
     profilePicture: "",
+    professionalSummary: "",
   },
-  work: [
-    {
-      companyName: "",
-      jobTitle: "",
-      city: "",
-      state: "",
-      startDate: "",
-      endDate: "",
-      present: false,
-      description: "",
-      id: "",
-      icon: null || "",
-    },
-  ],
-  education: [
-    {
-      schoolName: "",
-      degreeObtained: "",
-      city: "",
-      state: "",
-      startDate: "",
-      endDate: "",
-      id: "",
-      present: false,
-      icon: null || "",
-    },
-  ],
-  skills: [
-    {
-      skillName: "",
-      proficiency: "",
-      id: "",
-      icon: null || "",
-    },
-  ],
-  hobbies: [
-    {
-      hobby: "",
-      id: "",
-      icon: null || "",
-    },
-  ],
+  work: [],
+  education: [],
+  skills: [],
+  hobbies: [],
 };
 
 const slice = createSlice({
@@ -64,18 +26,46 @@ const slice = createSlice({
       state,
       action: PayloadAction<IPersonalPayload>
     ) => {
-      state.personal.firstName = action.payload.firstName;
-      state.personal.lastName = action.payload.lastName;
-      state.personal.jobTitle = action.payload.jobTitle;
-      state.personal.phoneNumber = action.payload.phoneNumber;
-      state.personal.address = action.payload.address;
-      state.personal.email = action.payload.email;
-      state.personal.professionalSummary = action.payload.professionalSummary;
+      state.personal = {
+        ...state.personal,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
+        jobTitle: action.payload.jobTitle,
+        phoneNumber: action.payload.phoneNumber,
+        address: action.payload.address,
+        email: action.payload.email,
+        profilePicture: action.payload.profilePicture,
+        professionalSummary: action.payload.professionalSummary,
+      };
+    },
+    storeWorkInformation: (state, action: PayloadAction<IWorkPayload[]>) => {
+      state.work = [...state.work, ...action.payload];
+    },
+    storeEducationInformation: (
+      state,
+      action: PayloadAction<IEducationPayload[]>
+    ) => {
+      state.education = [...state.education, ...action.payload];
+    },
+    storeSkillsInformation: (state, action: PayloadAction<ISkillPayload[]>) => {
+      state.skills = [...state.skills, ...action.payload];
+    },
+    storeHobbiesInformation: (
+      state,
+      action: PayloadAction<IHobbyPayload[]>
+    ) => {
+      state.hobbies = [...state.hobbies, ...action.payload];
     },
   },
 });
 
 export default slice.reducer;
-export const { storePersonalInformation } = slice.actions;
+export const {
+  storePersonalInformation,
+  storeWorkInformation,
+  storeEducationInformation,
+  storeSkillsInformation,
+  storeHobbiesInformation,
+} = slice.actions;
 export const selectPersonalInformation = (state: RootState) =>
   state.template.personal;

@@ -38,7 +38,6 @@ const Skills = ({ formData, setFormData }: IProps) => {
           skillName: "",
           proficiency: "1",
           id: uuidv4(),
-          icon: <TrashIcon className="w-6 h-6 text-red-600" />,
         },
       ],
     }));
@@ -67,7 +66,7 @@ const Skills = ({ formData, setFormData }: IProps) => {
 
       {formData.skills.length ? (
         formData.skills.map((skill, index) => {
-          const { icon, id, proficiency, skillName } = skill;
+          const { id, proficiency, skillName } = skill;
 
           return (
             <div key={id} className="mt-12 px-5 md:px-0 md:mt-8">
@@ -104,14 +103,10 @@ const Skills = ({ formData, setFormData }: IProps) => {
                     <option value="4">Expert</option>
                   </select>
                 </div>
-                <div>
-                  <span
-                    className="cursor-pointer"
-                    onClick={() => deleteSkill(index)}
-                  >
-                    {icon}
-                  </span>
-                </div>
+                <TrashIcon
+                  className="w-6 h-6 text-red-600 cursor-pointer"
+                  onClick={() => deleteSkill(index)}
+                />
               </form>
             </div>
           );

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { TrashIcon } from "@heroicons/react/solid";
 import Checkbox from "../../components/stepper/Checkbox";
 import Education from "../../components/stepper/Education";
 import Hobbies from "../../components/stepper/Hobbies";
@@ -8,7 +7,14 @@ import Personal from "../../components/stepper/Personal";
 import Skills from "../../components/stepper/Skills";
 import Work from "../../components/stepper/Work";
 import useViewport from "../../hooks/useViewport";
-
+import { useAppDispatch } from "../../app/hooks";
+import {
+  storeEducationInformation,
+  storeHobbiesInformation,
+  storePersonalInformation,
+  storeSkillsInformation,
+  storeWorkInformation,
+} from "../../features/slice/template";
 interface IStepperSections {
   title: string;
   checked: boolean;
@@ -17,8 +23,9 @@ interface IStepperSections {
 
 const Stepper = () => {
   const viewPort = useViewport();
+  const dispatch = useAppDispatch();
   const [stepperState, setStepperState] = useState<number>(1);
-  const stepperSections: IStepperSections[] = [
+  const [stepperSections, setStepperSections] = useState<IStepperSections[]>([
     {
       title: "Personal Information",
       checked: false,
@@ -44,7 +51,15 @@ const Stepper = () => {
       checked: false,
       stepperNumber: 5,
     },
-  ];
+  ]);
+
+  const handleCheckboxChange = (position: number) => {
+    setStepperSections((prevState) =>
+      prevState.map((section, index) =>
+        index === position ? { ...section, checked: true } : section
+      )
+    );
+  };
 
   const [formData, setFormData] = useState<IFormDetails>({
     personal: {
@@ -68,7 +83,6 @@ const Stepper = () => {
         present: false,
         description: "",
         id: uuidv4(),
-        icon: <TrashIcon className="w-6 h-6 text-red-600" />,
       },
     ],
     education: [
@@ -81,22 +95,19 @@ const Stepper = () => {
         endDate: "",
         id: uuidv4(),
         present: false,
-        icon: <TrashIcon className="w-6 h-6 text-red-600" />,
       },
     ],
     skills: [
       {
         skillName: "",
-        proficiency: "",
+        proficiency: "1",
         id: uuidv4(),
-        icon: <TrashIcon className="w-6 h-6 text-red-600" />,
       },
     ],
     hobbies: [
       {
         hobby: "",
         id: uuidv4(),
-        icon: <TrashIcon className="w-6 h-6 text-red-600" />,
       },
     ],
   });
@@ -115,6 +126,38 @@ const Stepper = () => {
         return <Hobbies formData={formData} setFormData={setFormData} />;
       default:
         return null;
+    }
+  };
+
+  const nextButtonClicked = () => {
+    if (stepperState < stepperSections.length) {
+      handleCheckboxChange(stepperState - 1);
+      setStepperState((prev) => prev + 1);
+      window.scrollTo(0, 0);
+    }
+    // Store the data in the store based on the stepper form state
+    switch (stepperState) {
+      case 1:
+        dispatch(storePersonalInformation(formData.personal));
+        break;
+      case 2:
+        let { work } = formData;
+        dispatch(storeWorkInformation(work));
+        break;
+      case 3:
+        let { education } = formData;
+        dispatch(storeEducationInformation(education));
+        break;
+      case 4:
+        let { skills } = formData;
+        dispatch(storeSkillsInformation(skills));
+        break;
+      case 5:
+        let { hobbies } = formData;
+        dispatch(storeHobbiesInformation(hobbies));
+        break;
+      default:
+        break;
     }
   };
 
@@ -156,13 +199,7 @@ const Stepper = () => {
           Back
         </button>
         <button
-          onClick={() => {
-            if (stepperState < stepperSections.length) {
-              stepperSections[stepperState - 1].checked = true;
-              setStepperState((prev) => prev + 1);
-              window.scrollTo(0, 0);
-            }
-          }}
+          onClick={nextButtonClicked}
           className="w-48 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4 rounded-md lg:w-72"
         >
           {stepperState === stepperSections.length ? "Submit" : "Save and Next"}

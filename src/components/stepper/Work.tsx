@@ -62,7 +62,6 @@ const Work = ({ formData, setFormData }: IProps) => {
           present: false,
           description: "",
           id: uuidv4(),
-          icon: <TrashIcon className="w-6 h-6 text-red-600" />,
         },
       ],
     }));
@@ -98,7 +97,6 @@ const Work = ({ formData, setFormData }: IProps) => {
               companyName,
               description,
               endDate,
-              icon,
               jobTitle,
               present,
               startDate,
@@ -229,14 +227,10 @@ const Work = ({ formData, setFormData }: IProps) => {
                       className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full h-40 xl:w-full xl:h-52"
                     />
                   </div>
-                  <div className="mt-2 mb-8 cursor-pointer">
-                    <span
-                      className="cursor-pointer"
-                      onClick={() => removeWork(index)}
-                    >
-                      {icon}
-                    </span>
-                  </div>
+                  <TrashIcon
+                    className="w-6 h-6 text-red-600 mt-2 mb-8 cursor-pointer"
+                    onClick={() => removeWork(index)}
+                  />
                 </form>
               </div>
             );

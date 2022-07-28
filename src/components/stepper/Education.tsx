@@ -58,7 +58,6 @@ const Education = ({ formData, setFormData }: IProps) => {
           startDate: "",
           endDate: "",
           present: false,
-          icon: <TrashIcon className="w-6 h-6 text-red-600" />,
         },
       ],
     }));
@@ -92,7 +91,6 @@ const Education = ({ formData, setFormData }: IProps) => {
             const {
               id,
               city,
-              icon,
               state,
               present,
               endDate,
@@ -213,12 +211,10 @@ const Education = ({ formData, setFormData }: IProps) => {
                       />
                       <label htmlFor="present">I presently attend here</label>
                     </div>
-                    <span
-                      className="cursor-pointer"
+                    <TrashIcon
+                      className="w-6 h-6 text-red-600 cursor-pointer"
                       onClick={() => removeEducation(index)}
-                    >
-                      {icon}
-                    </span>
+                    />
                   </div>
                 </form>
               </div>

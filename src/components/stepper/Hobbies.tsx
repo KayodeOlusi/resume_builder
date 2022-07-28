@@ -34,7 +34,6 @@ const Hobbies = ({ formData, setFormData }: IProps) => {
         {
           hobby: "",
           id: uuidv4(),
-          icon: <TrashIcon className="w-6 h-6 text-red-600" />,
         },
       ],
     }));
@@ -63,7 +62,7 @@ const Hobbies = ({ formData, setFormData }: IProps) => {
 
       {formData.hobbies.length ? (
         formData.hobbies.map((hobbyName, index) => {
-          const { hobby, id, icon } = hobbyName;
+          const { hobby, id } = hobbyName;
 
           return (
             <div key={id} className="mt-12 px-5 md:px-0 md:mt-8">
@@ -82,14 +81,10 @@ const Hobbies = ({ formData, setFormData }: IProps) => {
                     text-sm text-herotext w-[16rem] sm-px-8 md:w-[22rem] xl:w-[34rem]"
                   />
                 </div>
-                <div>
-                  <span
-                    className="cursor-pointer"
-                    onClick={() => deleteHobby(index)}
-                  >
-                    {icon}
-                  </span>
-                </div>
+                <TrashIcon
+                  className="w-6 h-6 text-red-600 cursor-pointer"
+                  onClick={() => deleteHobby(index)}
+                />
               </form>
             </div>
           );
