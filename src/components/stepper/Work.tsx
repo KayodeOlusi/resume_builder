@@ -78,6 +78,7 @@ const Work = ({ formData, setFormData }: IProps) => {
         ...prevState.work.slice(index + 1),
       ],
     }));
+    window.scrollTo(0, 0);
   };
 
   return (
