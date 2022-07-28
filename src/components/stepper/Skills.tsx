@@ -36,7 +36,7 @@ const Skills = ({ formData, setFormData }: IProps) => {
         ...prevState.skills,
         {
           skillName: "",
-          proficiency: "",
+          proficiency: "1",
           id: uuidv4(),
           icon: <TrashIcon className="w-6 h-6 text-red-600" />,
         },
