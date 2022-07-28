@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { TrashIcon } from "@heroicons/react/solid";
 import Checkbox from "../../components/stepper/Checkbox";
 import Education from "../../components/stepper/Education";
 import Hobbies from "../../components/stepper/Hobbies";
@@ -67,6 +68,7 @@ const Stepper = () => {
         present: false,
         description: "",
         id: uuidv4(),
+        icon: <TrashIcon className="w-6 h-6 text-red-600" />,
       },
     ],
     education: [
@@ -79,6 +81,7 @@ const Stepper = () => {
         endDate: "",
         id: uuidv4(),
         present: false,
+        icon: <TrashIcon className="w-6 h-6 text-red-600" />,
       },
     ],
     skills: [

@@ -24,6 +24,7 @@ interface IFormDetails {
       present: boolean;
       description: string;
       id: string | number;
+      icon: JSX.Element | string | null;
     }
   ];
   education: [
@@ -36,6 +37,7 @@ interface IFormDetails {
       endDate: string;
       id: string | number;
       present: boolean;
+      icon: JSX.Element | string | null;
     }
   ];
   skills: [

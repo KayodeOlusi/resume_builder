@@ -23,6 +23,7 @@ const initialState: IFormDetails = {
       present: false,
       description: "",
       id: "",
+      icon: null || "",
     },
   ],
   education: [
@@ -35,6 +36,7 @@ const initialState: IFormDetails = {
       endDate: "",
       id: "",
       present: false,
+      icon: null || "",
     },
   ],
   skills: [
