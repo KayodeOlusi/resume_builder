@@ -67,5 +67,4 @@ export const {
   storeSkillsInformation,
   storeHobbiesInformation,
 } = slice.actions;
-export const selectPersonalInformation = (state: RootState) =>
-  state.template.personal;
+export const selectTemplateState = (state: RootState) => state.template;
