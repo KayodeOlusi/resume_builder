@@ -48,7 +48,13 @@ interface IFormDetails {
       icon: JSX.Element | string | null;
     }
   ];
-  hobbies: string;
+  hobbies: [
+    {
+      hobby: string;
+      id: string | number;
+      icon: JSX.Element | string | null;
+    }
+  ];
 }
 
 interface IPersonalPayload {

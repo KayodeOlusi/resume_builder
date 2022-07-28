@@ -213,12 +213,12 @@ const Education = ({ formData, setFormData }: IProps) => {
                       />
                       <label htmlFor="present">I presently attend here</label>
                     </div>
-                    <div
+                    <span
                       className="cursor-pointer"
                       onClick={() => removeEducation(index)}
                     >
                       {icon}
-                    </div>
+                    </span>
                   </div>
                 </form>
               </div>

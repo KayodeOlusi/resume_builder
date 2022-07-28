@@ -229,11 +229,13 @@ const Work = ({ formData, setFormData }: IProps) => {
                       className=" bg-landingcard rounded-md font-semibold text-sm text-herotext py-3 px-9 w-full h-40 xl:w-full xl:h-52"
                     />
                   </div>
-                  <div
-                    className="mt-2 mb-8 cursor-pointer"
-                    onClick={() => removeWork(index)}
-                  >
-                    {icon}
+                  <div className="mt-2 mb-8 cursor-pointer">
+                    <span
+                      className="cursor-pointer"
+                      onClick={() => removeWork(index)}
+                    >
+                      {icon}
+                    </span>
                   </div>
                 </form>
               </div>
@@ -247,12 +249,12 @@ const Work = ({ formData, setFormData }: IProps) => {
           </div>
         )}
       </div>
-      <div
-        className="flex items-center px-5 space-x-2 mt-4 md:px-0"
-        onClick={addNewWork}
-      >
+      <div className="flex items-center px-5 space-x-2 mt-4 md:px-0">
         <img src={svgs.add} alt="" className="w-4 h-4" />
-        <p className="text-herobtn text-sm font-semibold cursor-pointer">
+        <p
+          className="text-herobtn text-sm font-semibold cursor-pointer"
+          onClick={addNewWork}
+        >
           Add another work place
         </p>
       </div>

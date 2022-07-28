@@ -71,7 +71,7 @@ const Skills = ({ formData, setFormData }: IProps) => {
 
           return (
             <div key={id} className="mt-12 px-5 md:px-0 md:mt-8">
-              <form className="mt-8 flex space-x-2 md:space-x-0 md:justify-between md:mt-12">
+              <form className="mt-8 flex space-x-2 md:space-x-8 md:justify-between md:mt-12">
                 <div>
                   <p className="text-sm font-semibold text-herotext mb-3">
                     Skill Name
@@ -105,7 +105,12 @@ const Skills = ({ formData, setFormData }: IProps) => {
                   </select>
                 </div>
                 <div>
-                  <div onClick={() => deleteSkill(index)}>{icon}</div>
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => deleteSkill(index)}
+                  >
+                    {icon}
+                  </span>
                 </div>
               </form>
             </div>

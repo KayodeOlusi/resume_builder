@@ -92,7 +92,13 @@ const Stepper = () => {
         icon: <TrashIcon className="w-6 h-6 text-red-600" />,
       },
     ],
-    hobbies: "",
+    hobbies: [
+      {
+        hobby: "",
+        id: uuidv4(),
+        icon: <TrashIcon className="w-6 h-6 text-red-600" />,
+      },
+    ],
   });
 
   const SectionDisplay = () => {
@@ -145,7 +151,7 @@ const Stepper = () => {
             setStepperState(stepperState - 1);
             window.scrollTo(0, 0);
           }}
-          className="border-2 border-hero font-semibold text-sm px-20 py-4 rounded-md lg:px-44"
+          className="border-2 border-hero font-semibold text-sm w-48 py-4 rounded-md lg:w-72"
         >
           Back
         </button>
@@ -157,9 +163,9 @@ const Stepper = () => {
               window.scrollTo(0, 0);
             }
           }}
-          className="px-12 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4 rounded-md lg:px-36"
+          className="w-48 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4 rounded-md lg:w-72"
         >
-          Save and Next
+          {stepperState === stepperSections.length ? "Submit" : "Save and Next"}
         </button>
       </div>
     </div>

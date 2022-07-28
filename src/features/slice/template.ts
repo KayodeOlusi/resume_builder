@@ -47,7 +47,13 @@ const initialState: IFormDetails = {
       icon: null || "",
     },
   ],
-  hobbies: "",
+  hobbies: [
+    {
+      hobby: "",
+      id: "",
+      icon: null || "",
+    },
+  ],
 };
 
 const slice = createSlice({
