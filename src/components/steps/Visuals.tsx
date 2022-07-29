@@ -40,7 +40,7 @@ const Visuals: FC = () => {
           Select your preferred template
         </motion.p>
       </div>
-      <hr className="bg-alium h-2 mt-20 hidden lg:inline-block lg:w-44 xl:w-56" />
+      <hr className="bg-alium h-2 hidden mt-16 lg:inline-block lg:w-44 xl:w-56 xl:mt-20" />
       <div className="text-center flex flex-col space-y-4 items-center">
         <EditSvg />
         <motion.h6
@@ -62,7 +62,7 @@ const Visuals: FC = () => {
           Fill using your details.
         </motion.p>
       </div>
-      <hr className="bg-alium h-2 hidden mt-20 lg:inline-block lg:w-44 xl:w-56" />
+      <hr className="bg-alium h-2 hidden mt-16 lg:inline-block lg:w-44 xl:w-56 xl:mt-20" />
       <div className="text-center flex flex-col space-y-4 items-center">
         <DownloadSvg />
         <motion.h6

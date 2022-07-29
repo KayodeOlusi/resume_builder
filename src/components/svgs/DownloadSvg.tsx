@@ -36,7 +36,7 @@ const DownloadSvg = () => {
       viewBox="0 0 150 150"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-32 w-32 lg:h-fit lg:w-fit"
+      className="h-32 w-32 lg:h-3/5 lg:w-3/5 xl:w-fit xl:h-fit"
     >
       <motion.circle
         variants={svg_variant}

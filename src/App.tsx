@@ -13,6 +13,7 @@ const SignIn = lazy(() => import("./pages/auth/signin"));
 const PageLayout = lazy(() => import("./layout/PageLayout"));
 const Templates = lazy(() => import("./components/steps/templates/Templates"));
 const Stepper = lazy(() => import("./pages/stepper"));
+const Preview = lazy(() => import("./pages/preview"));
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       >
         <ScrollToTop />
         <Navbar />
-        <div className="mx-auto lg:max-w-6xl">
+        <div className="mx-auto lg:max-w-6xl lg:px-5 xl:px-0">
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/signup" element={<SignUp />} />
@@ -37,6 +38,10 @@ function App() {
                 <Route index element={<Steps />} />
                 <Route path="templates" element={<Templates />} />
                 <Route path={`templates/stepper:id`} element={<Stepper />} />
+                <Route
+                  path={`templates/stepper:id/preview`}
+                  element={<Preview />}
+                />
               </Route>
             </Route>
           </Routes>

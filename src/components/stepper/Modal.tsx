@@ -10,15 +10,18 @@ import {
   selectResumeModalState,
   selectResumeId,
 } from "../../features/slice/resume";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   formData: IFormDetails;
 }
 
 export default function Modal({ formData }: IProps) {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [user] = useAuthState(auth);
   const resumeId = useAppSelector(selectResumeId);
+  const resumeName = localStorage.getItem("resumeName");
   const theModalState = useAppSelector(selectResumeModalState);
 
   const closeModal = () => {
@@ -43,6 +46,9 @@ export default function Modal({ formData }: IProps) {
           duration: 6000,
           id: notification_update,
         });
+        navigate(
+          `/page/templates/stepper:${resumeName!.toLocaleLowerCase()}/preview`
+        );
       } catch (err) {
         toast.error("Error creating resume");
         return;
@@ -66,6 +72,9 @@ export default function Modal({ formData }: IProps) {
           duration: 6000,
           id: notification_add,
         });
+        navigate(
+          `/page/templates/stepper:${resumeName!.toLocaleLowerCase()}/preview`
+        );
       } catch (err) {
         toast.error("Error creating resume");
         return;
