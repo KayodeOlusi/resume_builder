@@ -114,7 +114,7 @@ const Skills = ({ formData, setFormData }: IProps) => {
       ) : (
         <div className="mt-6 px-5 text-center md:text-left md:px-0">
           <p className="text-base font-semibold text-herotext mb-3">
-            No work experience added yet.
+            No skill added yet.
           </p>
         </div>
       )}

@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { auth, db } from "../../firebase";
+import { addDoc, collection, doc, query, updateDoc } from "firebase/firestore";
+import { useAppDispatch } from "../../app/hooks";
+import { useCollection } from "react-firebase-hooks/firestore";
 import Checkbox from "../../components/stepper/Checkbox";
 import Education from "../../components/stepper/Education";
 import Hobbies from "../../components/stepper/Hobbies";
@@ -7,7 +11,6 @@ import Personal from "../../components/stepper/Personal";
 import Skills from "../../components/stepper/Skills";
 import Work from "../../components/stepper/Work";
 import useViewport from "../../hooks/useViewport";
-import { useAppDispatch } from "../../app/hooks";
 import {
   storeEducationInformation,
   storeHobbiesInformation,
@@ -15,6 +18,8 @@ import {
   storeSkillsInformation,
   storeWorkInformation,
 } from "../../features/slice/template";
+import toast from "react-hot-toast";
+import { useAuthState } from "react-firebase-hooks/auth";
 interface IStepperSections {
   title: string;
   checked: boolean;
@@ -24,7 +29,9 @@ interface IStepperSections {
 const Stepper = () => {
   const viewPort = useViewport();
   const dispatch = useAppDispatch();
+  const [user] = useAuthState(auth);
   const [stepperState, setStepperState] = useState<number>(1);
+  const [resumeCollections] = useCollection(query(collection(db, "resume")));
   const [stepperSections, setStepperSections] = useState<IStepperSections[]>([
     {
       title: "Personal Information",
@@ -129,12 +136,45 @@ const Stepper = () => {
     }
   };
 
-  const nextButtonClicked = () => {
+  //TODO: Make sure the data is updating and not adding new data
+  const nextButtonClicked = async () => {
     if (stepperState < stepperSections.length) {
       handleCheckboxChange(stepperState - 1);
       setStepperState((prev) => prev + 1);
       window.scrollTo(0, 0);
+    } else {
+      const notification_update = toast.loading("Creating your resume");
+
+      resumeCollections?.docs?.forEach(async (document) => {
+        if (
+          document?.data()?.user?.uid === user?.uid ||
+          document?.data()?.user?.email === user?.email
+        ) {
+          await updateDoc(doc(db, "resume", document.id), {
+            resume: {
+              ...formData,
+            },
+          });
+        } else {
+          await addDoc(collection(db, "resume"), {
+            user: {
+              uid: user?.uid,
+              name: user?.displayName,
+              email: user?.email,
+            },
+            resume: {
+              ...formData,
+            },
+          });
+        }
+      });
+
+      toast.success("Resume created successfully", {
+        duration: 6000,
+        id: notification_update,
+      });
     }
+
     // Store the data in the store based on the stepper form state
     switch (stepperState) {
       case 1:
