@@ -1,6 +1,7 @@
+import { v4 as uuidv4 } from "uuid";
+import { svgs } from "../../constants";
 import { TrashIcon } from "@heroicons/react/solid";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
-import { svgs } from "../../constants";
 
 interface IProps {
   formData: IFormDetails;
@@ -55,6 +56,7 @@ const Education = ({ formData, setFormData }: IProps) => {
           degreeObtained: "",
           city: "",
           state: "",
+          id: uuidv4(),
           startDate: "",
           endDate: "",
           present: false,

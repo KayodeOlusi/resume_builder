@@ -150,17 +150,19 @@ const Stepper = () => {
     } else {
       // const notification_update = toast.loading("Creating your resume");
       dispatch(setResumeModalState({ modalState: true }));
-      try {
-        resumeCollections?.docs?.forEach(async (document) => {
-          if (
-            document?.data()?.user?.uid === user?.uid ||
-            document?.data()?.user?.email === user?.email
-          ) {
-            dispatch(setResumeId({ resumeID: document.id }));
-          }
-        });
-      } catch (error) {
-        console.log(error);
+      if (resumeCollections?.docs) {
+        if (resumeCollections.docs.length > 0) {
+          try {
+            resumeCollections?.docs?.forEach(async (document) => {
+              if (
+                document?.data()?.user?.uid === user?.uid ||
+                document?.data()?.user?.email === user?.email
+              ) {
+                dispatch(setResumeId({ resumeID: document.id }));
+              }
+            });
+          } catch (err) {}
+        }
       }
     }
 
