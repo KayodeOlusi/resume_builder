@@ -230,12 +230,12 @@ const Education = ({ formData, setFormData }: IProps) => {
           </div>
         )}
       </div>
-      <div
-        className="flex items-center px-5 space-x-2 mt-4 md:px-0"
-        onClick={addNewEducation}
-      >
+      <div className="flex items-center px-5 space-x-2 mt-4 md:px-0">
         <img src={svgs.add} alt="" className="w-4 h-4" />
-        <p className="text-herobtn text-sm font-semibold cursor-pointer">
+        <p
+          className="text-herobtn text-sm font-semibold cursor-pointer"
+          onClick={addNewEducation}
+        >
           Add another education
         </p>
       </div>
