@@ -1,6 +1,14 @@
 interface IResumeName {
   name: string;
 }
+
+interface IResumeId {
+  resumeID: any;
+}
+
+interface IResumeModalState {
+  modalState: boolean;
+}
 // Form Types
 interface IFormDetails {
   personal: {

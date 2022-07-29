@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { auth, db } from "../../firebase";
-import { addDoc, collection, doc, query, updateDoc } from "firebase/firestore";
-import { useAppDispatch } from "../../app/hooks";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { collection, query } from "firebase/firestore";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Checkbox from "../../components/stepper/Checkbox";
 import Education from "../../components/stepper/Education";
 import Hobbies from "../../components/stepper/Hobbies";
@@ -18,8 +18,13 @@ import {
   storeSkillsInformation,
   storeWorkInformation,
 } from "../../features/slice/template";
-import toast from "react-hot-toast";
 import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  selectResumeModalState,
+  setResumeId,
+  setResumeModalState,
+} from "../../features/slice/resume";
+import Modal from "../../components/stepper/Modal";
 interface IStepperSections {
   title: string;
   checked: boolean;
@@ -30,6 +35,7 @@ const Stepper = () => {
   const viewPort = useViewport();
   const dispatch = useAppDispatch();
   const [user] = useAuthState(auth);
+  const modal = useAppSelector(selectResumeModalState);
   const [stepperState, setStepperState] = useState<number>(1);
   const [resumeCollections] = useCollection(query(collection(db, "resume")));
   const [stepperSections, setStepperSections] = useState<IStepperSections[]>([
@@ -136,43 +142,26 @@ const Stepper = () => {
     }
   };
 
-  //TODO: Make sure the data is updating and not adding new data
   const nextButtonClicked = async () => {
     if (stepperState < stepperSections.length) {
       handleCheckboxChange(stepperState - 1);
       setStepperState((prev) => prev + 1);
       window.scrollTo(0, 0);
     } else {
-      const notification_update = toast.loading("Creating your resume");
-
-      resumeCollections?.docs?.forEach(async (document) => {
-        if (
-          document?.data()?.user?.uid === user?.uid ||
-          document?.data()?.user?.email === user?.email
-        ) {
-          await updateDoc(doc(db, "resume", document.id), {
-            resume: {
-              ...formData,
-            },
-          });
-        } else {
-          await addDoc(collection(db, "resume"), {
-            user: {
-              uid: user?.uid,
-              name: user?.displayName,
-              email: user?.email,
-            },
-            resume: {
-              ...formData,
-            },
-          });
-        }
-      });
-
-      toast.success("Resume created successfully", {
-        duration: 6000,
-        id: notification_update,
-      });
+      // const notification_update = toast.loading("Creating your resume");
+      dispatch(setResumeModalState({ modalState: true }));
+      try {
+        resumeCollections?.docs?.forEach(async (document) => {
+          if (
+            document?.data()?.user?.uid === user?.uid ||
+            document?.data()?.user?.email === user?.email
+          ) {
+            dispatch(setResumeId({ resumeID: document.id }));
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     // Store the data in the store based on the stepper form state
@@ -202,50 +191,55 @@ const Stepper = () => {
   };
 
   return (
-    <div className="mt-8 md:mt-12">
-      <div className="checkbox flex items-center justify-between px-5">
-        {viewPort < 768 ? (
-          <Checkbox
-            title={stepperSections[stepperState - 1].title}
-            checked={stepperSections[stepperState - 1].checked}
-            stepperNumber={stepperSections[stepperState - 1].stepperNumber}
-          />
-        ) : (
-          stepperSections.map((step) => {
-            const { title, checked, stepperNumber } = step;
+    <Fragment>
+      {modal && <Modal formData={formData} />}
+      <div className="mt-8 md:mt-12">
+        <div className="checkbox flex items-center justify-between px-5">
+          {viewPort < 768 ? (
+            <Checkbox
+              title={stepperSections[stepperState - 1].title}
+              checked={stepperSections[stepperState - 1].checked}
+              stepperNumber={stepperSections[stepperState - 1].stepperNumber}
+            />
+          ) : (
+            stepperSections.map((step) => {
+              const { title, checked, stepperNumber } = step;
 
-            return (
-              <div key={stepperNumber}>
-                <Checkbox
-                  title={title}
-                  checked={checked}
-                  stepperNumber={stepperNumber}
-                />
-              </div>
-            );
-          })
-        )}
+              return (
+                <div key={stepperNumber}>
+                  <Checkbox
+                    title={title}
+                    checked={checked}
+                    stepperNumber={stepperNumber}
+                  />
+                </div>
+              );
+            })
+          )}
+        </div>
+        {SectionDisplay()}
+        <div className="flex flex-col space-y-6 items-center mt-10 justify-between md:space-y-0 md:flex-row  lg:space-y-0">
+          <button
+            disabled={stepperState === 1}
+            onClick={() => {
+              setStepperState(stepperState - 1);
+              window.scrollTo(0, 0);
+            }}
+            className="border-2 border-hero font-semibold text-sm w-48 py-4 rounded-md lg:w-72"
+          >
+            Back
+          </button>
+          <button
+            onClick={nextButtonClicked}
+            className="w-48 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4 rounded-md lg:w-72"
+          >
+            {stepperState === stepperSections.length
+              ? "Submit"
+              : "Save and Next"}
+          </button>
+        </div>
       </div>
-      {SectionDisplay()}
-      <div className="flex flex-col space-y-6 items-center mt-10 justify-between md:space-y-0 md:flex-row  lg:space-y-0">
-        <button
-          disabled={stepperState === 1}
-          onClick={() => {
-            setStepperState(stepperState - 1);
-            window.scrollTo(0, 0);
-          }}
-          className="border-2 border-hero font-semibold text-sm w-48 py-4 rounded-md lg:w-72"
-        >
-          Back
-        </button>
-        <button
-          onClick={nextButtonClicked}
-          className="w-48 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4 rounded-md lg:w-72"
-        >
-          {stepperState === stepperSections.length ? "Submit" : "Save and Next"}
-        </button>
-      </div>
-    </div>
+    </Fragment>
   );
 };
 
