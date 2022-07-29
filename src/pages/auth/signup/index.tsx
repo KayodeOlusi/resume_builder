@@ -56,7 +56,10 @@ const SignUp: FC = () => {
         className="font-semibold mt-4 text-sm md:text-base"
       >
         Already have an account?{" "}
-        <span className="text-alium" onClick={() => navigate("/signin")}>
+        <span
+          className="text-alium cursor-pointer"
+          onClick={() => navigate("/signin")}
+        >
           Sign In
         </span>
       </motion.p>

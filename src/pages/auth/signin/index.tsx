@@ -55,7 +55,10 @@ const SignIn = () => {
         className="font-semibold mt-4 text-sm md:text-base"
       >
         Want to join us?{" "}
-        <span className="text-alium" onClick={() => navigate("/signup")}>
+        <span
+          className="text-alium cursor-pointer"
+          onClick={() => navigate("/signup")}
+        >
           Sign Up
         </span>
       </motion.p>
