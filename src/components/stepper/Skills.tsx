@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { svgs } from "../../constants";
 import { TrashIcon } from "@heroicons/react/solid";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 interface IProps {
   formData: IFormDetails;
@@ -95,7 +95,7 @@ const Skills = ({ formData, setFormData }: IProps) => {
                     value={proficiency}
                     onChange={(e) => handleChange(e, index)}
                     className=" bg-landingcard py-3 px-4 rounded-md font-semibold 
-                    text-sm text-herotext w-fit sm:px-8 md:w-[22rem] xl:w-[34rem]"
+                    text-sm text-herotext w-fit sm:px-8 md:w-[22rem] xl:w-full"
                   >
                     <option value="1">Beginner</option>
                     <option value="2">Intermediate</option>

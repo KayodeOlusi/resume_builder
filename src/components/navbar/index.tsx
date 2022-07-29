@@ -44,7 +44,7 @@ const Navbar: FC = () => {
       }`}
     >
       <motion.nav
-        className={`flex items-center justify-between px-7 ${
+        className={`flex items-center justify-around px-7 ${
           blur && "shadow-sm p-4 transition duration-500 ease-in-out bg-white"
         } md:px-0`}
         variants={variants}

@@ -16,7 +16,7 @@ const Stepper = lazy(() => import("./pages/stepper"));
 
 function App() {
   return (
-    <main className="mx-auto mt-8 relative md:mt-14 md:px-5 lg:max-w-6xl xl:px-0">
+    <main className="mt-8 relative md:mt-14 md:px-5 xl:px-0">
       <Suspense
         fallback={
           <div className="flex items-center justify-center w-full h-[100vh]">
@@ -26,19 +26,21 @@ function App() {
       >
         <ScrollToTop />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
+        <div className="mx-auto lg:max-w-6xl">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
 
-          <Route element={<RequireAuth />}>
-            <Route path="/page" element={<PageLayout />}>
-              <Route index element={<Steps />} />
-              <Route path="templates" element={<Templates />} />
-              <Route path={`templates/stepper:id`} element={<Stepper />} />
+            <Route element={<RequireAuth />}>
+              <Route path="/page" element={<PageLayout />}>
+                <Route index element={<Steps />} />
+                <Route path="templates" element={<Templates />} />
+                <Route path={`templates/stepper:id`} element={<Stepper />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
+          </Routes>
+        </div>
       </Suspense>
     </main>
   );
