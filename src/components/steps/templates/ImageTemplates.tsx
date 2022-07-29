@@ -33,6 +33,7 @@ const ImageTemplates = () => {
   const updateResumeName = (name: string): void => {
     dispatch(setResumeName(name));
 
+    localStorage.setItem("resumeName", name);
     navigate(`stepper:${name.toLocaleLowerCase()}`);
   };
 
