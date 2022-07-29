@@ -29,7 +29,7 @@ export default function Modal({ formData }: IProps) {
   const createResume = async () => {
     dispatch(setResumeModalState({ modalState: false }));
 
-    if (resumeId.length > 0) {
+    if (resumeId) {
       const notification_update = toast.loading("Updating...");
 
       try {
@@ -39,7 +39,7 @@ export default function Modal({ formData }: IProps) {
           },
         });
 
-        toast.success("Created successfully", {
+        toast.success("Updated successfully", {
           duration: 6000,
           id: notification_update,
         });
