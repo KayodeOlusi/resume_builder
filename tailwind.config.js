@@ -11,6 +11,8 @@ module.exports = {
         herobtn: "#009494",
         landingcard: "#FAFAFA",
         links: "#585858",
+        adolfa: "#F3F4F6",
+        adolfabase: "#F0AE12",
       },
     },
   },

@@ -15,6 +15,11 @@ import herotwo from "../assets/svg/herotwo.svg";
 import share from "../assets/svg/share.svg";
 import chart from "../assets/svg/chart.svg";
 import thumb from "../assets/svg/thumb.svg";
+import pixel1 from "../assets/svg/pixel1.svg";
+import gemheartc from "../assets/svg/gemheartc.svg";
+import gemheartcc from "../assets/svg/gemheartcc.svg";
+import empirer from "../assets/svg/empirer.svg";
+import adolfac from "../assets/svg/adolfac.svg";
 import google_icon from "../assets/svg/google1.svg";
 import linkedin from "../assets/svg/linkedin.svg";
 import cloud from "../assets/svg/cloud.svg";
@@ -31,13 +36,18 @@ export default {
   share,
   chart,
   thumb,
+  pixel1,
   stripe,
   paypal,
   google,
+  empirer,
+  adolfac,
   herotwo,
   register,
   facebook,
   linkedin,
   microsoft,
+  gemheartc,
+  gemheartcc,
   google_icon,
 };
