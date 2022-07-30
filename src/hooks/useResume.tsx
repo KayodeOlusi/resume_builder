@@ -26,7 +26,7 @@ const useResume = () => {
     }
   }, [resumeCollection, user]);
 
-  return resumeDocument;
+  return resumeDocument?.data();
 };
 
 export default useResume;
