@@ -58,7 +58,7 @@ export default function Modal({ formData }: IProps) {
 
       try {
         await addDoc(collection(db, "resume"), {
-          user: {
+          user_details: {
             uid: user?.uid,
             name: user?.displayName,
             email: user?.email,

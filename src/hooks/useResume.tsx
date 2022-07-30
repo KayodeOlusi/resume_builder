@@ -4,11 +4,23 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { collection, doc, query } from "firebase/firestore";
 import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 
+interface IResult {
+  resume: IFormDetails;
+  user_details: {
+    name: string;
+    email: string;
+    uid: string;
+  };
+}
+
 const useResume = () => {
   const [user] = useAuthState(auth);
-  const [userResumeId, setUserResumeId] = useState<string | null>(null);
+  const [userResumeId, setUserResumeId] = useState<string>("");
   const [resumeCollection] = useCollection(query(collection(db, "resume")));
-  const [resumeDocument] = useDocument(doc(db, "resume", userResumeId!));
+  const [resumeDocument] = useDocument(
+    // @ts-ignore
+    userResumeId && doc(db, "resume", userResumeId!)
+  );
 
   useEffect(() => {
     if (resumeCollection?.docs) {
@@ -16,8 +28,8 @@ const useResume = () => {
         let singleDocument = resumeCollection?.docs[i];
 
         if (
-          singleDocument?.data().user.email === user?.email ||
-          singleDocument?.data().user.uid === user?.uid
+          singleDocument?.data().user_details.email === user?.email ||
+          singleDocument?.data().user_details.uid === user?.uid
         ) {
           setUserResumeId(singleDocument?.id);
           break;
@@ -26,7 +38,9 @@ const useResume = () => {
     }
   }, [resumeCollection, user]);
 
-  return resumeDocument?.data();
+  const result = resumeDocument?.data() as IResult;
+
+  return result;
 };
 
 export default useResume;

@@ -155,8 +155,8 @@ const Stepper = () => {
           try {
             resumeCollections?.docs?.forEach(async (document) => {
               if (
-                document?.data()?.user?.uid === user?.uid ||
-                document?.data()?.user?.email === user?.email
+                document?.data()?.user_details?.uid === user?.uid ||
+                document?.data()?.user_details?.email === user?.email
               ) {
                 dispatch(setResumeId({ resumeID: document.id }));
               }

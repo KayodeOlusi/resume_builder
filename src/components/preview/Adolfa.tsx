@@ -2,9 +2,7 @@ import { FC } from "react";
 import useResume from "../../hooks/useResume";
 
 const Adolfa: FC = () => {
-  const result = useResume();
-
-  // TODO: Implement preview of resume
+  const data = useResume();
 
   return <div>Adolfa</div>;
 };
