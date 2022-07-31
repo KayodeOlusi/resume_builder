@@ -10,8 +10,6 @@ import {
 const Adolfa: FC = () => {
   const data = useResume();
 
-  // console.log(data);
-
   if (!data) return <p>Loading...</p>;
 
   return (
@@ -80,7 +78,7 @@ const Adolfa: FC = () => {
                   );
                 })}
             </div>
-            <div className="skills mt-28">
+            <div className="skills mt-28 mb-7">
               <h3 className="font-extrabold text-2xl">Skills</h3>
               <div className="grid grid-rows-5 grid-flow-col">
                 {data?.resume &&
@@ -148,7 +146,7 @@ const Adolfa: FC = () => {
                   );
                 })}
             </div>
-            <div className="hobbies mt-24">
+            <div className="hobbies mt-24 mb-7">
               <p className="font-extrabold text-2xl">Hobbies</p>
               <ul className="grid grid-rows-3 grid-flow-col">
                 {data?.resume?.hobbies.map((hob) => {
