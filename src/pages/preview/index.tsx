@@ -6,6 +6,9 @@ import Pixel from "../../components/preview/Pixel";
 const Preview = () => {
   const resumeName = localStorage.getItem("resumeName");
 
+  // TODO: Add a loading screen while the resume is loading
+  // TODO: Design the three resume templates left
+
   const displayResume = () => {
     switch (resumeName) {
       case "gemheart":
