@@ -12,6 +12,8 @@ const Adolfa: FC = () => {
 
   // console.log(data);
 
+  if (!data) return <p>Loading...</p>;
+
   return (
     <div className="relative max-w-2xl mx-auto">
       <div className="grid grid-cols-5 border">
@@ -64,7 +66,7 @@ const Adolfa: FC = () => {
                   } = educate;
 
                   return (
-                    <div key={id} className="mt-14">
+                    <div key={id} className="mt-6">
                       <div className="w-fit">
                         <p className="bg-adolfabase p-1 font-bold text-white">
                           {startDate.split(" ")[1]} - {endDate.split(" ")[1]}
@@ -95,7 +97,73 @@ const Adolfa: FC = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-3">Hey</div>
+        <div className="col-span-3">
+          <div className="mt-24 px-7">
+            <p className="font-bold text-3xl">
+              {data?.resume?.personal.firstName}{" "}
+              <span className="text-adolfabase">
+                {data?.resume.personal.lastName}
+              </span>
+            </p>
+            <p className="text-lg font-semibold mt-6">
+              {data?.resume?.personal.jobTitle}
+            </p>
+            <div className="about mt-24">
+              <p className="font-extrabold text-2xl">About</p>
+              <p className="mt-8 text-sm font-semibold">
+                {data?.resume?.personal.professionalSummary}
+              </p>
+            </div>
+            <div className="experience mt-24">
+              <p className="font-extrabold text-2xl">Work Experience</p>
+              {data?.resume &&
+                data?.resume?.work.map((exp) => {
+                  const {
+                    id,
+                    state,
+                    present,
+                    endDate,
+                    jobTitle,
+                    startDate,
+                    companyName,
+                    description,
+                  } = exp;
+
+                  return (
+                    <div key={id} className="mt-8">
+                      <h5 className="font-bold text-lg">Job Position</h5>
+                      <p className="bg-adolfabase p-1 font-bold w-fit text-white">
+                        {present
+                          ? "Present"
+                          : `${startDate.split(" ")[1]} - ${
+                              endDate.split(" ")[1]
+                            }`}
+                      </p>
+                      <p className="mt-2 font-semibold text-sm">
+                        {companyName} | {state}
+                      </p>
+                      <p className="mt-2 font-semibold text-sm">{jobTitle}</p>
+                      <p className="mt-2 font-normal text-sm">{description}</p>
+                    </div>
+                  );
+                })}
+            </div>
+            <div className="hobbies mt-24">
+              <p className="font-extrabold text-2xl">Hobbies</p>
+              <ul className="grid grid-rows-3 grid-flow-col">
+                {data?.resume?.hobbies.map((hob) => {
+                  const { hobby, id } = hob;
+
+                  return (
+                    <li key={id} className="mt-3 font-semibold">
+                      {hobby}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
