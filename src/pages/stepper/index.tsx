@@ -148,7 +148,6 @@ const Stepper = () => {
       setStepperState((prev) => prev + 1);
       window.scrollTo(0, 0);
     } else {
-      // const notification_update = toast.loading("Creating your resume");
       dispatch(setResumeModalState({ modalState: true }));
       if (resumeCollections?.docs) {
         if (resumeCollections.docs.length > 0) {

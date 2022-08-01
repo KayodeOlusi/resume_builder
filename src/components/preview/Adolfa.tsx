@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
+import Spinner from "react-spinkit";
 import { svgs } from "../../constants";
 import useResume from "../../hooks/useResume";
 import {
@@ -9,12 +10,26 @@ import {
 
 const Adolfa: FC = () => {
   const data = useResume();
+  const adolfaRef = useRef<HTMLDivElement>(null);
 
-  if (!data) return <p>Loading...</p>;
+  // Donwload the resume as pdf format
+  const downloadResumeAsPdf = () => {};
+
+  if (!data) {
+    return (
+      <div className="flex items-center justify-center w-full">
+        <Spinner name="ball-clip-rotate-multiple" color="steelblue" />
+      </div>
+    );
+  }
 
   return (
     <div className="relative max-w-2xl mx-auto">
-      <div className="grid grid-cols-5 border">
+      <div
+        className="grid grid-cols-5 border-4 border-adolfabase"
+        ref={adolfaRef}
+        id="adolfa-resume"
+      >
         <div className="bg-adolfa col-span-2">
           <img src={svgs.adolfac} alt="" className="w-40 h-40" />
           <div className="flex flex-col items-center -mt-24">
@@ -133,6 +148,8 @@ const Adolfa: FC = () => {
                       <p className="bg-adolfabase p-1 font-bold w-fit text-white">
                         {present
                           ? "Present"
+                          : startDate.split(" ")[1] === endDate.split(" ")[1]
+                          ? startDate.split(" ")[1]
                           : `${startDate.split(" ")[1]} - ${
                               endDate.split(" ")[1]
                             }`}
@@ -162,6 +179,16 @@ const Adolfa: FC = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="mt-14 flex items-center justify-center">
+        <button
+          className="w-48 text-white font-semibold whitespace-nowrap
+          text-sm bg-herobtn py-4 rounded-md lg:w-72"
+          onClick={downloadResumeAsPdf}
+        >
+          Download
+        </button>
       </div>
     </div>
   );
