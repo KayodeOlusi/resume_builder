@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC, useCallback, useRef } from "react";
 import Spinner from "react-spinkit";
 import { svgs } from "../../constants";
 import useResume from "../../hooks/useResume";
@@ -7,13 +7,28 @@ import {
   MailIcon,
   PhoneIcon,
 } from "@heroicons/react/solid";
+import ReactToPrint from "react-to-print";
 
 const Adolfa: FC = () => {
   const data = useResume();
   const adolfaRef = useRef<HTMLDivElement>(null);
 
-  // Donwload the resume as pdf format
-  const downloadResumeAsPdf = () => {};
+  const reactToPrintContent = useCallback(() => {
+    return adolfaRef?.current;
+  }, []);
+
+  const reactToPrintTrigger = useCallback(() => {
+    return (
+      <div className="flex items-center justify-center">
+        <button
+          className="w-48 text-white font-semibold whitespace-nowrap
+          text-sm bg-herobtn py-4 rounded-md lg:w-72"
+        >
+          Download
+        </button>
+      </div>
+    );
+  }, []);
 
   if (!data) {
     return (
@@ -182,14 +197,18 @@ const Adolfa: FC = () => {
       </div>
 
       <div className="mt-14 flex items-center justify-center">
-        <button
+        {/* <button
           className="w-48 text-white font-semibold whitespace-nowrap
           text-sm bg-herobtn py-4 rounded-md lg:w-72"
-          onClick={downloadResumeAsPdf}
         >
           Download
-        </button>
+        </button> */}
       </div>
+      <ReactToPrint
+        documentTitle="Resume"
+        content={reactToPrintContent}
+        trigger={reactToPrintTrigger}
+      />
     </div>
   );
 };
