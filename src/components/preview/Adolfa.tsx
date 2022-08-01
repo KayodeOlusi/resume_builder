@@ -1,4 +1,4 @@
-import { FC, useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import Spinner from "react-spinkit";
 import { svgs } from "../../constants";
 import useResume from "../../hooks/useResume";
@@ -8,8 +8,9 @@ import {
   PhoneIcon,
 } from "@heroicons/react/solid";
 import ReactToPrint from "react-to-print";
+import ADownload from "./download/ADownload";
 
-const Adolfa: FC = () => {
+const Adolfa = () => {
   const data = useResume();
   const adolfaRef = useRef<HTMLDivElement>(null);
 
@@ -41,8 +42,8 @@ const Adolfa: FC = () => {
   return (
     <div className="relative max-w-2xl mx-auto">
       <div
-        ref={adolfaRef}
-        className="grid grid-cols-4 md:grid-cols-5 border-4 mb-14 border-adolfabase"
+        className="grid grid-cols-4 md:grid-cols-5 border-4 mb-14
+       border-adolfabase"
       >
         <div className="bg-adolfa col-span-2">
           <img
@@ -61,7 +62,7 @@ const Adolfa: FC = () => {
               className="w-20 h-20 md:w-40 md:h-40 rounded-full border-4 md:border-8 border-white"
             />
           </div>
-          <div className="px-3 mt-4 md:px-7 md:mt-12">
+          <div className="px-3 mt-4 md:px-7 md:mt-7">
             <h3 className="text-sm font-extrabold md:text-2xl">Contact</h3>
             <div className="contact">
               <div className="mt-3 md:mt-6 space-x-2 flex md:space-x-8 items-center">
@@ -83,7 +84,7 @@ const Adolfa: FC = () => {
                 </p>
               </div>
             </div>
-            <div className="education mt-8 md:mt-24">
+            <div className="education mt-8 md:mt-16">
               <h3 className="font-extrabold text-sm md:text-2xl">Education</h3>
               {data?.resume &&
                 data?.resume?.education.map((educate) => {
@@ -114,7 +115,7 @@ const Adolfa: FC = () => {
                   );
                 })}
             </div>
-            <div className="skills mt-10 mb-3 md:mt-28 md:mb-7">
+            <div className="skills mt-10 mb-3 md:mt-16 md:mb-7">
               <h3 className="font-extrabold text-sm md:text-2xl">Skills</h3>
               <div className="grid grid-rows-5 grid-flow-col">
                 {data?.resume &&
@@ -145,13 +146,13 @@ const Adolfa: FC = () => {
             <p className="md:text-lg mt-3 text-[0.5rem] font-extrabold md:font-semibold md:mt-6">
               {data?.resume?.personal.jobTitle}
             </p>
-            <div className="about mt-10 md:mt-24">
+            <div className="about mt-10 md:mt-16">
               <p className="font-extrabold text-sm md:text-2xl">About</p>
               <p className="md:mt-8 text-[0.5rem] mt-1 md:text-sm font-medium md:ont-semibold">
                 {data?.resume?.personal.professionalSummary}
               </p>
             </div>
-            <div className="experience mt-8 md:mt-24">
+            <div className="experience mt-8 md:mt-16">
               <p className="font-extrabold text-sm md:text-2xl">
                 Work Experience
               </p>
@@ -169,7 +170,7 @@ const Adolfa: FC = () => {
                   } = exp;
 
                   return (
-                    <div key={id} className="mt-2 md:mt-8">
+                    <div key={id} className="mt-2 md:mt-5">
                       <h5 className="font-bold text-xs md:text-lg">
                         Job Position
                       </h5>
@@ -195,7 +196,7 @@ const Adolfa: FC = () => {
                   );
                 })}
             </div>
-            <div className="hobbies mt-10 mb-3 md:mt-24 md:mb-7">
+            <div className="hobbies mt-10 mb-3 md:mt-16 md:mb-7">
               <p className="font-extrabold text-sm md:text-2xl">Hobbies</p>
               <ul className="grid grid-rows-3 grid-flow-col">
                 {data?.resume?.hobbies.map((hob) => {
@@ -214,6 +215,9 @@ const Adolfa: FC = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="hidden">
+        <ADownload innerRef={adolfaRef} />
       </div>
       <ReactToPrint
         documentTitle="Resume"

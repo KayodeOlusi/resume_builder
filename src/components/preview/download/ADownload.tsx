@@ -1,49 +1,24 @@
-import { FC, useCallback, useRef } from "react";
-import Spinner from "react-spinkit";
-import { svgs } from "../../constants";
-import useResume from "../../hooks/useResume";
 import {
-  LocationMarkerIcon,
   MailIcon,
   PhoneIcon,
+  LocationMarkerIcon,
 } from "@heroicons/react/solid";
-import ReactToPrint from "react-to-print";
+import { FC, RefObject } from "react";
+import { svgs } from "../../../constants";
+import useResume from "../../../hooks/useResume";
 
-const Adolfa: FC = () => {
+interface IProps {
+  innerRef: RefObject<HTMLDivElement>;
+}
+
+const ADownload: FC<IProps> = ({ innerRef }) => {
   const data = useResume();
-  const adolfaRef = useRef<HTMLDivElement>(null);
-
-  const reactToPrintContent = useCallback(() => {
-    return adolfaRef?.current;
-  }, []);
-
-  const reactToPrintTrigger = useCallback(() => {
-    return (
-      <div className="flex items-center justify-center">
-        <button
-          className="w-48 text-white font-semibold whitespace-nowrap
-          text-sm bg-herobtn py-4 rounded-md lg:w-72"
-        >
-          Download
-        </button>
-      </div>
-    );
-  }, []);
-
-  if (!data) {
-    return (
-      <div className="flex items-center justify-center w-full">
-        <Spinner name="ball-clip-rotate-multiple" color="steelblue" />
-      </div>
-    );
-  }
 
   return (
     <div className="relative max-w-2xl mx-auto">
       <div
         className="grid grid-cols-5 border-4 border-adolfabase"
-        ref={adolfaRef}
-        id="adolfa-resume"
+        ref={innerRef}
       >
         <div className="bg-adolfa col-span-2">
           <img src={svgs.adolfac} alt="" className="w-40 h-40" />
@@ -58,7 +33,7 @@ const Adolfa: FC = () => {
               className="w-40 h-40 rounded-full border-8 border-white"
             />
           </div>
-          <div className="px-7 mt-12">
+          <div className="px-7 mt-7">
             <h3 className="font-extrabold text-2xl">Contact</h3>
             <div className="contact">
               <div className="mt-6 flex space-x-8 items-center">
@@ -80,7 +55,7 @@ const Adolfa: FC = () => {
                 </p>
               </div>
             </div>
-            <div className="education mt-24">
+            <div className="education mt-16">
               <h3 className="font-extrabold text-2xl">Education</h3>
               {data?.resume &&
                 data?.resume?.education.map((educate) => {
@@ -108,7 +83,7 @@ const Adolfa: FC = () => {
                   );
                 })}
             </div>
-            <div className="skills mt-28 mb-7">
+            <div className="skills mt-16 mb-7">
               <h3 className="font-extrabold text-2xl">Skills</h3>
               <div className="grid grid-rows-5 grid-flow-col">
                 {data?.resume &&
@@ -136,13 +111,13 @@ const Adolfa: FC = () => {
             <p className="text-lg font-semibold mt-6">
               {data?.resume?.personal.jobTitle}
             </p>
-            <div className="about mt-24">
+            <div className="about mt-16">
               <p className="font-extrabold text-2xl">About</p>
               <p className="mt-8 text-sm font-semibold">
                 {data?.resume?.personal.professionalSummary}
               </p>
             </div>
-            <div className="experience mt-24">
+            <div className="experience mt-16">
               <p className="font-extrabold text-2xl">Work Experience</p>
               {data?.resume &&
                 data?.resume?.work.map((exp) => {
@@ -158,7 +133,7 @@ const Adolfa: FC = () => {
                   } = exp;
 
                   return (
-                    <div key={id} className="mt-8">
+                    <div key={id} className="mt-5">
                       <h5 className="font-bold text-lg">Job Position</h5>
                       <p className="bg-adolfabase p-1 font-bold w-fit text-white">
                         {present
@@ -178,7 +153,7 @@ const Adolfa: FC = () => {
                   );
                 })}
             </div>
-            <div className="hobbies mt-24 mb-7">
+            <div className="hobbies mt-16 mb-7">
               <p className="font-extrabold text-2xl">Hobbies</p>
               <ul className="grid grid-rows-3 grid-flow-col">
                 {data?.resume?.hobbies.map((hob) => {
@@ -195,22 +170,8 @@ const Adolfa: FC = () => {
           </div>
         </div>
       </div>
-
-      <div className="mt-14 flex items-center justify-center">
-        {/* <button
-          className="w-48 text-white font-semibold whitespace-nowrap
-          text-sm bg-herobtn py-4 rounded-md lg:w-72"
-        >
-          Download
-        </button> */}
-      </div>
-      <ReactToPrint
-        documentTitle="Resume"
-        content={reactToPrintContent}
-        trigger={reactToPrintTrigger}
-      />
     </div>
   );
 };
 
-export default Adolfa;
+export default ADownload;
