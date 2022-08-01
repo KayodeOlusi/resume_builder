@@ -13,6 +13,7 @@ import ADownload from "./download/ADownload";
 const Adolfa = () => {
   const data = useResume();
   const adolfaRef = useRef<HTMLDivElement>(null);
+  const image = localStorage.getItem("userImage");
 
   const reactToPrintContent = useCallback(() => {
     return adolfaRef?.current;
@@ -53,31 +54,27 @@ const Adolfa = () => {
           />
           <div className="flex flex-col items-center -mt-10 md:-mt-24">
             <img
-              src={
-                data?.resume
-                  ? data?.resume.personal.profilePicture?.toString()
-                  : svgs.thumb
-              }
+              src={data?.resume ? image! : svgs.thumb}
               alt=""
               className="w-20 h-20 md:w-40 md:h-40 rounded-full border-4 md:border-8 border-white"
             />
           </div>
-          <div className="px-3 mt-4 md:px-7 md:mt-7">
+          <div className="px-3 mt-4 md:px-5 md:mt-7">
             <h3 className="text-sm font-extrabold md:text-2xl">Contact</h3>
             <div className="contact">
-              <div className="mt-3 md:mt-6 space-x-2 flex md:space-x-8 items-center">
+              <div className="mt-3 md:mt-6 space-x-2 flex md:space-x-4 items-center">
                 <PhoneIcon className="w-3 h-3 md:w-6 md:h-6 text-adolfabase" />
                 <p className="text-[0.5rem]  font-semibold md:text-sm">
                   {data?.resume?.personal.phoneNumber}
                 </p>
               </div>
-              <div className="mt-1 md:mt-6 flex space-x-2 items-center">
+              <div className="mt-1 md:mt-6 flex space-x-2 md:space-x-0 items-center">
                 <MailIcon className="w-3 h-3 md:w-6 md:h-6 text-adolfabase" />
                 <p className="text-[0.5rem] font-semibold md:text-sm md:px-5">
                   {data?.resume?.personal.email.split("@")[0]}
                 </p>
               </div>
-              <div className="mt-1 space-x-2 md:mt-6 flex md:space-x-8 items-center">
+              <div className="mt-1 space-x-2 md:mt-6 flex md:space-x-4">
                 <LocationMarkerIcon className="w-3 h-3 md:w-6 md:h-6 text-adolfabase" />
                 <p className="font-semibold text-[0.5rem] md:text-sm">
                   {data?.resume?.personal.address}

@@ -13,6 +13,7 @@ interface IProps {
 
 const ADownload: FC<IProps> = ({ innerRef }) => {
   const data = useResume();
+  const image = localStorage.getItem("userImage");
 
   return (
     <div className="relative max-w-2xl mx-auto">
@@ -24,11 +25,7 @@ const ADownload: FC<IProps> = ({ innerRef }) => {
           <img src={svgs.adolfac} alt="" className="w-40 h-40" />
           <div className="flex flex-col items-center -mt-24">
             <img
-              src={
-                data?.resume
-                  ? data?.resume.personal.profilePicture?.toString()
-                  : svgs.thumb
-              }
+              src={data?.resume ? image! : svgs.thumb}
               alt=""
               className="w-40 h-40 rounded-full border-8 border-white"
             />
@@ -36,19 +33,19 @@ const ADownload: FC<IProps> = ({ innerRef }) => {
           <div className="px-7 mt-7">
             <h3 className="font-extrabold text-2xl">Contact</h3>
             <div className="contact">
-              <div className="mt-6 flex space-x-8 items-center">
+              <div className="mt-6 flex space-x-4 items-center">
                 <PhoneIcon className="w-6 h-6 text-adolfabase" />
                 <p className="font-semibold text-sm">
                   {data?.resume?.personal.phoneNumber}
                 </p>
               </div>
-              <div className="mt-6 flex space-x-2 items-center">
+              <div className="mt-6 flex space-x-0 items-center">
                 <MailIcon className="w-6 h-6 text-adolfabase" />
                 <p className="font-semibold text-sm px-5">
                   {data?.resume?.personal.email.split("@")[0]}
                 </p>
               </div>
-              <div className="mt-6 flex space-x-8 items-center">
+              <div className="mt-6 flex space-x-4 items-center">
                 <LocationMarkerIcon className="w-6 h-6 text-adolfabase" />
                 <p className="font-semibold text-sm">
                   {data?.resume?.personal.address}

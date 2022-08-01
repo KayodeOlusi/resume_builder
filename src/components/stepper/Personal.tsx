@@ -1,5 +1,7 @@
 import { svgs } from "../../constants";
 import { useRef, Dispatch, ChangeEvent, SetStateAction } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { selectResumeImage, setResumeImage } from "../../features/slice/resume";
 
 interface IProps {
   formData: IFormDetails;
@@ -7,6 +9,8 @@ interface IProps {
 }
 
 const Personal = ({ formData, setFormData }: IProps) => {
+  const dispatch = useAppDispatch();
+  const image = useAppSelector(selectResumeImage);
   const fileRef = useRef<HTMLInputElement>(null);
 
   // Select an Image as Profile Image
@@ -19,13 +23,9 @@ const Personal = ({ formData, setFormData }: IProps) => {
 
     reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
       readerEvent.target &&
-        setFormData({
-          ...formData,
-          personal: {
-            ...formData.personal,
-            profilePicture: readerEvent.target.result,
-          },
-        });
+        dispatch(
+          setResumeImage({ resumeImage: String(readerEvent.target.result) })
+        );
     };
   };
 
@@ -55,9 +55,9 @@ const Personal = ({ formData, setFormData }: IProps) => {
         <div className="flex flex-col space-y-6 items-center md:space-y-0 md:flex-row md:justify-between">
           <div className="flex flex-col space-y-4 items-center md:space-y-0 md:flex-row md:space-x-8">
             {/**Logic for selecting an image as profile picture */}
-            {formData.personal.profilePicture ? (
+            {image ? (
               <img
-                src={formData.personal.profilePicture as string}
+                src={image}
                 alt=""
                 className="cursor-pointer w-40 h-40 rounded-full object-cover"
               />
@@ -76,12 +76,7 @@ const Personal = ({ formData, setFormData }: IProps) => {
           </div>
           <p
             className="text-red-600 font-semibold cursor-pointer border-b-2 border-red-600"
-            onClick={() =>
-              setFormData({
-                ...formData,
-                personal: { ...formData.personal, profilePicture: null },
-              })
-            }
+            onClick={() => dispatch(setResumeImage({ resumeImage: "" }))}
           >
             Delete Profile Picture
           </p>

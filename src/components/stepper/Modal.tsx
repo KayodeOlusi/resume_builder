@@ -50,7 +50,11 @@ export default function Modal({ formData }: IProps) {
           `/page/templates/stepper:${resumeName!.toLocaleLowerCase()}/preview`
         );
       } catch (err) {
-        toast.error("Error creating resume");
+        toast.error("Error updating resume", {
+          duration: 6000,
+          id: notification_update,
+        });
+        console.log(err);
         return;
       }
     } else {
@@ -76,7 +80,11 @@ export default function Modal({ formData }: IProps) {
           `/page/templates/stepper:${resumeName!.toLocaleLowerCase()}/preview`
         );
       } catch (err) {
-        toast.error("Error creating resume");
+        toast.error("Error creating resume", {
+          duration: 6000,
+          id: notification_add,
+        });
+        console.log(err);
         return;
       }
     }

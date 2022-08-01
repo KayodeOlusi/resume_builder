@@ -9,7 +9,6 @@ const initialState: IReduxState = {
     phoneNumber: "",
     address: "",
     email: "",
-    profilePicture: "",
     professionalSummary: "",
   },
   work: [],
@@ -34,7 +33,6 @@ const slice = createSlice({
         phoneNumber: action.payload.phoneNumber,
         address: action.payload.address,
         email: action.payload.email,
-        profilePicture: action.payload.profilePicture,
         professionalSummary: action.payload.professionalSummary,
       };
     },

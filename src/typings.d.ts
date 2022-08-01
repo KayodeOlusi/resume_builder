@@ -9,6 +9,11 @@ interface IResumeId {
 interface IResumeModalState {
   modalState: boolean;
 }
+
+interface IResumeImage {
+  resumeImage: string;
+}
+
 // Form Types
 interface IFormDetails {
   personal: {
@@ -19,7 +24,6 @@ interface IFormDetails {
     address: string;
     email: string;
     professionalSummary: string;
-    profilePicture: File | string | ArrayBuffer | null;
   };
   work: [
     {
@@ -70,7 +74,6 @@ interface IReduxState {
     address: string;
     email: string;
     professionalSummary: string;
-    profilePicture: File | string | ArrayBuffer | null;
   };
   work: IWorkPayload[];
   education: IEducationPayload[];
@@ -87,7 +90,6 @@ interface IPersonalPayload {
   address: string;
   email: string;
   professionalSummary: string;
-  profilePicture: File | string | ArrayBuffer | null;
 }
 
 interface IWorkPayload {

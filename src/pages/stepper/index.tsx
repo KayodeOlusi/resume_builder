@@ -83,7 +83,6 @@ const Stepper = () => {
       address: "",
       email: "",
       professionalSummary: "",
-      profilePicture: null,
     },
     work: [
       {
