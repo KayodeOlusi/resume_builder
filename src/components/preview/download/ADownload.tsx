@@ -17,10 +17,7 @@ const ADownload: FC<IProps> = ({ innerRef }) => {
 
   return (
     <div className="relative max-w-2xl mx-auto">
-      <div
-        className="grid grid-cols-5 border-4 border-adolfabase"
-        ref={innerRef}
-      >
+      <div className="grid grid-cols-5" ref={innerRef}>
         <div className="bg-adolfa col-span-2">
           <img src={svgs.adolfac} alt="" className="w-40 h-40" />
           <div className="flex flex-col items-center -mt-24">
