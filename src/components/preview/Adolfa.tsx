@@ -44,7 +44,7 @@ const Adolfa = () => {
     <div className="relative max-w-2xl mx-auto">
       <div
         className="grid grid-cols-4 md:grid-cols-5 border-4 mb-14
-       border-adolfabase"
+        border-adolfabase"
       >
         <div className="bg-adolfa col-span-2">
           <img
@@ -145,7 +145,7 @@ const Adolfa = () => {
             </p>
             <div className="about mt-10 md:mt-16">
               <p className="font-extrabold text-sm md:text-2xl">About</p>
-              <p className="md:mt-8 text-[0.5rem] mt-1 md:text-sm font-medium md:ont-semibold">
+              <p className="md:mt-8 text-[0.5rem] mt-1 md:text-sm font-medium md:font-semibold">
                 {data?.resume?.personal.professionalSummary}
               </p>
             </div>
