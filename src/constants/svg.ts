@@ -23,6 +23,7 @@ import adolfac from "../assets/svg/adolfac.svg";
 import google_icon from "../assets/svg/google1.svg";
 import linkedin from "../assets/svg/linkedin.svg";
 import cloud from "../assets/svg/cloud.svg";
+import pixel2 from "../assets/svg/pixel2.svg";
 
 export default {
   fb,
@@ -37,6 +38,7 @@ export default {
   chart,
   thumb,
   pixel1,
+  pixel2,
   stripe,
   paypal,
   google,
