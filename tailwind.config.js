@@ -15,6 +15,7 @@ module.exports = {
         adolfabase: "#F0AE12",
         gemheart: "#E5E5E5",
         gemheartbase: "#1E90FF",
+        pixel: "#23B1BF",
       },
     },
   },
