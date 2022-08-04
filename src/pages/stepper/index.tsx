@@ -218,20 +218,26 @@ const Stepper = () => {
           )}
         </div>
         {SectionDisplay()}
-        <div className="flex flex-col space-y-6 items-center mt-10 justify-between md:space-y-0 md:flex-row  lg:space-y-0">
+        <div
+          className="flex flex-col space-y-6 items-center mt-10 justify-between
+          md:space-y-0 md:flex-row  lg:space-y-0"
+        >
           <button
             disabled={stepperState === 1}
             onClick={() => {
               setStepperState(stepperState - 1);
               window.scrollTo(0, 0);
             }}
-            className="border-2 border-hero font-semibold text-sm w-48 py-4 rounded-md lg:w-72"
+            className={`border-2 border-hero font-semibold ${
+              stepperState === 1 && "bg-slate-400"
+            } text-sm w-48 py-4 rounded-md lg:w-72`}
           >
             Back
           </button>
           <button
             onClick={nextButtonClicked}
-            className="w-48 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4 rounded-md lg:w-72"
+            className="w-48 text-white font-semibold whitespace-nowrap text-sm bg-herobtn py-4
+            rounded-md lg:w-72"
           >
             {stepperState === stepperSections.length
               ? "Submit"
