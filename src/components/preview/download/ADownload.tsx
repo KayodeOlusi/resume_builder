@@ -31,20 +31,20 @@ const ADownload: FC<IProps> = ({ innerRef }) => {
             <h3 className="font-extrabold text-2xl">Contact</h3>
             <div className="contact">
               <div className="mt-6 flex space-x-4 items-center">
-                <PhoneIcon className="w-6 h-6 text-adolfabase" />
-                <p className="font-semibold text-sm">
+                <PhoneIcon className="w-4 h-4 text-adolfabase" />
+                <p className="font-semibold text-xs">
                   {data?.resume?.personal.phoneNumber}
                 </p>
               </div>
               <div className="mt-6 flex space-x-0 items-center">
-                <MailIcon className="w-6 h-6 text-adolfabase" />
-                <p className="font-semibold text-sm px-5">
+                <MailIcon className="w-4 h-4 text-adolfabase" />
+                <p className="font-semibold text-xs px-5">
                   {data?.resume?.personal.email.split("@")[0]}
                 </p>
               </div>
               <div className="mt-6 flex space-x-4 items-center">
-                <LocationMarkerIcon className="w-6 h-6 text-adolfabase" />
-                <p className="font-semibold text-sm">
+                <LocationMarkerIcon className="w-4 h-4 text-adolfabase" />
+                <p className="font-semibold text-xs">
                   {data?.resume?.personal.address}
                 </p>
               </div>
@@ -128,7 +128,7 @@ const ADownload: FC<IProps> = ({ innerRef }) => {
 
                   return (
                     <div key={id} className="mt-5">
-                      <h5 className="font-bold text-lg">Job Position</h5>
+                      <h5 className="font-bold text-lg">{jobTitle}</h5>
                       <p className="bg-adolfabase p-1 font-bold w-fit text-white">
                         {present
                           ? "Present"
@@ -141,7 +141,6 @@ const ADownload: FC<IProps> = ({ innerRef }) => {
                       <p className="mt-2 font-semibold text-sm">
                         {companyName} | {state}
                       </p>
-                      <p className="mt-2 font-semibold text-sm">{jobTitle}</p>
                       <p className="mt-2 font-normal text-sm">{description}</p>
                     </div>
                   );

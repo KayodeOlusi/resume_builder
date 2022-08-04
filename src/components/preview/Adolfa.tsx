@@ -63,20 +63,20 @@ const Adolfa = () => {
             <h3 className="text-sm font-extrabold md:text-2xl">Contact</h3>
             <div className="contact">
               <div className="mt-3 md:mt-6 space-x-2 flex md:space-x-4 items-center">
-                <PhoneIcon className="w-3 h-3 md:w-6 md:h-6 text-adolfabase" />
-                <p className="text-[0.5rem]  font-semibold md:text-sm">
+                <PhoneIcon className="w-3 h-3 md:w-4 md:h-4 text-adolfabase" />
+                <p className="text-[0.5rem]  font-semibold md:text-xs">
                   {data?.resume?.personal.phoneNumber}
                 </p>
               </div>
               <div className="mt-1 md:mt-6 flex space-x-2 md:space-x-0 items-center">
-                <MailIcon className="w-3 h-3 md:w-6 md:h-6 text-adolfabase" />
-                <p className="text-[0.5rem] font-semibold md:text-sm md:px-5">
+                <MailIcon className="w-3 h-3 md:w-4 md:h-4 text-adolfabase" />
+                <p className="text-[0.5rem] font-semibold md:text-xs md:px-5">
                   {data?.resume?.personal.email.split("@")[0]}
                 </p>
               </div>
               <div className="mt-1 space-x-2 md:mt-6 flex md:space-x-4">
-                <LocationMarkerIcon className="w-3 h-3 md:w-6 md:h-6 text-adolfabase" />
-                <p className="font-semibold text-[0.5rem] md:text-sm">
+                <LocationMarkerIcon className="w-3 h-3 md:w-4 md:h-4 text-adolfabase" />
+                <p className="font-semibold text-[0.5rem] md:text-xs">
                   {data?.resume?.personal.address}
                 </p>
               </div>
@@ -101,11 +101,11 @@ const Adolfa = () => {
                           {startDate.split(" ")[1]} - {endDate.split(" ")[1]}
                         </p>
                       </div>
-                      <p className="font-semibold mt-1 text-[0.65rem] md:text-base md:mt-3">
+                      <p className="font-semibold mt-1 text-[0.55rem] md:text-sm md:mt-3">
                         {degreeObtained}
                       </p>
 
-                      <p className="font-semibold mt-1 text-[0.5rem] md:text-base md:mt-3">
+                      <p className="font-semibold mt-1 text-[0.5rem] md:text-xs md:mt-3">
                         {schoolName} | {state}
                       </p>
                     </div>
@@ -122,7 +122,7 @@ const Adolfa = () => {
                     return (
                       <p
                         key={id}
-                        className="md:text-sm font-semibold mt-2 text-[0.5rem] md:mt-4"
+                        className="md:text-xs font-semibold mt-2 text-[0.5rem] md:mt-4"
                       >
                         {skillName}
                       </p>
@@ -140,16 +140,16 @@ const Adolfa = () => {
                 {data?.resume.personal.lastName}
               </span>
             </p>
-            <p className="md:text-lg mt-3 text-[0.5rem] font-extrabold md:font-semibold md:mt-6">
+            <p className="md:text-lg mt-1 text-[0.5rem] font-extrabold md:font-semibold md:mt-6">
               {data?.resume?.personal.jobTitle}
             </p>
-            <div className="about mt-10 md:mt-16">
+            <div className="about mt-5 md:mt-12">
               <p className="font-extrabold text-sm md:text-2xl">About</p>
-              <p className="md:mt-8 text-[0.5rem] mt-1 md:text-sm font-medium md:font-semibold">
+              <p className="md:mt-4 text-[0.5rem] mt-1 md:text-xs font-medium md:font-semibold">
                 {data?.resume?.personal.professionalSummary}
               </p>
             </div>
-            <div className="experience mt-8 md:mt-16">
+            <div className="experience mt-5 md:mt-12">
               <p className="font-extrabold text-sm md:text-2xl">
                 Work Experience
               </p>
@@ -168,9 +168,9 @@ const Adolfa = () => {
 
                   return (
                     <div key={id} className="mt-2 md:mt-5">
-                      <h5 className="font-bold text-xs md:text-lg">
-                        Job Position
-                      </h5>
+                      <h6 className="font-bold text-xs md:text-lg">
+                        {jobTitle}
+                      </h6>
                       <p className="bg-adolfabase p-1 font-bold w-fit text-[0.6rem] md:text-base text-white">
                         {present
                           ? "Present"
@@ -183,17 +183,14 @@ const Adolfa = () => {
                       <p className="mt-1 md:mt-2 font-semibold text-[0.6rem] md:text-sm">
                         {companyName} | {state}
                       </p>
-                      <p className="mt-1 md:mt-2 font-semibold text-[0.5rem] md:text-sm">
-                        {jobTitle}
-                      </p>
-                      <p className="mt-1 md:mt-2 font-normal text-[0.45rem] md:text-sm">
+                      <p className="mt-1 md:mt-2 font-normal text-[0.45rem] md:text-xs">
                         {description}
                       </p>
                     </div>
                   );
                 })}
             </div>
-            <div className="hobbies mt-10 mb-3 md:mt-16 md:mb-7">
+            <div className="hobbies mt-5 mb-3 md:mt-16 md:mb-7">
               <p className="font-extrabold text-sm md:text-2xl">Hobbies</p>
               <ul className="grid grid-rows-3 grid-flow-col">
                 {data?.resume?.hobbies.map((hob) => {
@@ -202,7 +199,7 @@ const Adolfa = () => {
                   return (
                     <li
                       key={id}
-                      className="mt-1 md:mt-3 text-[0.5rem] md:text-sm font-semibold"
+                      className="mt-1 md:mt-3 text-[0.5rem] md:text-xs font-semibold"
                     >
                       {hobby}
                     </li>

@@ -45,30 +45,30 @@ const Pixel = () => {
       <div className="relative max-w-2xl mx-auto border-4 mb-14">
         <Fragment>
           <img src={svgs.pixel1} alt="" className="w-full" />
-          <div className="grid grid-cols-2 mb-1">
-            <div className="flex flex-col items-center px-7">
+          <div className="grid grid-cols-2 md:mb-1">
+            <div className="flex flex-col items-center px-2 md:px-7">
               <img
                 src={data?.resume ? (image ? image : svgs.thumb) : ""}
                 alt=""
                 className="w-20 h-20 md:w-40 md:h-40 rounded-full p-2 border-4 md:border-8 border-pixel"
               />
-              <p className="font-bold text-2xl mt-4">
+              <p className="font-bold text-sm md:text-2xl mt-4">
                 {`${data?.resume.personal.firstName} ${data?.resume.personal.lastName}`}
               </p>
-              <p className="mt-2 tet-sm font-bold">
+              <p className="mt-2 text-xs md:text-sm font-bold">
                 {data?.resume.personal.jobTitle}
               </p>
-              <p className="text-xs font-normal mt-2">
+              <p className="text-[0.5rem] md:text-xs font-normal mt-2">
                 {data?.resume.personal.professionalSummary}
               </p>
-              <div className="contact mt-9 flex flex-col items-center">
+              <div className="contact mt-6 md:mt-9 flex flex-col items-center">
                 <h3 className="text-sm font-extrabold md:text-2xl">Contact</h3>
-                <div className="flex items-center space-x-4 mt-5">
+                <div className="flex items-center space-x-1 md:space-x-4 mt-5">
                   <span
-                    className="bg-pixel flex justify-center items-center w-9 h-6
-                rounded-tl-2xl rounded-br-2xl"
+                    className="bg-pixel flex justify-center items-center w-5 h-5 md:w-9 md:h-6
+                    rounded-tl-2xl rounded-br-2xl"
                   >
-                    <MailIcon className="w-4 h-4 text-white" />
+                    <MailIcon className="w-2 h-2 md:w-4 md:h-4 text-white" />
                   </span>
                   <p className="text-xs">
                     {data?.resume?.personal.email.split("@")[0]}

@@ -119,10 +119,10 @@ const GemHeart: FC = () => {
                 {data?.resume.personal.lastName}
               </span>
             </p>
-            <p className="md:text-lg mt-3 text-[0.5rem] font-extrabold md:font-semibold md:mt-6">
+            <p className="md:text-lg mt-3 text-xs font-extrabold md:font-semibold md:mt-6">
               {data?.resume?.personal.jobTitle}
             </p>
-            <p className="md:mt-6 text-[0.5rem] mt-1 md:text-sm font-medium md:font-semibold">
+            <p className="md:mt-6 text-[0.5rem] mt-1 md:text-sm font-medium md:font-bold">
               {data?.resume?.personal.professionalSummary}
             </p>
             <div className="experience mt-8 md:mt-16">
@@ -144,8 +144,8 @@ const GemHeart: FC = () => {
 
                   return (
                     <div key={id} className="mt-2 md:mt-5">
-                      <h5 className="font-bold text-xs md:text-lg">
-                        Job Position
+                      <h5 className="font-bold text-[0.7rem] md:text-lg">
+                        {jobTitle}
                       </h5>
                       <p className="bg-gemheartbase p-1 font-bold w-fit text-[0.6rem] md:text-base text-white">
                         {present
@@ -159,9 +159,6 @@ const GemHeart: FC = () => {
                       <p className="mt-1 md:mt-2 font-semibold text-[0.6rem] md:text-sm">
                         {companyName} | {state}
                       </p>
-                      <p className="mt-1 md:mt-2 font-semibold text-[0.5rem] md:text-sm">
-                        {jobTitle}
-                      </p>
                       <p className="mt-1 md:mt-2 font-normal text-[0.45rem] md:text-sm">
                         {description}
                       </p>
@@ -169,7 +166,7 @@ const GemHeart: FC = () => {
                   );
                 })}
             </div>
-            <div className="hobbies mt-10 mb-3 md:mt-16 md:mb-7">
+            <div className="hobbies mt-7 mb-3 md:mt-16 md:mb-7">
               <p className="font-extrabold text-sm md:text-2xl">Hobbies</p>
               <ul className="grid grid-rows-3 grid-flow-col gap-x-3 md:gap-x-1">
                 {data?.resume?.hobbies.map((hob) => {
@@ -186,7 +183,7 @@ const GemHeart: FC = () => {
                 })}
               </ul>
             </div>
-            <div className="skills mt-8 mb-3 md:mt-16 md:mb-6">
+            <div className="skills mt-7 mb-3 md:mt-16 md:mb-6">
               <h3 className="font-extrabold text-sm md:text-2xl">Skills</h3>
               <div className="grid grid-rows-5 grid-flow-col gap-x-3 md:gap-x-1">
                 {data?.resume &&
