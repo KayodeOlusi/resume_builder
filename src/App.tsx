@@ -6,14 +6,14 @@ import RequireAuth from "./components/auth/RequireAuth";
 // Components
 import ScrollToTop from "./hooks/ScrollToTop";
 const Steps = lazy(() => import("./pages/steps"));
+const Stepper = lazy(() => import("./pages/stepper"));
 const Landing = lazy(() => import("./pages/landing"));
+const Preview = lazy(() => import("./pages/preview"));
 const Navbar = lazy(() => import("./components/navbar"));
 const SignUp = lazy(() => import("./pages/auth/signup"));
 const SignIn = lazy(() => import("./pages/auth/signin"));
 const PageLayout = lazy(() => import("./layout/PageLayout"));
 const Templates = lazy(() => import("./components/steps/templates/Templates"));
-const Stepper = lazy(() => import("./pages/stepper"));
-const Preview = lazy(() => import("./pages/preview"));
 
 function App() {
   return (

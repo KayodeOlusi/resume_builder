@@ -10,7 +10,12 @@ const Navbar: FC = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
   const [blur, setBlur] = useState(false);
-  const nav_links = ["Templates", "Resume Builder", "Blog", "Contact"];
+  const nav_links = [
+    { name: "Templates", path: "page/templates" },
+    { name: "Resume Builder", path: "page" },
+    { name: "Blog", path: "blog" },
+    { name: "Contact", path: "contact" },
+  ];
 
   const variants = {
     hidden: {
@@ -62,8 +67,8 @@ const Navbar: FC = () => {
         </Link>
         <div className="hidden lg:flex lg:space-x-10">
           {nav_links.map((link, index) => (
-            <Link key={link} to={`page/${link.toLocaleLowerCase()}`}>
-              <p className="font-semibold">{link}</p>
+            <Link key={link.name} to={`${link.path.toLocaleLowerCase()}`}>
+              <p className="font-semibold">{link.name}</p>
             </Link>
           ))}
         </div>
