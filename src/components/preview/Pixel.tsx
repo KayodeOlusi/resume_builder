@@ -58,41 +58,43 @@ const Pixel = () => {
               <p className="mt-2 text-xs md:text-sm font-bold">
                 {data?.resume.personal.jobTitle}
               </p>
-              <p className="text-[0.5rem] md:text-xs font-normal mt-2">
+              <p className="text-[0.5rem] px-1 md:px-0 md:text-xs font-normal mt-2">
                 {data?.resume.personal.professionalSummary}
               </p>
               <div className="contact mt-6 md:mt-9 flex flex-col items-center">
                 <h3 className="text-sm font-extrabold md:text-2xl">Contact</h3>
-                <div className="flex items-center space-x-1 md:space-x-4 mt-5">
+                <div className="flex space-x-3 mt-5">
                   <span
                     className="bg-pixel flex justify-center items-center w-5 h-5 md:w-9 md:h-6
                     rounded-tl-2xl rounded-br-2xl"
                   >
                     <MailIcon className="w-2 h-2 md:w-4 md:h-4 text-white" />
                   </span>
-                  <p className="text-xs">
+                  <p className="text-[0.5rem] md:text-xs">
                     {data?.resume?.personal.email.split("@")[0]}
                   </p>
                 </div>
-                <div className="flex items-center space-x-3 mt-2">
+                <div className="flex space-x-3 mt-2 w-full">
                   <span
-                    className="bg-pixel flex justify-center items-center w-9 h-6
-                rounded-tl-2xl rounded-br-2xl"
+                    className="bg-pixel flex justify-center items-center w-5 h-5 md:w-9 md:h-6
+                    rounded-tl-2xl rounded-br-2xl"
                   >
-                    <PhoneIcon className="w-4 h-4 text-white" />
+                    <PhoneIcon className="w-2 h-2 md:w-4 md:h-4 text-white" />
                   </span>
-                  <p className="text-xs">
+                  <p className="text-[0.5rem] text-xs">
                     {data?.resume?.personal.phoneNumber}
                   </p>
                 </div>
-                <div className="flex items-center space-x-4 mt-2 mr-9">
+                <div className="flex space-x-3 mt-2 w-full">
                   <span
-                    className="bg-pixel flex justify-center items-center w-9 h-6
-                rounded-tl-2xl rounded-br-2xl"
+                    className="bg-pixel flex justify-center items-center w-5 h-5 md:w-9 md:h-6
+                    rounded-tl-2xl rounded-br-2xl"
                   >
-                    <LocationMarkerIcon className="w-4 h-4 text-white" />
+                    <LocationMarkerIcon className="w-2 h-2 md:w-4 md:h-4 text-white" />
                   </span>
-                  <p className="text-xs">{data?.resume?.personal.address}</p>
+                  <p className="text-[0.5rem] md:text-xs">
+                    {data?.resume?.personal.address}
+                  </p>
                 </div>
               </div>
               <div className="skills mt-12">
@@ -114,13 +116,13 @@ const Pixel = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-4 flex flex-col items-center px-10">
+            <div className="mt-4 flex flex-col px-2 md:px-10">
               <div className="education">
                 <div
-                  className="bg-pixel flex items-center justify-center w-56 h-10
-             mb-6 rounded-tl-2xl rounded-br-2xl"
+                  className="bg-pixel flex items-center justify-center ml-4 md:ml-0 w-20 h-6 md:w-56 md:h-10
+                  mb-6 rounded-tl-2xl rounded-br-2xl"
                 >
-                  <h3 className="text-sm font-extrabold text-white md:text-xl">
+                  <h3 className="text-[0.65rem] font-extrabold text-white md:text-xl">
                     Education
                   </h3>
                 </div>
@@ -138,14 +140,16 @@ const Pixel = () => {
                     return (
                       <div
                         key={id}
-                        className="flex items-center mt-6 space-x-4"
+                        className="flex items-center space-x-0 md:mt-6 md:space-x-4"
                       >
-                        <p className="text-xs font-extrabold">
+                        <p className="text-[0.5rem] md:text-xs font-extrabold">
                           {startDate.split(" ")[1]} - {endDate.split(" ")[1]}
                         </p>
                         <div>
-                          <p className="text-xs font-bold">{degreeObtained}</p>
-                          <p className="text-[0.7rem]">
+                          <p className="text-[0.6rem] md:text-xs font-bold">
+                            {degreeObtained}
+                          </p>
+                          <p className="text-[0.5rem] md:text-[0.7rem]">
                             {schoolName} | {state}
                           </p>
                         </div>
@@ -155,10 +159,10 @@ const Pixel = () => {
               </div>
               <div className="work mt-16">
                 <div
-                  className="bg-pixel flex items-center justify-center w-56 h-10
-              mb-6 rounded-tl-2xl rounded-br-2xl"
+                  className="bg-pixel flex items-center justify-center ml-4 md:ml-0 w-20 h-6 md:w-56 md:h-10
+                  mb-6 rounded-tl-2xl rounded-br-2xl"
                 >
-                  <h3 className="text-sm font-extrabold text-white md:text-xl">
+                  <h3 className="text-[0.6rem] p-4 md:text-sm font-extrabold text-white md:text-xl">
                     Work Experience
                   </h3>
                 </div>
@@ -179,7 +183,7 @@ const Pixel = () => {
                         key={id}
                         className="flex items-center mt-6 space-x-4"
                       >
-                        <p className="text-xs font-extrabold">
+                        <p className="text-[0.5rem] md:text-xs font-extrabold">
                           {present
                             ? "Present"
                             : startDate.split(" ")[1] === endDate.split(" ")[1]
@@ -189,22 +193,26 @@ const Pixel = () => {
                               }`}
                         </p>
                         <div>
-                          <p className="text-xs font-bold">{companyName}</p>
-                          <p className="text-[0.7rem] font-semibold">
+                          <p className="text-[0.6rem] md:text-xs font-bold">
+                            {companyName}
+                          </p>
+                          <p className="text-[0.5rem] md:text-[0.7rem] font-semibold">
                             {jobTitle}
                           </p>
-                          <p className="text-[0.6rem]">{description}</p>
+                          <p className="text-[0.5rem] md:text-[0.6rem]">
+                            {description}
+                          </p>
                         </div>
                       </div>
                     );
                   })}
               </div>
-              <div className="hobbies">
+              <div className="hobbies ml-4 md:ml-0">
                 <div
-                  className="bg-pixel flex items-center justify-center w-56 h-10
-              mt-14 rounded-tl-2xl rounded-br-2xl"
+                  className="bg-pixel flex items-center justify-center w-20 h-6 md:w-56 md:h-10
+                  mt-14 rounded-tl-2xl rounded-br-2xl"
                 >
-                  <h3 className="text-sm font-extrabold text-white md:text-xl">
+                  <h3 className="text-[0.6rem] md:text-sm font-extrabold text-white md:text-xl">
                     Hobbies
                   </h3>
                 </div>
@@ -215,7 +223,7 @@ const Pixel = () => {
                     return (
                       <li
                         key={id}
-                        className="mt-1 md:mt-3 text-[0.5rem] md:text-sm font-semibold"
+                        className="mt-2 md:mt-3 text-[0.5rem] md:text-sm font-semibold"
                       >
                         {hobby}
                       </li>
