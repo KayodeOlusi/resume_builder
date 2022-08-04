@@ -60,42 +60,44 @@ const Hobbies = ({ formData, setFormData }: IProps) => {
         Give a list of your hobbies.
       </h6>
 
-      {formData.hobbies.length ? (
-        formData.hobbies.map((hobbyName, index) => {
-          const { hobby, id } = hobbyName;
+      <form className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {formData.hobbies.length ? (
+          formData.hobbies.map((hobbyName, index) => {
+            const { hobby, id } = hobbyName;
 
-          return (
-            <div key={id} className="mt-12 px-5 md:px-0 md:mt-8">
-              <form className="mt-8 flex space-x-2 md:space-x-8 md:justify-between md:mt-12">
-                <div className="flex-1">
-                  <p className="text-sm font-semibold text-herotext mb-3">
-                    Hobby
-                  </p>
-                  <input
-                    type="text"
-                    id="hobby"
-                    name="hobby"
-                    value={hobby}
-                    onChange={(e) => handleChange(e, index)}
-                    className=" bg-landingcard py-3 px-4 rounded-md font-semibold 
-                    text-sm text-herotext w-[16rem] sm-px-8 md:w-[22rem] xl:w-[34rem]"
+            return (
+              <div key={id} className="mt-12 px-5 md:px-0 md:mt-8">
+                <div className="flex items-center space-x-2">
+                  <div className="flex-1 sm:flex-none">
+                    <p className="text-sm font-semibold text-herotext mb-3">
+                      Hobby
+                    </p>
+                    <input
+                      type="text"
+                      id="hobby"
+                      name="hobby"
+                      value={hobby}
+                      onChange={(e) => handleChange(e, index)}
+                      className=" bg-landingcard py-3 px-4 rounded-md font-semibold 
+                      text-sm text-herotext w-full sm:px-8 sm-[w-15rem] md:w-[20rem] lg:w-[26rem] xl:w-[32rem]"
+                    />
+                  </div>
+                  <TrashIcon
+                    className="w-6 h-6 text-red-600 cursor-pointer"
+                    onClick={() => deleteHobby(index)}
                   />
                 </div>
-                <TrashIcon
-                  className="w-6 h-6 text-red-600 cursor-pointer"
-                  onClick={() => deleteHobby(index)}
-                />
-              </form>
-            </div>
-          );
-        })
-      ) : (
-        <div className="mt-6 px-5 text-center md:text-left md:px-0">
-          <p className="text-base font-semibold text-herotext mb-3">
-            No hobby added.
-          </p>
-        </div>
-      )}
+              </div>
+            );
+          })
+        ) : (
+          <div className="mt-6 px-5 text-center md:text-left md:px-0">
+            <p className="text-base font-semibold text-herotext mb-3">
+              No hobby added.
+            </p>
+          </div>
+        )}
+      </form>
       <div className="flex items-center px-5 space-x-2 mt-4 md:px-0">
         <img src={svgs.add} alt="" className="w-4 h-4" />
         <p

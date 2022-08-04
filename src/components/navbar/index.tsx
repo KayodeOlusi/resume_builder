@@ -83,7 +83,7 @@ const Navbar: FC = () => {
                 className="h-10 w-10 rounded-full bg-slate-600 font-medium text-white
                 flex items-center justify-center"
               >
-                {user.displayName ? user.displayName[0] : ""}
+                {user.email ? user.email[0].toUpperCase() : ""}
               </div>
             )}
           </div>
