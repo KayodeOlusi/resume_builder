@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
+import User from "./user";
 
 const Navbar: FC = () => {
   const navigate = useNavigate();
@@ -73,25 +74,7 @@ const Navbar: FC = () => {
           ))}
         </div>
         {user ? (
-          <div className="hidden items-center lg:flex lg:space-x-10">
-            <p className="font-semibold text-herotext text-sm">
-              {user.displayName?.split(" ")[0]}
-            </p>
-            {user.photoURL ? (
-              <img
-                src={user.photoURL}
-                alt=""
-                className="h-10 w-10 cursor-pointer rounded-full md:block"
-              />
-            ) : (
-              <div
-                className="h-10 w-10 rounded-full bg-slate-600 font-medium text-white
-                flex items-center justify-center"
-              >
-                {user.email ? user.email[0].toUpperCase() : ""}
-              </div>
-            )}
-          </div>
+          <User />
         ) : (
           <div className="hidden items-center lg:flex lg:space-x-10">
             <button

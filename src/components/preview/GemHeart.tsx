@@ -79,35 +79,42 @@ const GemHeart: FC = () => {
               </div>
             </div>
             <div className="education mt-8 md:mt-16">
-              <h3 className="font-extrabold text-sm md:text-2xl">Education</h3>
-              {data?.resume &&
-                data?.resume?.education.map((educate) => {
-                  const {
-                    id,
-                    degreeObtained,
-                    endDate,
-                    schoolName,
-                    state,
-                    startDate,
-                  } = educate;
+              {data?.resume.education && (
+                <>
+                  <h3 className="font-extrabold text-sm md:text-2xl">
+                    Education
+                  </h3>
+                  {data?.resume &&
+                    data?.resume?.education.map((educate) => {
+                      const {
+                        id,
+                        degreeObtained,
+                        endDate,
+                        schoolName,
+                        state,
+                        startDate,
+                      } = educate;
 
-                  return (
-                    <div key={id} className="mt-2 md:mt-6">
-                      <div className="w-fit">
-                        <p className="bg-gemheartbase p-1 font-bold text-white text-[0.6rem] md:text-base">
-                          {startDate.split(" ")[1]} - {endDate.split(" ")[1]}
-                        </p>
-                      </div>
-                      <p className="font-bold mt-1 text-[0.65rem] md:text-base md:mt-3">
-                        {degreeObtained}
-                      </p>
+                      return (
+                        <div key={id} className="mt-2 md:mt-6">
+                          <div className="w-fit">
+                            <p className="bg-gemheartbase p-1 font-bold text-white text-[0.6rem] md:text-base">
+                              {startDate.split(" ")[1]} -{" "}
+                              {endDate.split(" ")[1]}
+                            </p>
+                          </div>
+                          <p className="font-bold mt-1 text-[0.65rem] md:text-base md:mt-3">
+                            {degreeObtained}
+                          </p>
 
-                      <p className="font-semibold mt-1 text-[0.5rem] md:text-sm md:mt-3">
-                        {schoolName} | {state}
-                      </p>
-                    </div>
-                  );
-                })}
+                          <p className="font-semibold mt-1 text-[0.5rem] md:text-sm md:mt-3">
+                            {schoolName} | {state}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -126,80 +133,93 @@ const GemHeart: FC = () => {
               {data?.resume?.personal.professionalSummary}
             </p>
             <div className="experience mt-8 md:mt-16">
-              <p className="font-extrabold text-sm md:text-2xl">
-                Work Experience
-              </p>
-              {data?.resume &&
-                data?.resume?.work.map((exp) => {
-                  const {
-                    id,
-                    state,
-                    present,
-                    endDate,
-                    jobTitle,
-                    startDate,
-                    companyName,
-                    description,
-                  } = exp;
+              {data?.resume.work && (
+                <>
+                  <p className="font-extrabold text-sm md:text-2xl">
+                    Work Experience
+                  </p>
+                  {data?.resume &&
+                    data?.resume?.work.map((exp) => {
+                      const {
+                        id,
+                        state,
+                        present,
+                        endDate,
+                        jobTitle,
+                        startDate,
+                        companyName,
+                        description,
+                      } = exp;
 
-                  return (
-                    <div key={id} className="mt-2 md:mt-5">
-                      <h5 className="font-bold text-[0.7rem] md:text-lg">
-                        {jobTitle}
-                      </h5>
-                      <p className="bg-gemheartbase p-1 font-bold w-fit text-[0.6rem] md:text-base text-white">
-                        {present
-                          ? "Present"
-                          : startDate.split(" ")[1] === endDate.split(" ")[1]
-                          ? startDate.split(" ")[1]
-                          : `${startDate.split(" ")[1]} - ${
-                              endDate.split(" ")[1]
-                            }`}
-                      </p>
-                      <p className="mt-1 md:mt-2 font-semibold text-[0.6rem] md:text-sm">
-                        {companyName} | {state}
-                      </p>
-                      <p className="mt-1 md:mt-2 font-normal text-[0.45rem] md:text-sm">
-                        {description}
-                      </p>
-                    </div>
-                  );
-                })}
+                      return (
+                        <div key={id} className="mt-2 md:mt-5">
+                          <h5 className="font-bold text-[0.7rem] md:text-lg">
+                            {jobTitle}
+                          </h5>
+                          <p className="bg-gemheartbase p-1 font-bold w-fit text-[0.6rem] md:text-base text-white">
+                            {present
+                              ? "Present"
+                              : startDate.split(" ")[1] ===
+                                endDate.split(" ")[1]
+                              ? startDate.split(" ")[1]
+                              : `${startDate.split(" ")[1]} - ${
+                                  endDate.split(" ")[1]
+                                }`}
+                          </p>
+                          <p className="mt-1 md:mt-2 font-semibold text-[0.6rem] md:text-sm">
+                            {companyName} | {state}
+                          </p>
+                          <p className="mt-1 md:mt-2 font-normal text-[0.45rem] md:text-sm">
+                            {description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </>
+              )}
             </div>
             <div className="hobbies mt-7 mb-3 md:mt-16 md:mb-7">
-              <p className="font-extrabold text-sm md:text-2xl">Hobbies</p>
-              <ul className="grid grid-rows-3 grid-flow-col gap-x-3 md:gap-x-1">
-                {data?.resume?.hobbies.map((hob) => {
-                  const { hobby, id } = hob;
+              {data?.resume.hobbies && (
+                <>
+                  <p className="font-extrabold text-sm md:text-2xl">Hobbies</p>
+                  <ul className="grid grid-rows-3 grid-flow-col gap-x-3 md:gap-x-1">
+                    {data?.resume?.hobbies.map((hob) => {
+                      const { hobby, id } = hob;
 
-                  return (
-                    <li
-                      key={id}
-                      className="mt-1 md:mt-3 text-[0.5rem] md:text-sm font-semibold"
-                    >
-                      {hobby}
-                    </li>
-                  );
-                })}
-              </ul>
+                      return (
+                        <li
+                          key={id}
+                          className="mt-1 md:mt-3 text-[0.5rem] md:text-sm font-semibold"
+                        >
+                          {hobby}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
+              )}
             </div>
             <div className="skills mt-7 mb-3 md:mt-16 md:mb-6">
-              <h3 className="font-extrabold text-sm md:text-2xl">Skills</h3>
-              <div className="grid grid-rows-5 grid-flow-col gap-x-3 md:gap-x-1">
-                {data?.resume &&
-                  data?.resume?.skills.map((skill) => {
-                    const { id, skillName } = skill;
+              {data?.resume.skills && (
+                <>
+                  <h3 className="font-extrabold text-sm md:text-2xl">Skills</h3>
+                  <div className="grid grid-rows-5 grid-flow-col gap-x-3 md:gap-x-1">
+                    {data?.resume &&
+                      data?.resume?.skills.map((skill) => {
+                        const { id, skillName } = skill;
 
-                    return (
-                      <p
-                        key={id}
-                        className="md:text-sm font-semibold mt-2 text-[0.5rem] md:mt-4"
-                      >
-                        {skillName}
-                      </p>
-                    );
-                  })}
-              </div>
+                        return (
+                          <p
+                            key={id}
+                            className="md:text-sm font-semibold mt-2 text-[0.5rem] md:mt-4"
+                          >
+                            {skillName}
+                          </p>
+                        );
+                      })}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

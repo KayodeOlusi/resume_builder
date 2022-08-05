@@ -16,6 +16,7 @@ module.exports = {
         gemheart: "#E5E5E5",
         gemheartbase: "#1E90FF",
         pixel: "#23B1BF",
+        empire: "#2B43CD",
       },
     },
   },

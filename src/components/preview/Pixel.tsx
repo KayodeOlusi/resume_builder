@@ -81,7 +81,7 @@ const Pixel = () => {
                   >
                     <PhoneIcon className="w-2 h-2 md:w-4 md:h-4 text-white" />
                   </span>
-                  <p className="text-[0.5rem] text-xs">
+                  <p className="text-[0.5rem] md:text-xs">
                     {data?.resume?.personal.phoneNumber}
                   </p>
                 </div>
@@ -98,138 +98,158 @@ const Pixel = () => {
                 </div>
               </div>
               <div className="skills mt-12">
-                <h3 className="text-sm font-extrabold md:text-2xl">Skills</h3>
-                <div className="grid grid-rows-5 grid-flow-col gap-2">
-                  {data?.resume &&
-                    data?.resume?.skills.map((skill) => {
-                      const { id, skillName } = skill;
+                {data?.resume.skills && (
+                  <>
+                    <h3 className="text-sm font-extrabold md:text-2xl">
+                      Skills
+                    </h3>
+                    <div className="grid grid-rows-5 grid-flow-col gap-2">
+                      {data?.resume &&
+                        data?.resume?.skills.map((skill) => {
+                          const { id, skillName } = skill;
 
-                      return (
-                        <p
-                          key={id}
-                          className="md:text-sm font-semibold mt-2 text-[0.5rem] md:mt-4"
-                        >
-                          {skillName}
-                        </p>
-                      );
-                    })}
-                </div>
+                          return (
+                            <p
+                              key={id}
+                              className="md:text-sm font-semibold mt-2 text-[0.5rem] md:mt-4"
+                            >
+                              {skillName}
+                            </p>
+                          );
+                        })}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <div className="mt-4 flex flex-col px-2 md:px-10">
               <div className="education">
-                <div
-                  className="bg-pixel flex items-center justify-center ml-4 md:ml-0 w-20 h-6 md:w-56 md:h-10
+                {data?.resume.education && (
+                  <>
+                    <div
+                      className="bg-pixel flex items-center justify-center ml-4 md:ml-0 w-20 h-6 md:w-56 md:h-10
                   mb-6 rounded-tl-2xl rounded-br-2xl"
-                >
-                  <h3 className="text-[0.65rem] font-extrabold text-white md:text-xl">
-                    Education
-                  </h3>
-                </div>
-                {data?.resume &&
-                  data.resume.education.map((educate) => {
-                    const {
-                      id,
-                      state,
-                      endDate,
-                      startDate,
-                      schoolName,
-                      degreeObtained,
-                    } = educate;
+                    >
+                      <h3 className="text-[0.65rem] font-extrabold text-white md:text-xl">
+                        Education
+                      </h3>
+                    </div>
+                    {data?.resume &&
+                      data.resume.education.map((educate) => {
+                        const {
+                          id,
+                          state,
+                          endDate,
+                          startDate,
+                          schoolName,
+                          degreeObtained,
+                        } = educate;
 
-                    return (
-                      <div
-                        key={id}
-                        className="flex items-center space-x-0 md:mt-6 md:space-x-4"
-                      >
-                        <p className="text-[0.5rem] md:text-xs font-extrabold">
-                          {startDate.split(" ")[1]} - {endDate.split(" ")[1]}
-                        </p>
-                        <div>
-                          <p className="text-[0.6rem] md:text-xs font-bold">
-                            {degreeObtained}
-                          </p>
-                          <p className="text-[0.5rem] md:text-[0.7rem]">
-                            {schoolName} | {state}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
+                        return (
+                          <div
+                            key={id}
+                            className="flex items-center space-x-0 md:mt-6 md:space-x-4"
+                          >
+                            <p className="text-[0.5rem] md:text-xs font-extrabold">
+                              {startDate.split(" ")[1]} -{" "}
+                              {endDate.split(" ")[1]}
+                            </p>
+                            <div>
+                              <p className="text-[0.6rem] md:text-xs font-bold">
+                                {degreeObtained}
+                              </p>
+                              <p className="text-[0.5rem] md:text-[0.7rem]">
+                                {schoolName} | {state}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </>
+                )}
               </div>
               <div className="work mt-16">
-                <div
-                  className="bg-pixel flex items-center justify-center ml-4 md:ml-0 w-20 h-6 md:w-56 md:h-10
+                {data?.resume.work && (
+                  <>
+                    <div
+                      className="bg-pixel flex items-center justify-center ml-4 md:ml-0 w-20 h-6 md:w-56 md:h-10
                   mb-6 rounded-tl-2xl rounded-br-2xl"
-                >
-                  <h3 className="text-[0.6rem] p-4 md:text-sm font-extrabold text-white md:text-xl">
-                    Work Experience
-                  </h3>
-                </div>
-                {data?.resume &&
-                  data.resume.work.map((exp) => {
-                    const {
-                      id,
-                      present,
-                      endDate,
-                      jobTitle,
-                      startDate,
-                      description,
-                      companyName,
-                    } = exp;
+                    >
+                      <h3 className="text-[0.6rem] p-4 font-extrabold text-white md:text-xl">
+                        Work Experience
+                      </h3>
+                    </div>
+                    {data?.resume &&
+                      data.resume.work.map((exp) => {
+                        const {
+                          id,
+                          present,
+                          endDate,
+                          jobTitle,
+                          startDate,
+                          description,
+                          companyName,
+                        } = exp;
 
-                    return (
-                      <div
-                        key={id}
-                        className="flex items-center mt-6 space-x-4"
-                      >
-                        <p className="text-[0.5rem] md:text-xs font-extrabold">
-                          {present
-                            ? "Present"
-                            : startDate.split(" ")[1] === endDate.split(" ")[1]
-                            ? startDate.split(" ")[1]
-                            : `${startDate.split(" ")[1]} - ${
-                                endDate.split(" ")[1]
-                              }`}
-                        </p>
-                        <div>
-                          <p className="text-[0.6rem] md:text-xs font-bold">
-                            {companyName}
-                          </p>
-                          <p className="text-[0.5rem] md:text-[0.7rem] font-semibold">
-                            {jobTitle}
-                          </p>
-                          <p className="text-[0.5rem] md:text-[0.6rem]">
-                            {description}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
+                        return (
+                          <div
+                            key={id}
+                            className="flex items-center mt-6 space-x-4"
+                          >
+                            <p className="text-[0.5rem] md:text-xs font-extrabold">
+                              {present
+                                ? "Present"
+                                : startDate.split(" ")[1] ===
+                                  endDate.split(" ")[1]
+                                ? startDate.split(" ")[1]
+                                : `${startDate.split(" ")[1]} - ${
+                                    endDate.split(" ")[1]
+                                  }`}
+                            </p>
+                            <div>
+                              <p className="text-[0.6rem] md:text-xs font-bold">
+                                {companyName}
+                              </p>
+                              <p className="text-[0.5rem] md:text-[0.7rem] font-semibold">
+                                {jobTitle}
+                              </p>
+                              <p className="text-[0.5rem] md:text-[0.6rem]">
+                                {description}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </>
+                )}
               </div>
               <div className="hobbies ml-4 md:ml-0">
-                <div
-                  className="bg-pixel flex items-center justify-center w-20 h-6 md:w-56 md:h-10
-                  mt-14 rounded-tl-2xl rounded-br-2xl"
-                >
-                  <h3 className="text-[0.6rem] md:text-sm font-extrabold text-white md:text-xl">
-                    Hobbies
-                  </h3>
-                </div>
-                <ul className="grid grid-rows-3 grid-flow-col gap-2">
-                  {data?.resume?.hobbies.map((hob) => {
-                    const { hobby, id } = hob;
+                {data?.resume.hobbies && (
+                  <>
+                    <div
+                      className="bg-pixel flex items-center justify-center w-20 h-6 md:w-56 md:h-10
+                      mt-14 rounded-tl-2xl rounded-br-2xl"
+                    >
+                      <h3 className="text-[0.6rem] font-extrabold text-white md:text-xl">
+                        Hobbies
+                      </h3>
+                    </div>
+                    <ul className="grid grid-rows-3 grid-flow-col gap-2">
+                      {data?.resume?.hobbies.map((hob) => {
+                        const { hobby, id } = hob;
 
-                    return (
-                      <li
-                        key={id}
-                        className="mt-2 md:mt-3 text-[0.5rem] md:text-sm font-semibold"
-                      >
-                        {hobby}
-                      </li>
-                    );
-                  })}
-                </ul>
+                        return (
+                          <li
+                            key={id}
+                            className="mt-2 md:mt-3 text-[0.5rem] md:text-sm font-semibold"
+                          >
+                            {hobby}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
+                )}
               </div>
             </div>
           </div>

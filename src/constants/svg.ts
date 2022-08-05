@@ -24,6 +24,9 @@ import google_icon from "../assets/svg/google1.svg";
 import linkedin from "../assets/svg/linkedin.svg";
 import cloud from "../assets/svg/cloud.svg";
 import pixel2 from "../assets/svg/pixel2.svg";
+import pixel3 from "../assets/svg/pixel3.svg";
+import pixel4 from "../assets/svg/pixel4.svg";
+import empiremiddle from "../assets/svg/empiremiddle.svg";
 
 export default {
   fb,
@@ -39,6 +42,8 @@ export default {
   thumb,
   pixel1,
   pixel2,
+  pixel3,
+  pixel4,
   stripe,
   paypal,
   google,
@@ -52,4 +57,5 @@ export default {
   gemheartc,
   gemheartcc,
   google_icon,
+  empiremiddle,
 };
