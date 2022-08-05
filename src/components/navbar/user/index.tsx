@@ -18,7 +18,7 @@ const User = () => {
   return (
     <div className="w-56 text-right">
       <Menu as="div" className="relative inline-block text-left">
-        <div>
+        <div className="hidden md:block">
           <Menu.Button
             onClick={() => setOpen(!open)}
             className="inline-flex items-center w-full justify-center rounded-md
@@ -47,7 +47,7 @@ const User = () => {
               </div>
             )}
             <ChevronDownIcon
-              className="ml-2 -mr-1 h-5 w-5 hidden md:block text-alium hover:text-alium"
+              className="ml-2 -mr-1 h-5 w-5 text-alium hover:text-alium"
               aria-hidden="true"
             />
           </Menu.Button>
