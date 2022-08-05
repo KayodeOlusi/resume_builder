@@ -66,7 +66,7 @@ const Mobile = ({ open, setOpen, links }: IProps) => {
   return (
     <motion.div
       className="top-0 right-0 fixed z-50 overflow-x-hidden overflow-y-hidden
-       h-screen w-3/5 bg-slate-100 md:hidden"
+       h-screen w-3/5 bg-slate-100 lg:hidden"
       variants={variants}
       initial="hidden"
       animate={open ? "visible" : "hidden"}

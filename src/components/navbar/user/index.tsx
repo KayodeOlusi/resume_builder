@@ -18,7 +18,7 @@ const User = () => {
   return (
     <div className="w-56 text-right">
       <Menu as="div" className="relative inline-block text-left">
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Menu.Button
             onClick={() => setOpen(!open)}
             className="inline-flex items-center w-full justify-center rounded-md
