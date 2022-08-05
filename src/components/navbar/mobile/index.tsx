@@ -96,7 +96,7 @@ const Mobile = ({ open, setOpen, links }: IProps) => {
           </motion.p>
         ))}
       </motion.div>
-      <div className="ml-6 mt-12">
+      <div className="ml-6 mt-10">
         {user ? (
           <>
             <p className="font-semibold text-herotext text-sm">
