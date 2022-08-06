@@ -68,7 +68,7 @@ const PDownload: FC<IProps> = ({ innerRef }) => {
           </div>
           <div className="skills mt-12">
             <h3 className="font-extrabold text-2xl">Skills</h3>
-            <div className="grid grid-rows-5 grid-flow-col gap-2">
+            <div className="grid grid-rows-5 grid-flow-col gap-x-6 gap-y-2">
               {data?.resume &&
                 data?.resume?.skills.map((skill) => {
                   const { id, skillName } = skill;

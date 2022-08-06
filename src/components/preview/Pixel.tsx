@@ -103,7 +103,7 @@ const Pixel = () => {
                     <h3 className="text-sm font-extrabold md:text-2xl">
                       Skills
                     </h3>
-                    <div className="grid grid-rows-5 grid-flow-col gap-2">
+                    <div className="grid grid-rows-5 grid-flow-col gap-x-2 md:gap-x-6 gap-y-2">
                       {data?.resume &&
                         data?.resume?.skills.map((skill) => {
                           const { id, skillName } = skill;

@@ -41,7 +41,7 @@ const Mobile = ({ open, setOpen, links }: IProps) => {
       opacity: 1,
       transition: {
         delay: 0.3,
-        staggerChildren: 0.5,
+        staggerChildren: 0.2,
       },
     },
   };
