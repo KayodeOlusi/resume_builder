@@ -150,13 +150,13 @@ const Personal = ({ formData, setFormData }: IProps) => {
             <div className="flex flex-col space-y-8 md:items-center md:space-y-0 md:justify-between mt-7 md:mt-10 md:flex-row">
               <div className="block">
                 <p className="text-sm font-semibold text-herotext mb-3">
-                  Address
+                  Country
                 </p>
                 <input
                   type="text"
                   name="address"
                   onChange={handleChange}
-                  placeholder="Enter your address"
+                  placeholder="Enter your country"
                   value={formData.personal.address}
                   className=" bg-landingcard rounded-md py-3 px-8 font-semibold
                    text-sm text-herotext w-full md:w-[22rem] xl:w-[34rem]"
