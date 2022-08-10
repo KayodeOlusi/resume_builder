@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./components/auth/RequireAuth";
 // Components
 import ScrollToTop from "./hooks/ScrollToTop";
+const Blog = lazy(() => import("./pages/blog"));
 const Steps = lazy(() => import("./pages/steps"));
 const Stepper = lazy(() => import("./pages/stepper"));
 const Landing = lazy(() => import("./pages/landing"));
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/blog" element={<Blog />} />
 
             <Route element={<RequireAuth />}>
               <Route path="/page" element={<PageLayout />}>

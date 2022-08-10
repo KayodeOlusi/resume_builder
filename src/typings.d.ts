@@ -125,3 +125,14 @@ interface IHobbyPayload {
   hobby: string;
   id: string | number;
 }
+
+// Blog State
+interface IBlogState {
+  _id: string | number;
+  title: string;
+  author: string;
+  created_at: string | number;
+  tags: string[];
+  body: string;
+  image_url: string;
+}
