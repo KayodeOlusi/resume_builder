@@ -2,6 +2,7 @@ import { faker } from "@faker-js/faker";
 import { v4 as uuidv4 } from "uuid";
 import { useCallback, useEffect, useState } from "react";
 import Story from "./Story";
+import { PlusCircleIcon } from "@heroicons/react/outline";
 
 interface IStories {
   id: string | number;
@@ -15,7 +16,7 @@ const Stories = () => {
   const [stories, setStories] = useState<IStories[]>([]);
 
   const generateFakeUsers = useCallback(() => {
-    const fakeData = [...Array(20)].map(() => {
+    const fakeData = [...Array(40)].map(() => {
       return {
         id: uuidv4(),
         name: faker.name.findName(),
@@ -33,13 +34,18 @@ const Stories = () => {
   }, [generateFakeUsers]);
 
   return (
-    <div
-      className="flex space-x-2 overflow-x-scroll rounded-sm border
-   border-gray-200 bg-white p-6 "
-    >
-      {stories.map((story) => (
-        <Story />
-      ))}
+    <div className="flex space-x-4 items-center">
+      <div
+        className="mt-6 flex space-x-2 max-w-6xl overflow-x-scroll bg-red-100 rounded-sm border
+        border-gray-100 bg-white p-3 scrollbar-thin scrollbar-thumb-black"
+      >
+        {stories.map((story) => (
+          <Story key={story.id} {...story} />
+        ))}
+      </div>
+      <div>
+        <PlusCircleIcon className="w-6 h-6 mt-6" />
+      </div>
     </div>
   );
 };

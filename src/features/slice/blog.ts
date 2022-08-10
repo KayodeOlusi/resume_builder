@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
 
 interface IBlog {
   posts: IBlogState[];
@@ -39,15 +40,17 @@ const slice = createSlice({
           state.status = "success";
           const loadedPosts = action.payload;
 
-          console.log(loadedPosts);
           state.posts = [...state.posts, ...loadedPosts];
         }
       )
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message ?? "Error";
+        state.error = action.error.message ?? "Error fetching data";
       });
   },
 });
 
 export default slice.reducer;
+export const selectPosts = (state: RootState) => state.blog.posts;
+export const selectStatus = (state: RootState) => state.blog.status;
+export const selectError = (state: RootState) => state.blog.error;
