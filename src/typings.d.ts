@@ -136,3 +136,20 @@ interface IBlogState {
   body: string;
   image_url: string;
 }
+
+interface IEditedBlogState {
+  _id: string | number;
+  title: string;
+  author: string;
+  created_at: string | number;
+  tags: string[];
+  body: string;
+  image_url: string;
+  reactions: {
+    thumbsUp: number;
+    hooray: number;
+    heart: number;
+    rocket: number;
+    eyes: number;
+  };
+}

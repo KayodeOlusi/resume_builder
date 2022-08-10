@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
 interface IBlog {
-  posts: IBlogState[];
+  posts: IEditedBlogState[];
   status: string;
   error: string | null;
 }
@@ -38,7 +38,16 @@ const slice = createSlice({
         fetchPosts.fulfilled,
         (state, action: PayloadAction<IBlogState[]>) => {
           state.status = "success";
-          const loadedPosts = action.payload;
+          const loadedPosts = action.payload.map((post) => ({
+            ...post,
+            reactions: {
+              thumbsUp: 0,
+              hooray: 0,
+              heart: 0,
+              rocket: 0,
+              eyes: 0,
+            },
+          }));
 
           state.posts = [...state.posts, ...loadedPosts];
         }

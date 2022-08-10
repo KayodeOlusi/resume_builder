@@ -2,7 +2,7 @@ import { DotsHorizontalIcon } from "@heroicons/react/solid";
 import { FC } from "react";
 
 interface IProps {
-  posts: IBlogState[];
+  posts: IEditedBlogState[];
   status: string;
   error: string | null;
 }
@@ -15,7 +15,16 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
   return (
     <div>
       {posts?.map((post) => {
-        const { author, body, image_url, tags, _id, title, created_at } = post;
+        const {
+          author,
+          body,
+          image_url,
+          tags,
+          _id,
+          title,
+          created_at,
+          reactions,
+        } = post;
 
         return (
           <div key={_id} className="mt-9 max-w-2xl bg-gray-100 rounded-sm p-4">

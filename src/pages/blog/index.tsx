@@ -20,7 +20,7 @@ const Blog = () => {
   }, [dispatch]);
 
   return (
-    <div className="px-5 :md:px-0">
+    <div>
       <Stories />
       <Feed posts={posts} status={status} error={error} />
     </div>
