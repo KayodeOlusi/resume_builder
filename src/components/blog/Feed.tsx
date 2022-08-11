@@ -1,5 +1,6 @@
-import { DotsHorizontalIcon } from "@heroicons/react/solid";
 import { FC } from "react";
+import Reactions from "./Reactions";
+import { DotsHorizontalIcon } from "@heroicons/react/solid";
 
 interface IProps {
   posts: IEditedBlogState[];
@@ -15,19 +16,10 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
   return (
     <div>
       {posts?.map((post) => {
-        const {
-          author,
-          body,
-          image_url,
-          tags,
-          _id,
-          title,
-          created_at,
-          reactions,
-        } = post;
+        const { _id, body, tags, title, author, image_url, created_at } = post;
 
         return (
-          <div key={_id} className="mt-9 max-w-2xl bg-gray-100 rounded-sm p-4">
+          <div key={_id} className="max-w-2xl mb-9 bg-gray-100 rounded-sm p-4">
             <div className="relative flex justify-between">
               <div className="flex items-center space-x-2 mb-2">
                 <p className="font-bold text-sm">{author}</p>
@@ -53,9 +45,12 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
             </p>
             <div className="flex flex-row mt-2 space-x-2">
               {tags.map((tag) => (
-                <p className="text-xs text-links">#{tag}</p>
+                <p className="text-xs text-links" key={tag}>
+                  #{tag}
+                </p>
               ))}
             </div>
+            <Reactions post={post} />
           </div>
         );
       })}

@@ -147,9 +147,14 @@ interface IEditedBlogState {
   image_url: string;
   reactions: {
     thumbsUp: number;
-    hooray: number;
+    wow: number;
     heart: number;
     rocket: number;
-    eyes: number;
+    coffee: number;
   };
+}
+
+interface IReactionPayload {
+  post: IEditedBlogState;
+  reaction: string;
 }

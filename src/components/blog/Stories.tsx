@@ -19,7 +19,7 @@ const Stories = () => {
     const fakeData = [...Array(40)].map(() => {
       return {
         id: uuidv4(),
-        name: faker.name.findName(),
+        name: faker.name.fullName(),
         avatar: faker.image.avatar(),
         email: faker.internet.email(),
         phoneNumber: faker.phone.number(),

@@ -28,7 +28,21 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
 const slice = createSlice({
   name: "blog",
   initialState,
-  reducers: {},
+  reducers: {
+    reactionAdded: (state, action: PayloadAction<IReactionPayload>) => {
+      const {
+        post: { _id },
+        reaction,
+      } = action.payload;
+      const postExists = state.posts.find((post) => post._id === _id);
+
+      if (postExists) {
+        let { reactions } = postExists;
+        // @ts-ignore
+        reactions[reaction] += 1;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -42,10 +56,10 @@ const slice = createSlice({
             ...post,
             reactions: {
               thumbsUp: 0,
-              hooray: 0,
+              wow: 0,
               heart: 0,
               rocket: 0,
-              eyes: 0,
+              coffee: 0,
             },
           }));
 
@@ -60,6 +74,7 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+export const { reactionAdded } = slice.actions;
 export const selectPosts = (state: RootState) => state.blog.posts;
 export const selectStatus = (state: RootState) => state.blog.status;
 export const selectError = (state: RootState) => state.blog.error;

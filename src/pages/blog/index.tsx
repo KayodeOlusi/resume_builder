@@ -6,6 +6,7 @@ import {
   selectStatus,
 } from "../../features/slice/blog";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import Tags from "../../components/blog/Tags";
 import Feed from "../../components/blog/Feed";
 import Stories from "../../components/blog/Stories";
 
@@ -22,7 +23,10 @@ const Blog = () => {
   return (
     <div>
       <Stories />
-      <Feed posts={posts} status={status} error={error} />
+      <div className="flex justify-between mt-9">
+        <Feed posts={posts} status={status} error={error} />
+        <Tags posts={posts} />
+      </div>
     </div>
   );
 };
