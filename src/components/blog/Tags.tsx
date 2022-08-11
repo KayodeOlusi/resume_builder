@@ -1,4 +1,4 @@
-import { useState, FC, useEffect } from "react";
+import { useState, FC } from "react";
 
 interface IProps {
   posts: IEditedBlogState[];

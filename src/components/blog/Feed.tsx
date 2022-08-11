@@ -19,7 +19,7 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
         const { _id, body, tags, title, author, image_url, created_at } = post;
 
         return (
-          <div key={_id} className="max-w-2xl mb-9 bg-gray-100 rounded-sm p-4">
+          <div key={_id} className="max-w-xl mb-9 bg-gray-100 rounded-sm p-4">
             <div className="relative flex justify-between">
               <div className="flex items-center space-x-2 mb-2">
                 <p className="font-bold text-sm">{author}</p>
@@ -34,7 +34,7 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
               <img
                 src="https://images.unsplash.com/photo-1536329583941-14287ec6fc4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
                 alt=""
-                className="w-full object-cover rounded-sm"
+                className="w-full h-64 object-cover rounded-sm"
               />
             )}
             <p className="text-xs md:text-sm mt-3">
