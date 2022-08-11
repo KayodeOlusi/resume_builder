@@ -13,6 +13,8 @@ const User = () => {
     signOut(auth);
     setOpen(false);
     localStorage.removeItem("user_alium");
+    localStorage.removeItem("resumeName");
+    localStorage.removeItem("resumeImage");
   };
 
   return (
