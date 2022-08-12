@@ -16,6 +16,7 @@ const initialState: IBlog = {
   error: null,
 };
 
+// Thunks
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   try {
     const response = await axios.get(BLOG_URL);
@@ -24,6 +25,18 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
     if (error instanceof Error) return error.message;
   }
 });
+
+export const addPost = createAsyncThunk(
+  "posts/addPost",
+  async (post: IPostToAdd) => {
+    try {
+      const response = await axios.post(BLOG_URL, post);
+      return response.data;
+    } catch (error) {
+      if (error instanceof Error) return error.message;
+    }
+  }
+);
 
 const slice = createSlice({
   name: "blog",
@@ -68,6 +81,28 @@ const slice = createSlice({
       )
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";
+        state.error = action.error.message ?? "Error fetching data";
+      })
+      .addCase(
+        addPost.fulfilled,
+        (state, action: PayloadAction<IBlogState>) => {
+          console.log(action.payload);
+
+          const addedPost: IEditedBlogState = {
+            ...action.payload,
+            reactions: {
+              thumbsUp: 0,
+              wow: 0,
+              heart: 0,
+              rocket: 0,
+              coffee: 0,
+            },
+          };
+
+          state.posts = [...state.posts, addedPost];
+        }
+      )
+      .addCase(addPost.rejected, (state, action) => {
         state.error = action.error.message ?? "Error fetching data";
       });
   },

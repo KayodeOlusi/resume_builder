@@ -158,3 +158,11 @@ interface IReactionPayload {
   post: IEditedBlogState;
   reaction: string;
 }
+
+interface IPostToAdd {
+  title: string;
+  author: string | null | undefined;
+  tags?: string[];
+  body: string;
+  image_url?: string;
+}

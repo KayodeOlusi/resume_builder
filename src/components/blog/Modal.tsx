@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import {
   FC,
   Dispatch,
@@ -8,10 +7,13 @@ import {
   SetStateAction,
   useRef,
 } from "react";
+import toast from "react-hot-toast";
+import { auth } from "../../firebase";
 import { svgs } from "../../constants";
+import { useAppDispatch } from "../../app/hooks";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { addPost } from "../../features/slice/blog";
 
 interface IProps {
   isModalOpen: boolean;
@@ -27,6 +29,7 @@ interface IPostForm {
 
 const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
   const [user] = useAuthState(auth);
+  const dispatch = useAppDispatch();
   const imageRef = useRef<HTMLInputElement>(null);
   const [formImage, setFormImage] = useState<string>("");
   const [postForm, setPostForm] = useState<IPostForm>({
@@ -64,6 +67,39 @@ const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
       postForm.tags.length > 0 &&
       postForm.body.length > 0
     );
+  };
+
+  const addNewPost = async () => {
+    setIsModalOpen(false);
+    const post_notification = toast.loading("Posting...");
+    const { body, image_url, title } = postForm;
+    const tags = postForm.tags.split(" ").map((tag) => tag.trim());
+    const author = user?.displayName;
+
+    const postToAdd = {
+      body,
+      author,
+      tags,
+      image_url,
+      title,
+    };
+    try {
+      await dispatch(addPost(postToAdd));
+
+      toast.success("Posted successfully", {
+        duration: 6000,
+        id: post_notification,
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message, {
+          duration: 6000,
+          id: post_notification,
+        });
+        console.log(error);
+        return;
+      }
+    }
   };
 
   function closeModal() {
@@ -174,6 +210,7 @@ const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
                 />
                 <div className="text-center">
                   <button
+                    onClick={addNewPost}
                     disabled={isFormValid() === false}
                     className={`bg-herobtn font-bold text-xs px-5 py-2 rounded-md text-white ${
                       isFormValid() === false && "bg-slate-100 text-slate-500"
