@@ -13,6 +13,7 @@ const Preview = lazy(() => import("./pages/preview"));
 const Navbar = lazy(() => import("./components/navbar"));
 const SignUp = lazy(() => import("./pages/auth/signup"));
 const SignIn = lazy(() => import("./pages/auth/signin"));
+const Post = lazy(() => import("./components/blog/Post"));
 const PageLayout = lazy(() => import("./layout/PageLayout"));
 const Templates = lazy(() => import("./components/steps/templates/Templates"));
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<Post />} />
 
             <Route element={<RequireAuth />}>
               <Route path="/page" element={<PageLayout />}>

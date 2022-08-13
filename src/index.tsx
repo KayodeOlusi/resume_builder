@@ -7,6 +7,9 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router-dom";
 // Components
 import App from "./App";
+import { fetchPosts } from "./features/slice/blog";
+
+store.dispatch(fetchPosts());
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Reactions from "./Reactions";
+import { useNavigate } from "react-router-dom";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
 
 interface IProps {
@@ -9,6 +10,8 @@ interface IProps {
 }
 
 const Feed: FC<IProps> = ({ posts = [], error, status }) => {
+  const navigate = useNavigate();
+
   if (status === "loading") {
     return <div>Loading...</div>;
   }
@@ -17,13 +20,21 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
     return <div>{error}</div>;
   }
 
+  const viewPost = (id: number | string) => {
+    navigate("/blog/:" + id);
+  };
+
   return (
     <div>
       {posts?.map((post) => {
         const { _id, body, tags, title, author, image_url, created_at } = post;
 
         return (
-          <div key={_id} className="max-w-xl mb-9 bg-gray-100 rounded-sm p-4">
+          <div
+            key={_id}
+            className="max-w-xl mb-9 bg-gray-100 rounded-sm p-4"
+            onClick={() => viewPost(_id)}
+          >
             <div className="relative flex justify-between">
               <div className="flex items-center space-x-2 mb-2">
                 <p className="font-bold text-sm">{author}</p>
@@ -36,7 +47,7 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
             <p className="font-bold mb-2">{title}</p>
             {image_url && (
               <img
-                src="https://images.unsplash.com/photo-1536329583941-14287ec6fc4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                src={image_url}
                 alt=""
                 className="w-full h-64 object-cover rounded-sm"
               />

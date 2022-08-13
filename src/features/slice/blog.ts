@@ -36,6 +36,18 @@ export const addPost = createAsyncThunk(
   }
 );
 
+export const deleteBlogPost = createAsyncThunk(
+  "posts/deletePost",
+  async (id: string | number) => {
+    try {
+      const response = await instance.delete(`/blog/${id}`);
+      return response.data;
+    } catch (error) {
+      if (error instanceof Error) return error.message;
+    }
+  }
+);
+
 const slice = createSlice({
   name: "blog",
   initialState,
@@ -102,6 +114,16 @@ const slice = createSlice({
       )
       .addCase(addPost.rejected, (state, action) => {
         state.error = action.error.message ?? "Error fetching data";
+      })
+      .addCase(
+        deleteBlogPost.fulfilled,
+        (state, action: PayloadAction<IBlogState>) => {
+          const { _id } = action.payload;
+          state.posts = state.posts.filter((post) => post._id !== _id);
+        }
+      )
+      .addCase(deleteBlogPost.rejected, (state, action) => {
+        state.error = action.error.message ?? "Error deleting data";
       });
   },
 });
@@ -111,3 +133,8 @@ export const { reactionAdded } = slice.actions;
 export const selectPosts = (state: RootState) => state.blog.posts;
 export const selectStatus = (state: RootState) => state.blog.status;
 export const selectError = (state: RootState) => state.blog.error;
+export const selectSinglePost = (state: RootState, id: string) => {
+  const validId = id.replace(/[^a-zA-Z0-9]/g, "");
+
+  return state.blog.posts.find((post) => post._id === validId);
+};

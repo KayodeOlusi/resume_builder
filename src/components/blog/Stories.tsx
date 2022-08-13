@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { PlusCircleIcon } from "@heroicons/react/outline";
-import { v4 as uuidv4 } from "uuid";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { faker } from "@faker-js/faker";
+import { auth } from "../../firebase";
+import { v4 as uuidv4 } from "uuid";
 import Story from "./Story";
 import Modal from "./Modal";
+import toast from "react-hot-toast";
 
 interface IStories {
   id: string | number;
@@ -14,6 +17,7 @@ interface IStories {
 }
 
 const Stories = () => {
+  const [user] = useAuthState(auth);
   const [stories, setStories] = useState<IStories[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -30,6 +34,14 @@ const Stories = () => {
 
     setStories([...fakeData]);
   }, []);
+
+  const handleModalOpen = (): void => {
+    if (!user) {
+      toast.error("You must be logged in to post");
+      return;
+    }
+    setIsModalOpen(!isModalOpen);
+  };
 
   useEffect(() => {
     generateFakeUsers();
@@ -52,7 +64,7 @@ const Stories = () => {
         <div>
           <PlusCircleIcon
             className="w-6 h-6 mt-6 cursor-pointer"
-            onClick={() => setIsModalOpen(!isModalOpen)}
+            onClick={handleModalOpen}
           />
         </div>
       </div>
