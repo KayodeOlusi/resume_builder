@@ -5,11 +5,9 @@ import {
   useState,
   ChangeEvent,
   SetStateAction,
-  useRef,
 } from "react";
 import toast from "react-hot-toast";
 import { auth } from "../../firebase";
-import { svgs } from "../../constants";
 import { useAppDispatch } from "../../app/hooks";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -30,8 +28,6 @@ interface IPostForm {
 const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
   const [user] = useAuthState(auth);
   const dispatch = useAppDispatch();
-  const imageRef = useRef<HTMLInputElement>(null);
-  const [formImage, setFormImage] = useState<string>("");
   const [postForm, setPostForm] = useState<IPostForm>({
     title: "",
     tags: "",
@@ -47,25 +43,12 @@ const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
     setPostForm({ ...postForm, [name]: value });
   };
 
-  // Select an image to post
-  const selectImage = (e: ChangeEvent<HTMLInputElement>) => {
-    const reader = new FileReader();
-
-    if (e.target.files) {
-      reader.readAsDataURL(e.target.files[0]);
-    }
-
-    reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
-      readerEvent.target && setFormImage(String(readerEvent.target.result));
-    };
-  };
-
   // Check if all fields are filled
   const isFormValid = () => {
     return (
       postForm.title.length > 0 &&
-      postForm.tags.length > 0 &&
-      postForm.body.length > 0
+      postForm.body.length > 0 &&
+      postForm.image_url.length > 0
     );
   };
 
@@ -73,7 +56,7 @@ const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
     setIsModalOpen(false);
     const post_notification = toast.loading("Posting...");
     const { body, image_url, title } = postForm;
-    const tags = postForm.tags.split(" ").map((tag) => tag.trim());
+    const tags = postForm.tags.split(" ").map((tag) => tag.trim()) || [];
     const author = user?.displayName;
 
     const postToAdd = {
@@ -146,11 +129,12 @@ const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
                   <div className="mt-3">
                     <p className="font-bold capitalize mb-1">Title</p>
                     <input
+                      required
                       type="text"
                       name="title"
                       value={postForm.title}
                       onChange={handleChange}
-                      required
+                      placeholder="Enter Title"
                       className="bg-landingcard rounded-sm w-full text-sm p-2"
                     />
                   </div>
@@ -162,52 +146,35 @@ const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
                       required
                       value={postForm.tags}
                       onChange={handleChange}
+                      placeholder="Enter #tags (Optional)"
                       className="bg-landingcard rounded-sm w-full p-2 text-sm"
                     />
                   </div>
                   <div className="mt-3">
-                    <p className="font-bold capitalize mb-1">body</p>
+                    <p className="font-bold capitalize mb-1">Image URL</p>
+                    <input
+                      required
+                      type="text"
+                      name="image_url"
+                      onChange={handleChange}
+                      value={postForm.image_url}
+                      placeholder="Enter Image URL"
+                      className="bg-landingcard rounded-sm w-full p-2 text-sm"
+                    />
+                  </div>
+                  <div className="mt-3">
+                    <p className="font-bold capitalize mb-1">Body</p>
                     <textarea
                       name="body"
                       required
                       rows={6}
                       onChange={handleChange}
                       value={postForm.body}
+                      placeholder="Enter Body of Post"
                       className="bg-landingcard rounded-sm w-full p-2 text-sm"
                     />
                   </div>
                 </div>
-                {formImage ? (
-                  <div className="flex flex-col px-7">
-                    <img
-                      src={formImage}
-                      alt=""
-                      className="h-32 object-cover mt-3"
-                    />
-                    <p
-                      className="text-xs mt-1 cursor-pointer text-red-600"
-                      onClick={() => setFormImage("")}
-                    >
-                      Remove Image
-                    </p>
-                  </div>
-                ) : (
-                  <div className="flex space-x-2 items-center px-5 mt-2">
-                    <img src={svgs.add} alt="" className="w-3 h-3" />
-                    <p
-                      className="text-xs cursor-pointer"
-                      onClick={() => imageRef.current?.click()}
-                    >
-                      Add Image
-                    </p>
-                  </div>
-                )}
-                <input
-                  type="file"
-                  hidden
-                  ref={imageRef}
-                  onChange={selectImage}
-                />
                 <div className="text-center">
                   <button
                     onClick={addNewPost}

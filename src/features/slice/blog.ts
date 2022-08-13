@@ -1,4 +1,4 @@
-import axios from "axios";
+import instance from "../../service/axios";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
@@ -7,8 +7,6 @@ interface IBlog {
   status: string;
   error: string | null;
 }
-
-const BLOG_URL = "https://resume-builder-ng.herokuapp.com/blog";
 
 const initialState: IBlog = {
   posts: [],
@@ -19,7 +17,7 @@ const initialState: IBlog = {
 // Thunks
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   try {
-    const response = await axios.get(BLOG_URL);
+    const response = await instance.get("/blog");
     return response.data;
   } catch (error) {
     if (error instanceof Error) return error.message;
@@ -30,7 +28,7 @@ export const addPost = createAsyncThunk(
   "posts/addPost",
   async (post: IPostToAdd) => {
     try {
-      const response = await axios.post(BLOG_URL, post);
+      const response = await instance.post("/blog", post);
       return response.data;
     } catch (error) {
       if (error instanceof Error) return error.message;

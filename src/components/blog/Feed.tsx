@@ -47,14 +47,20 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
               fugiat facilis commodi tenetur temporibus, deserunt, enim libero
               porro, accusantium cupiditate cumque impedit.{" "}
             </p>
-            {/***TODO: When API is done, uncomment */}
-            {/* <div className="flex flex-row mt-2 space-x-2">
-              {tags.map((tag) => (
-                <p className="text-xs text-links" key={tag}>
-                  #{tag}
-                </p>
-              ))}
-            </div> */}
+            <div className="flex flex-row mt-2 space-x-2">
+              {tags?.length > 0 &&
+                tags.map((tag) => {
+                  if (tag.length > 0) {
+                    return (
+                      <p className="text-xs text-links" key={tag}>
+                        {tag}
+                      </p>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+            </div>
             <Reactions post={post} />
           </div>
         );
