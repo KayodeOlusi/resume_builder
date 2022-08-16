@@ -3,7 +3,11 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { deleteBlogPost, selectSinglePost } from "../../features/slice/blog";
+import {
+  deleteBlogPost,
+  selectSinglePost,
+  deleteSinglePost,
+} from "../../features/slice/blog";
 import Reactions from "./Reactions";
 
 const Post: FC = () => {
@@ -15,17 +19,19 @@ const Post: FC = () => {
   )!;
   const { _id, author, body, created_at, image_url, tags, title } = singlePost;
 
-  // TODO: Delete functionality not updated on backend yet
   const deletePost = async (id: string | number) => {
+    const validId = String(id).replace(/[^a-zA-Z0-9]/g, "");
+
     const delete_notification = toast.loading("Deleting...");
 
     try {
-      await dispatch(deleteBlogPost(id));
+      navigate("/blog");
+      await dispatch(deleteBlogPost(validId));
       toast.success("Post deleted successfully", {
         id: delete_notification,
         duration: 3000,
       });
-      navigate("/blog");
+      dispatch(deleteSinglePost(validId));
     } catch (error) {
       toast.error("Error deleting post", {
         id: delete_notification,
@@ -55,12 +61,7 @@ const Post: FC = () => {
             className="w-full h-64 object-cover rounded-sm"
           />
         )}
-        <p className="text-xs md:text-sm mt-3">
-          {body} Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Officia asperiores consectetur porro nihil eos vero odio. Ipsam fugiat
-          facilis commodi tenetur temporibus, deserunt, enim libero porro,
-          accusantium cupiditate cumque impedit.{" "}
-        </p>
+        <p className="text-xs md:text-sm mt-3">{body}</p>
         <div className="flex flex-row mt-2 space-x-2">
           {tags?.length > 0 &&
             tags.map((tag) => {

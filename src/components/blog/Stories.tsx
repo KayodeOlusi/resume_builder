@@ -1,39 +1,17 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { PlusCircleIcon } from "@heroicons/react/outline";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { faker } from "@faker-js/faker";
 import { auth } from "../../firebase";
-import { v4 as uuidv4 } from "uuid";
 import Story from "./Story";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
-
-interface IStories {
-  id: string | number;
-  name: string;
-  avatar: string;
-  email: string;
-  phoneNumber: string | number;
-}
+import { useAppSelector } from "../../app/hooks";
+import { selectStories } from "../../features/slice/blog";
 
 const Stories = () => {
   const [user] = useAuthState(auth);
-  const [stories, setStories] = useState<IStories[]>([]);
+  const stories = useAppSelector(selectStories);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  const generateFakeUsers = useCallback(() => {
-    const fakeData = [...Array(40)].map(() => {
-      return {
-        id: uuidv4(),
-        name: faker.name.fullName(),
-        avatar: faker.image.avatar(),
-        email: faker.internet.email(),
-        phoneNumber: faker.phone.number(),
-      };
-    });
-
-    setStories([...fakeData]);
-  }, []);
 
   const handleModalOpen = (): void => {
     if (!user) {
@@ -42,10 +20,6 @@ const Stories = () => {
     }
     setIsModalOpen(!isModalOpen);
   };
-
-  useEffect(() => {
-    generateFakeUsers();
-  }, [generateFakeUsers]);
 
   return (
     <>

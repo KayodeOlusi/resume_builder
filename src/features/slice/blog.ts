@@ -1,15 +1,27 @@
+import { v4 as uuidv4 } from "uuid";
+import { faker } from "@faker-js/faker";
 import instance from "../../service/axios";
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 interface IBlog {
   posts: IEditedBlogState[];
+  stories: IStories[];
   status: string;
   error: string | null;
 }
 
+interface IStories {
+  id: string | number;
+  name: string;
+  avatar: string;
+  email: string;
+  phoneNumber: string | number;
+}
+
 const initialState: IBlog = {
   posts: [],
+  stories: [],
   status: "idle", // "idle", "loading", "success"
   error: null,
 };
@@ -64,6 +76,26 @@ const slice = createSlice({
         // @ts-ignore
         reactions[reaction] += 1;
       }
+    },
+    loadStories: (state) => {
+      const fakeData = [...Array(40)].map(() => {
+        return {
+          id: uuidv4(),
+          name: faker.name.fullName(),
+          avatar: faker.image.avatar(),
+          email: faker.internet.email(),
+          phoneNumber: faker.phone.number(),
+        };
+      });
+
+      state.stories = [...fakeData];
+    },
+    deleteSinglePost: (state, action: PayloadAction<string>) => {
+      const filteredPost = state.posts.filter(
+        (post) => post._id !== action.payload
+      );
+
+      state.posts = [...filteredPost];
     },
   },
   extraReducers: (builder) => {
@@ -129,10 +161,11 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
-export const { reactionAdded } = slice.actions;
+export const { reactionAdded, loadStories, deleteSinglePost } = slice.actions;
 export const selectPosts = (state: RootState) => state.blog.posts;
 export const selectStatus = (state: RootState) => state.blog.status;
 export const selectError = (state: RootState) => state.blog.error;
+export const selectStories = (state: RootState) => state.blog.stories;
 export const selectSinglePost = (state: RootState, id: string) => {
   const validId = id.replace(/[^a-zA-Z0-9]/g, "");
 
