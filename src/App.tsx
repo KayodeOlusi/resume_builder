@@ -15,6 +15,7 @@ const SignUp = lazy(() => import("./pages/auth/signup"));
 const SignIn = lazy(() => import("./pages/auth/signin"));
 const Post = lazy(() => import("./components/blog/Post"));
 const PageLayout = lazy(() => import("./layout/PageLayout"));
+const UserPosts = lazy(() => import("./components/blog/user-posts"));
 const Templates = lazy(() => import("./components/steps/templates/Templates"));
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<Post />} />
+            <Route path="/blog:name" element={<UserPosts />} />
 
             <Route element={<RequireAuth />}>
               <Route path="/page" element={<PageLayout />}>

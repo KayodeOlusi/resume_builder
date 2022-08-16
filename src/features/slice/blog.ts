@@ -128,8 +128,6 @@ const slice = createSlice({
       .addCase(
         addPost.fulfilled,
         (state, action: PayloadAction<IBlogState>) => {
-          console.log(action.payload);
-
           const addedPost: IEditedBlogState = {
             ...action.payload,
             reactions: {
@@ -168,6 +166,10 @@ export const selectError = (state: RootState) => state.blog.error;
 export const selectStories = (state: RootState) => state.blog.stories;
 export const selectSinglePost = (state: RootState, id: string) => {
   const validId = id.replace(/[^a-zA-Z0-9]/g, "");
-
   return state.blog.posts.find((post) => post._id === validId);
+};
+
+export const selectPostsByUser = (state: RootState, name: string) => {
+  const validName = name.replace(/[^a-zA-Z0-9]/g, " ");
+  return state.blog.posts.filter((post) => post.author !== validName);
 };

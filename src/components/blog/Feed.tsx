@@ -10,15 +10,15 @@ interface IProps {
 
 const Feed: FC<IProps> = ({ posts = [], error, status }) => {
   if (status === "loading") {
-    return <div>Loading...</div>;
-  }
-
-  if (status === "error") {
     return (
-      <div className="flex items-center justify-center w-full">
+      <div className="mt-9 flex items-center justify-center w-full">
         <Spinner name="ball-clip-rotate-multiple" color="steelblue" />
       </div>
     );
+  }
+
+  if (status === "error") {
+    return <div>Error...</div>;
   }
 
   return (
@@ -27,7 +27,7 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
         posts.map((post) => <SinglePost key={post._id} post={post} />)
       ) : (
         <div className="mr-auto ml-auto">
-          <p className="text-center font-semibold">Add a Post</p>
+          <p className="text-center font-semibold ml-5 md:ml-0">Add a Post</p>
         </div>
       )}
     </div>

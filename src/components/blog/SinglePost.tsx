@@ -15,14 +15,20 @@ const SinglePost: FC<IProps> = ({ post }) => {
     navigate("/blog/:" + id);
   };
 
+  const viewUser = (name: string) => {
+    navigate("/blog:" + name);
+  };
+
   return (
-    <div
-      className="max-w-xl mb-9 bg-gray-100 rounded-sm p-4"
-      onClick={() => viewPost(_id)}
-    >
+    <div className="max-w-xl mb-9 bg-gray-100 rounded-sm p-4">
       <div className="relative flex justify-between">
         <div className="flex items-center space-x-2 mb-2">
-          <p className="font-bold text-sm">{author}</p>
+          <p
+            className="font-bold text-sm cursor-pointer"
+            onClick={() => viewUser(author)}
+          >
+            {author}
+          </p>
           <p className="text-[0.5rem] md:text-xs">{created_at}</p>
         </div>
         <div>
@@ -52,7 +58,15 @@ const SinglePost: FC<IProps> = ({ post }) => {
             }
           })}
       </div>
-      <Reactions post={post} />
+      <div className="flex justify-between items-center">
+        <Reactions post={post} />
+        <p
+          className="text-xs cursor-pointer underline text-hero"
+          onClick={() => viewPost(_id)}
+        >
+          Read
+        </p>
+      </div>
     </div>
   );
 };
