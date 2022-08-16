@@ -91,106 +91,108 @@ const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
 
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={closeModal}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
-        </Transition.Child>
+      {isModalOpen && (
+        <Dialog as="div" className="relative z-50" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+          </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
-            >
-              <Dialog.Panel
-                className="w-full max-w-md transform overflow-hidden
-               rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Title
-                  as="h3"
-                  className="text-lg font-medium leading-6 text-center text-gray-900"
+                <Dialog.Panel
+                  className="w-full max-w-md transform overflow-hidden
+               rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
                 >
-                  Create a new post
-                </Dialog.Title>
-                <div className="px-5 text-center">
-                  <div className="mt-3">
-                    <p className="font-bold capitalize mb-1">Title</p>
-                    <input
-                      required
-                      type="text"
-                      name="title"
-                      value={postForm.title}
-                      onChange={handleChange}
-                      placeholder="Enter Title"
-                      className="bg-landingcard rounded-sm w-full text-sm p-2"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <p className="font-bold capitalize mb-1">Tags</p>
-                    <input
-                      type="text"
-                      name="tags"
-                      required
-                      value={postForm.tags}
-                      onChange={handleChange}
-                      placeholder="Enter #tags (Optional)"
-                      className="bg-landingcard rounded-sm w-full p-2 text-sm"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <p className="font-bold capitalize mb-1">Image URL</p>
-                    <input
-                      required
-                      type="text"
-                      name="image_url"
-                      onChange={handleChange}
-                      value={postForm.image_url}
-                      placeholder="Enter Image URL"
-                      className="bg-landingcard rounded-sm w-full p-2 text-sm"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <p className="font-bold capitalize mb-1">Body</p>
-                    <textarea
-                      name="body"
-                      required
-                      rows={6}
-                      onChange={handleChange}
-                      value={postForm.body}
-                      placeholder="Enter Body of Post"
-                      className="bg-landingcard rounded-sm w-full p-2 text-sm"
-                    />
-                  </div>
-                </div>
-                <div className="text-center">
-                  <button
-                    onClick={addNewPost}
-                    disabled={isFormValid() === false}
-                    className={`bg-herobtn font-bold text-xs px-5 py-2 rounded-md text-white ${
-                      isFormValid() === false && "bg-slate-100 text-slate-500"
-                    }`}
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-center text-gray-900"
                   >
-                    Add Post
-                  </button>
-                </div>
-              </Dialog.Panel>
-            </Transition.Child>
+                    Create a new post
+                  </Dialog.Title>
+                  <div className="px-5 text-center">
+                    <div className="mt-3">
+                      <p className="font-bold capitalize mb-1">Title</p>
+                      <input
+                        required
+                        type="text"
+                        name="title"
+                        value={postForm.title}
+                        onChange={handleChange}
+                        placeholder="Enter Title"
+                        className="bg-landingcard rounded-sm w-full text-sm p-2"
+                      />
+                    </div>
+                    <div className="mt-3">
+                      <p className="font-bold capitalize mb-1">Tags</p>
+                      <input
+                        type="text"
+                        name="tags"
+                        required
+                        value={postForm.tags}
+                        onChange={handleChange}
+                        placeholder="Enter #tags (Optional)"
+                        className="bg-landingcard rounded-sm w-full p-2 text-sm"
+                      />
+                    </div>
+                    <div className="mt-3">
+                      <p className="font-bold capitalize mb-1">Image URL</p>
+                      <input
+                        required
+                        type="text"
+                        name="image_url"
+                        onChange={handleChange}
+                        value={postForm.image_url}
+                        placeholder="Enter Image URL"
+                        className="bg-landingcard rounded-sm w-full p-2 text-sm"
+                      />
+                    </div>
+                    <div className="mt-3">
+                      <p className="font-bold capitalize mb-1">Body</p>
+                      <textarea
+                        name="body"
+                        required
+                        rows={6}
+                        onChange={handleChange}
+                        value={postForm.body}
+                        placeholder="Enter Body of Post"
+                        className="bg-landingcard rounded-sm w-full p-2 text-sm"
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <button
+                      onClick={addNewPost}
+                      disabled={isFormValid() === false}
+                      className={`bg-herobtn font-bold text-xs px-5 py-2 rounded-md text-white ${
+                        isFormValid() === false && "bg-slate-100 text-slate-500"
+                      }`}
+                    >
+                      Add Post
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
           </div>
-        </div>
-      </Dialog>
+        </Dialog>
+      )}
     </Transition>
   );
 };

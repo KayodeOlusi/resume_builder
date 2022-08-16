@@ -26,7 +26,7 @@ const Stories = () => {
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       )}
-      <div className="flex space-x-4 px-5 items-center md:px-0">
+      <div className="flex space-x-4 bg-white px-5 items-center md:px-0">
         <div
           className="mt-6 flex space-x-2 max-w-6xl overflow-x-scroll rounded-sm border
         border-gray-100 bg-white p-3 scrollbar-thin scrollbar-thumb-black"
