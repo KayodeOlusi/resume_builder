@@ -18,7 +18,7 @@ const Blog = () => {
       <div className="sticky top-8 md:top-16 z-30">
         <Stories />
       </div>
-      <div className="flex justify-between mt-9">
+      <div className="block md:flex md:justify-between md:space-x-3 lg:space-x-0 mt-9">
         <Feed posts={posts} status={status} error={error} />
         <Tags posts={posts} />
       </div>

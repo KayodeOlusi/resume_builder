@@ -21,6 +21,7 @@ const Testimonials: FC = () => {
         showArrows={false}
         enableAutoPlay={viewPortWidth < 768 ? true : false}
         itemPadding={[8, 8, 8]}
+        autoPlaySpeed={5000}
       >
         <div className="landing-card flex justify-center items-center shadow-sm md:mr-3">
           <div>

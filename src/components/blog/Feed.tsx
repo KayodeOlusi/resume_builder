@@ -18,7 +18,7 @@ const Feed: FC<IProps> = ({ posts = [], error, status }) => {
   }
 
   if (status === "error") {
-    return <div>Error...</div>;
+    return <div>{error}</div>;
   }
 
   return (

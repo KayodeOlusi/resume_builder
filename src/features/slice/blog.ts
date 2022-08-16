@@ -173,3 +173,10 @@ export const selectPostsByUser = (state: RootState, name: string) => {
   const validName = name.replace(/[^a-zA-Z0-9]/g, " ");
   return state.blog.posts.filter((post) => post.author !== validName);
 };
+
+export const selectAllTags = (state: RootState) => {
+  const allTags = state.blog.posts.map((post) => post.tags);
+  const editedArray = allTags.flat().filter(Boolean).slice(0, 7);
+  // @ts-ignore
+  return [...new Set(editedArray)];
+};

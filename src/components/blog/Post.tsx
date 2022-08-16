@@ -61,7 +61,7 @@ const Post: FC = () => {
               {author}
             </p>
             <p className="text-[0.5rem] md:text-xs">
-              {new Date(created_at).toLocaleString()}
+              {new Date(Number(created_at)).toLocaleString()}
             </p>
           </div>
           <div>

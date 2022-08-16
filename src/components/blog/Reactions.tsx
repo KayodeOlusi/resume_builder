@@ -18,7 +18,7 @@ const Reactions: FC<IProps> = ({ post }) => {
   };
 
   return (
-    <div className="flex space-x-4 mt-2">
+    <div className="flex space-x-2 sm:space-x-4 mt-2">
       {Object.entries(reactions).map(([name, emoji]) => (
         <button
           key={name}

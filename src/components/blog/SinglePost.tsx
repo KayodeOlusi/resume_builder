@@ -20,7 +20,7 @@ const SinglePost: FC<IProps> = ({ post }) => {
   };
 
   return (
-    <div className="max-w-xl mb-9 bg-gray-100 rounded-sm p-4">
+    <div className="w-full md:max-w-xl mb-9 bg-gray-100 rounded-sm p-4">
       <div className="relative flex justify-between">
         <div className="flex items-center space-x-2 mb-2">
           <p
@@ -29,7 +29,9 @@ const SinglePost: FC<IProps> = ({ post }) => {
           >
             {author}
           </p>
-          <p className="text-[0.5rem] md:text-xs">{created_at}</p>
+          <p className="text-[0.5rem] md:text-xs">
+            {new Date(Number(created_at)).toLocaleString()}
+          </p>
         </div>
         <div>
           <DotsHorizontalIcon className="w-6 h-6" />
