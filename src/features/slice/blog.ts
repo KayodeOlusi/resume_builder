@@ -2,7 +2,12 @@ import { v4 as uuidv4 } from "uuid";
 import { faker } from "@faker-js/faker";
 import instance from "../../service/axios";
 import { RootState } from "../../app/store";
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  PayloadAction,
+  createSelector,
+} from "@reduxjs/toolkit";
 
 interface IBlog {
   posts: IEditedBlogState[];
@@ -164,19 +169,30 @@ export const selectPosts = (state: RootState) => state.blog.posts;
 export const selectStatus = (state: RootState) => state.blog.status;
 export const selectError = (state: RootState) => state.blog.error;
 export const selectStories = (state: RootState) => state.blog.stories;
+
 export const selectSinglePost = (state: RootState, id: string) => {
   const validId = id.replace(/[^a-zA-Z0-9]/g, "");
   return state.blog.posts.find((post) => post._id === validId);
 };
 
-export const selectPostsByUser = (state: RootState, name: string) => {
-  const validName = name.replace(/[^a-zA-Z0-9]/g, " ");
-  return state.blog.posts.filter((post) => post.author !== validName);
-};
+export const selectPostsByUser = createSelector(
+  [
+    selectPosts,
+    (state: RootState, name: string) => name.replace(/[^a-zA-Z0-9]/g, " "),
+  ],
+  (posts, name) => posts.filter((post) => post.author !== name)
+);
 
-export const selectAllTags = (state: RootState) => {
-  const allTags = state.blog.posts.map((post) => post.tags);
+// export const selectAllTags = (state: RootState) => {
+//   const allTags = state.blog.posts.map((post) => post.tags);
+//   const editedArray = allTags.flat().filter(Boolean).slice(0, 7);
+//   // @ts-ignore
+//   return [...new Set(editedArray)];
+// };
+
+export const selectAllTags = createSelector([selectPosts], (posts) => {
+  const allTags = posts.map((post) => post.tags);
   const editedArray = allTags.flat().filter(Boolean).slice(0, 7);
   // @ts-ignore
   return [...new Set(editedArray)];
-};
+});

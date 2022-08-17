@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, memo } from "react";
 import StoryModal from "./StoryModal";
 
 interface IProps {
@@ -41,4 +41,4 @@ const Story: FC<IProps> = ({ id, name, avatar, email, phoneNumber }) => {
   );
 };
 
-export default Story;
+export default memo(Story);

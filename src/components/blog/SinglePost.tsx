@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import Reactions from "./Reactions";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
 import { useNavigate } from "react-router-dom";
@@ -73,4 +73,4 @@ const SinglePost: FC<IProps> = ({ post }) => {
   );
 };
 
-export default SinglePost;
+export default memo(SinglePost);
