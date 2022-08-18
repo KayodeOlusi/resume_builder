@@ -42,34 +42,36 @@ const Stepper = () => {
     {
       title: "Personal Information",
       checked: false,
-      stepperNumber: 1,
+      stepperNumber: 0,
     },
     {
       title: "Work Experience",
       checked: false,
-      stepperNumber: 2,
+      stepperNumber: 1,
     },
     {
       title: "Education",
       checked: false,
-      stepperNumber: 3,
+      stepperNumber: 2,
     },
     {
       title: "Skills",
       checked: false,
-      stepperNumber: 4,
+      stepperNumber: 3,
     },
     {
       title: "Hobbies",
       checked: false,
-      stepperNumber: 5,
+      stepperNumber: 4,
     },
   ]);
 
   const handleCheckboxChange = (position: number) => {
     setStepperSections((prevState) =>
-      prevState.map((section, index) =>
-        index === position ? { ...section, checked: true } : section
+      prevState.map((section) =>
+        section.stepperNumber === position
+          ? { ...section, checked: true }
+          : section
       )
     );
   };
@@ -197,6 +199,7 @@ const Stepper = () => {
         <div className="checkbox flex items-center justify-between px-5">
           {viewPort < 768 ? (
             <Checkbox
+              handleChange={handleCheckboxChange}
               title={stepperSections[stepperState - 1].title}
               checked={stepperSections[stepperState - 1].checked}
               stepperNumber={stepperSections[stepperState - 1].stepperNumber}
@@ -211,6 +214,7 @@ const Stepper = () => {
                     title={title}
                     checked={checked}
                     stepperNumber={stepperNumber}
+                    handleChange={handleCheckboxChange}
                   />
                 </div>
               );

@@ -183,13 +183,6 @@ export const selectPostsByUser = createSelector(
   (posts, name) => posts.filter((post) => post.author !== name)
 );
 
-// export const selectAllTags = (state: RootState) => {
-//   const allTags = state.blog.posts.map((post) => post.tags);
-//   const editedArray = allTags.flat().filter(Boolean).slice(0, 7);
-//   // @ts-ignore
-//   return [...new Set(editedArray)];
-// };
-
 export const selectAllTags = createSelector([selectPosts], (posts) => {
   const allTags = posts.map((post) => post.tags);
   const editedArray = allTags.flat().filter(Boolean).slice(0, 7);
