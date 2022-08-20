@@ -25,7 +25,11 @@ Alium is an application that allows users to create resume templates
 ## Screenshots of the Application
 
 ![](./public/img/one.png)
+
 ![](./public/img/three.png)
+
 ![](./public/img/four.png)
+
 ![](./public/img/six.png)
+
 ![](./public/img/seven.png)
