@@ -47,8 +47,6 @@ const Post: FC = () => {
     }
   };
 
-  console.log(new Date(created_at).toDateString());
-
   return (
     <>
       <div className="mt-9 bg-gray-100 max-w-xl mx-auto p-4 rounded-md">
