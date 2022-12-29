@@ -3,9 +3,9 @@ import Spinner from "react-spinkit";
 import SinglePost from "./SinglePost";
 
 interface IProps {
-  posts: IEditedBlogState[];
   status: string;
   error: string | null;
+  posts: IEditedBlogState[];
 }
 
 const Feed: FC<IProps> = ({ posts = [], error, status }) => {
