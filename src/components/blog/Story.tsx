@@ -1,5 +1,5 @@
-import { FC, useState, memo } from "react";
 import StoryModal from "./StoryModal";
+import { FC, useState, memo } from "react";
 
 interface IProps {
   id: string | number;
@@ -30,8 +30,8 @@ const Story: FC<IProps> = ({ id, name, avatar, email, phoneNumber }) => {
         />
       )}
       <img
-        src={avatar}
         alt=""
+        src={avatar}
         onClick={() => setIsModalOpen(!isModalOpen)}
         className="object contain h-14 w-14 cursor-pointer
         rounded-full border-2 border-alium p-[1.5px]

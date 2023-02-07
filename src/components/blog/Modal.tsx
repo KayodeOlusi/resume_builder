@@ -9,9 +9,9 @@ import {
 import toast from "react-hot-toast";
 import { auth } from "../../firebase";
 import { useAppDispatch } from "../../app/hooks";
+import { addPost } from "../../features/slice/blog";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { addPost } from "../../features/slice/blog";
 
 interface IProps {
   isModalOpen: boolean;
@@ -56,7 +56,7 @@ const Modal: FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
     setIsModalOpen(false);
     const post_notification = toast.loading("Posting...");
     const { body, image_url, title } = postForm;
-    const tags = postForm.tags.split(" ").map((tag) => tag.trim()) || [];
+    const tags = postForm.tags.split(" ").map(tag => tag.trim()) || [];
     const author = user?.displayName;
 
     const postToAdd = {
